@@ -1,0 +1,43 @@
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white-color);
+    width: var(--container-max-width);
+    padding: 43px;
+    margin: auto;
+    background-color: #fbf9f9;
+    /* border: 2px solid black; */
+    height: 5.6rem; 
+}
+
+.logo{
+    font-size: 2.5rem;
+    font-weight: bold;
+    /* border: 2px solid red; */
+}
+
+.linksContainer{
+    display: flex;
+    gap: 4rem;
+    /* border: 2px solid red; */
+}
+
+.aboutLink, .homeLink, .howItWorksLink{
+    font-size: 1.8rem;
+    text-decoration: none;
+}
+
+.loginButton{
+    font-size: 1.8rem;
+    border: 2px solid rgb(132, 132, 222);
+    padding: 4px;
+    width: 80px;
+    background-color: rgb(132, 132, 222);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    /* border: 2px solid red; */
+}
+
