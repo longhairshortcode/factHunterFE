@@ -30,14 +30,15 @@
 
 .loginButton{
     font-size: 1.8rem;
-    border: 2px solid rgb(132, 132, 222);
-    padding: 4px;
+    /* border: 2px solid rgb(132, 132, 222); */
+    padding: 9px;
     width: 80px;
     background-color: rgb(132, 132, 222);
     color: white;
     text-align: center;
     font-weight: bold;
     border-radius: 5px;
+    text-decoration: none;
     /* border: 2px solid red; */
 }
 

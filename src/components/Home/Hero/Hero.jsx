@@ -1,7 +1,10 @@
 import style from "./Hero.module.css"
 import students from "../../../assets/students.jpg"
+import { /*useNavigate,*/ Link } from "react-router-dom"
+
 
 function Hero() {
+// const navigate = useNavigate()
   return (
     <div className={style.heroContainer}> 
       <div className={style.leftContainer}>
@@ -12,7 +15,7 @@ function Hero() {
             <p className={style.subheader}>Make review easy and accessible with flashcards that students can use on their own and on the go!</p>
         </div>
         <div className={style.getStartedButtonContainer}>
-            <p className={style.getStartedButton}>Get Started</p>
+            <Link to="/sign-up" className={style.getStartedButton}>Get Started</Link>
         </div>
       </div>
       <div className={style.rightContainer}>

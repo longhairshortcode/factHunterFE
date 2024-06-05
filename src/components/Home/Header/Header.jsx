@@ -13,7 +13,7 @@ function Header() {
           <Link className={style.howItWorksLink}>How It Works</Link>
         </div>
         <div className={style.loginButtonContainer}>
-          <p className={style.loginButton}>Login</p>
+          <Link to="/login" className={style.loginButton}>Login</Link>
         </div>
         
     </header>
