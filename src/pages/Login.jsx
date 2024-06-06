@@ -33,7 +33,7 @@ function Login() {
                     placeholder="Password"
                     required/>
                 <div className={style.forgotContainer}>
-                <p className={style.forgot}>Forget your password? Click here.</p>
+                <p className={style.forgot}>Forget your password? Click <Link className={style.createOne}to={"/sign-up"}>here</Link>.</p>
                 </div> 
           <div className={style.buttonAndMessage}>
            <button className={style.button}>Login</button>
