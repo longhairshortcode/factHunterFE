@@ -1,6 +1,7 @@
 import style from "./Styles/Signup.module.css"
 import axios from "axios"
 import signupStudent from "../assets/signupStudent.jpeg"
+//Is useNavigate even used here, or for when directed to dashboard which haven't done yet?
 import {Link, useNavigate} from "react-router-dom"
 import { useState, useEffect} from "react"
 
@@ -67,19 +68,13 @@ function Signup() {
   //do i need to handle authenticate like in mealJouranl line 74? did I alread do in return of signup function?
   async function handleSubmit(e){
     e.preventDefault()
+    console.log("handleSubmit has run")
     const {email, name, password, confirmPassword} = userSignUpData
     try{
-      //is 5173 below correct? where put two differen numbers/ports?
-      const res = await axios.post("http://localhost:3000/user/sign-up", {email, name, password})
+      const res = await axios.post("http://localhost:4000/user/sign-up", {email, name, password})
       console.log("THIS IS THE RES", res)
-      if (res.status === 201){
-       //what happening here/look at meal journal
-        setUserSignUpData(prev => ({
-          ...prev,
-          email: res.data.email,
-          name: res.data.name,
-          id: res.data.id,
-        }))
+      if (res.status === 200){
+        alert("User was created")
         //3) Set localStorages, navigate
         window.localStorage.setItem("currentUserLoggedIn", res.data.id)
         navigate("/dashboard")
@@ -143,11 +138,11 @@ function Signup() {
                       onChange={handleChange}
                       placeholder="Confirm Password"
                       required/>
-                  </form>
             <div className={style.buttonAndMessage}>
              <button className={style.button}>Sign Up</button>
               <p className={style.loginMessage}>Have an account? <Link className={style.login}to={"/login"}>Log in</Link></p>
-            </div>      
+            </div>
+            </form>      
           </div>
       </div>
     </div>
