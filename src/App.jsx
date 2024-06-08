@@ -1,4 +1,5 @@
 import {Routes, Route} from "react-router-dom"
+import { useState, createContext } from "react"
 import Home from "./pages/Home.jsx"
 import Signup from "./pages/Signup.jsx"
 import Login from "./pages/Login.jsx"
@@ -9,23 +10,33 @@ import Create from "./components/Dashboard/Workspace/Create/Create.jsx"
 import Quiz from "./components/Dashboard/Workspace/Quiz/Quiz.jsx"
 import Set from "./components/Dashboard/Workspace/Practice/Set/Set.jsx"
 
+export const AuthContext = createContext()
+
 function App() {
+  const [user, setUser] = useState({
+    email: "",
+    name: "",
+    id: "",
+  
+  })
   return (
     <>
-      <Routes>
-        <Route path={"/"} element={<Home/>}/>
-        <Route path={"/sign-up"} element={<Signup/>}/>
-        <Route path={"/login"} element={<Login/>}/>
-        <Route path={"/dashboard"} element={<Dashboard/>}>
-          <Route index element={<Welcome/>}/>
-          <Route path={"practice"} element={<Practice/>}>
-            <Route path={":practiceId"} element={<Set/>}/> 
+      <AuthContext.Provider value={{setUser, user}}>
+        <Routes>
+          <Route path={"/"} element={<Home/>}/>
+          <Route path={"/sign-up"} element={<Signup/>}/>
+          <Route path={"/login"} element={<Login/>}/>
+          <Route path={"/dashboard"} element={<Dashboard/>}>
+            <Route index element={<Welcome/>}/>
+            <Route path={"practice"} element={<Practice/>}>
+              <Route path={":practiceId"} element={<Set/>}/> 
+            </Route>
+            <Route path={"create"} element={<Create/>}/>
+            <Route path={"quiz"} element={<Quiz/>}/>
           </Route>
-          <Route path={"create"} element={<Create/>}/>
-          <Route path={"quiz"} element={<Quiz/>}/>
-        </Route>
-        
-      </Routes>
+          
+        </Routes>
+      </AuthContext.Provider>
     </>
   )
 }

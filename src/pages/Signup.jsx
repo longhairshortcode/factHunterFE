@@ -1,9 +1,10 @@
 import style from "./Styles/Signup.module.css"
 import axios from "axios"
+import { useState, useEffect} from "react"
 import signupStudent from "../assets/signupStudent.jpeg"
 //Is useNavigate even used here, or for when directed to dashboard which haven't done yet?
 import {Link, useNavigate} from "react-router-dom"
-import { useState, useEffect} from "react"
+
 
 function Signup() {
 
