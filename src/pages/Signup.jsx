@@ -38,7 +38,7 @@ function Signup() {
     }else{
       setIsPLengthValid(false)
     }
-  }, [userSignUpData.password]))))))
+  }, [userSignUpData.password])))))
 
   useEffect(() => {
     if (userSignUpData.confirmPassword !== userSignUpData.password){
