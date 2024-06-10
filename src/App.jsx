@@ -31,7 +31,7 @@ function App() {
             <Route path={"practice"} element={<Practice/>}>
               <Route path={":practiceId"} element={<Set/>}/> 
             </Route>
-            <Route path={"create"} element={<Create/>}/>
+            <Route path={"flashcard"} element={<Create/>}/>
             <Route path={"quiz"} element={<Quiz/>}/>
           </Route>
           

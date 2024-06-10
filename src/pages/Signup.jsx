@@ -1,10 +1,10 @@
 import style from "./Styles/Signup.module.css"
 import axios from "axios"
-import { useState, useEffect} from "react"
+import { useState, useEffect, useContext} from "react"
 import signupStudent from "../assets/signupStudent.jpeg"
 //Is useNavigate even used here, or for when directed to dashboard which haven't done yet?
 import {Link, useNavigate} from "react-router-dom"
-
+import { AuthContext } from "../App"
 
 function Signup() {
 
@@ -70,7 +70,7 @@ function Signup() {
   async function handleSubmit(e){
     e.preventDefault()
     console.log("handleSubmit has run")
-    const {email, name, password, confirmPassword} = userSignUpData
+    const {email, name, password} = userSignUpData
     try{
       const res = await axios.post("http://localhost:4000/user/sign-up", {email, name, password})
       console.log("THIS IS THE RES", res)
