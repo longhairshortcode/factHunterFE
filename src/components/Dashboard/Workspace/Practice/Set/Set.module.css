@@ -1,0 +1,25 @@
+.set{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+
+}
+
+.flipCardFront{
+    display: flex;
+    justify-content: center;
+    border: rgb(10, 1, 1) 4px solid;
+    border-radius: 20px;
+    padding: 5rem 10rem;
+    width: 300px;
+    background-color:  rgb(254, 254, 254);
+}
+
+.question{
+    font-size: 3rem;
+    font-weight: bold;
+    color:  #7da867; 
+}

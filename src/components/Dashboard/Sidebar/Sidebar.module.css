@@ -1,0 +1,66 @@
+.componentContainer{
+    background-color: white;
+    min-width: 200px;
+    height: 100vh;
+    /* border: 2px solid black; */
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 1rem;
+    border-right: 2px solid lightgrey; /* Add this line */
+    
+}
+
+.logoContainer{
+    /* border: 2px solid red; */
+}
+
+.logo{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: black;
+        /* border: 2px solid red; */
+}
+
+
+.profileContainer{
+    /* border: 2px solid green; */
+    height: 175px;
+    border-radius: 5px;
+}
+
+.pracCreateQuizContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.practiceContainer{
+    background-color: rgb(68, 68, 179);
+    border-radius: 5px;
+    padding: 20px;
+    font-size:  15px;
+    font-weight: bold;
+}
+
+.createContainer{
+    background-color: rgb(250, 209, 72);
+    border-radius: 5px;
+    padding: 20px;
+    font-size:  15px;
+    font-weight: bold;
+}
+
+.quizContainer{
+    background-color:  rgb(108, 144, 65);
+    border-radius: 5px;
+    padding: 20px;
+    font-size:  15px;
+    font-weight: bold;
+}
+
+.practice, .create, .quiz{
+    color: white;
+    text-decoration: none;
+}

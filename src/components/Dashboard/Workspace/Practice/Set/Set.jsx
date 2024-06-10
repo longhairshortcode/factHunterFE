@@ -21,25 +21,27 @@ function Set() {
 
   return (
     <div className={style.componentContainer}>
-      <div className={style.set}>
+      <div className={style.titleAndSet}>
         This is set {practiceId}
+        <div className={style.set}>
         {shuffledIndices.map((index) => (
           <div className={style.singleCard} key={index}>
 
-<div class={style.flipCard}>
-  <div class={style.flipCardInner}>
-    <div class="flip-card-front">
-        <div className={style.question}>{practiceId} x {index}</div>
-    </div>
-    <div class="flip-card-back">
-        <div className={style.answer}>{practiceId * index}</div>  
-    </div>
-  </div>
-</div>
+            <div className={style.flipCard}>
+              <div className={style.flipCardInner}>
+                <div className={style.flipCardFront}>
+                    <div className={style.question}>{practiceId} x {index}</div>
+                </div>
+                <div className={style.flipCardBack}>
+                    <div className={style.answer}>{practiceId * index}</div>  
+                </div>
+              </div>
+            </div>
 
              
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
 import style from "./Header.module.css"
 import {Link} from "react-router-dom"
+import { PiDetectiveBold } from "react-icons/pi";
 
 function Header() {
   return (
     <header className={style.headerContainer}>
         <div className={style.logoContainer}>
-          <p className={style.logo}>FactHunter</p>
+          <p className={style.logo}><PiDetectiveBold />FactHunter</p>
         </div>
         <div className={style.linksContainer}>
           <Link className={style.homeLink}>Home</Link>
