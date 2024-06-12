@@ -10,12 +10,13 @@ function shuffleArray(array) {
 
 function CreatedSet() {
     // Generate an array of indices // [0, 1, 2, 3....] //length of array, index of each item in array
-  const indices = Array.from({ length: array.length }, (_, index) => index);
-
+  // const indices = Array.from({ length: dbArray.length }, (_, index) => index);
+  const indices = Array.from({ length: 13 }, (_, index) => index);
+  
   // Shuffle the indices
   const shuffledIndices = shuffleArray(indices);
   return (
-    <div>
+    <div className={style.componentContainer}>
       
     </div>
   )

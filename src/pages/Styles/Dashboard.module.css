@@ -1,3 +1,9 @@
 .componentContainer{
     display: flex;
+    /* border: 2px purple solid; */
+}
+
+.outletContainer{
+    /* border: 2px green solid; */
+    width: 100%;
 }

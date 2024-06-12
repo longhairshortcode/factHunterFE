@@ -3,7 +3,7 @@ import style from "./Practice.module.css"
 
 function Practice() {
   return (
-    <div>
+    <div className={style.componentContainer}>
       <p className={style.practice}>Practice</p>
       <div className={style.links}>
         {Array(12).fill(null).map((_, index)=>(

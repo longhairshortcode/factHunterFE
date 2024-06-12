@@ -1,7 +1,11 @@
 import style from "./Create.module.css"
 import axios from "axios"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../../../App"
+import additionChart from "./additionChart.png"
+import subtractionChart from "./subtractionChart.png"
+import multiplicationChart from "./multiplicationChart.png"
+import divisionChart from "./divisionChart.png"
 
 
 function Create() {
@@ -11,15 +15,31 @@ const [flashcardData, setFlashcardData] = useState({
   question: "",
   answer: "",
   id: "",
-  category: "",
+  subject: "",
+  topic: "",
+  subtopic: "",
 })
 
-const math = ["addition", "subtration", "multiplication", "division"]
-const reading = ["vowels", "consonants"]
+const mathTopic = ["addition", "subtration", "multiplication", "division"]
+const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] 
+const readingTopic = ["vowels", "consonants"]
 
-const [subCategory, setSubCategory] = useState(flash.category == "math" ? math : flash.category == "reading" ? reading : [])
+const [topic, setTopic] = useState([])
+// const [subtopic, setSubtopic] = useState(number)
+const [chartImage, setChartImage] = useState(null)
 
+useEffect(()=>{
+setTopic(flashcardData.subject === "math" ? mathTopic : flashcardData.subject == "reading" ? readingTopic : [])
+}, [flashcardData.subject])
 
+// useEffect(()=>{
+//   setSubtopic(flashcardData.topic === "addition" ? mathTopic : flashcardData.topic == "reading" ? readingTopic : [])
+// }, [])
+
+useEffect(()=>{
+  setChartImage(flashcardData.topic === "addition" ? additionChart : flashcardData.topic === "subtraction" ? subtractionChart 
+  : flashcardData.topic === "multiplication" ? multiplicationChart : flashcardData.topic === "division" ? divisionChart : null) 
+}, [flashcardData.topic])
 
 function handleChange(e){
   const {name, value} = e.target 
@@ -49,9 +69,9 @@ async function handleSubmit(e){
             <div className={style.formContainer}>
               <form className={style.form} onSubmit={handleSubmit}>
                 <select
-                    className={style.category}
-                    name="category"
-                    value={flashcardData.category}
+                    className={style.subject}
+                    name="subject"
+                    value={flashcardData.subject}
                     onChange={handleChange}
                     required
                 >
@@ -59,25 +79,61 @@ async function handleSubmit(e){
                   <option className={style.math} value="math">Math</option>
                   <option className={style.reading} value="reading">Reading</option> 
                 </select>
+                <select
+                    className={style.topic}
+                    name="topic"
+                    value={flashcardData.topic}
+                    onChange={handleChange}
+                    required
+                >
+                  <option className={style.pickTopic}>Pick Topic</option>
+                  {topic.map((topic, index)=>(
+                    <option key={index} className={style.topic}>{topic}</option>
+                  ))} 
+                </select>
+                { flashcardData.subject === "math" ? 
+                <select
+                    className={style.subtopic}
+                    name="subtopic"
+                    value={flashcardData.subtopic}
+                    onChange={handleChange}
+                    required
+                >
+                  <option className={style.pickSubtopic}>Pick Subtopic</option>
+                  {number.map((number, index)=>(
+                    <option key={index} className={style.number}>{number}</option>
+                  ))} 
+                </select>
+                :<></>
+                  }
                 <input
                     type="text"
                     className={style.question}
-                    name="fact"
+                    name="question"
                     value={flashcardData.question}
                     onChange={handleChange}
-                    placeholder="Fact:"
+                    placeholder="Type Question"
                     required
                 />
                 <input
                     type="text"
                     className={style.answer}
-                    name="product"
+                    name="answer"
                     value={flashcardData.answer}
                     onChange={handleChange}
-                    placeholder="Product:"
+                    placeholder="Type Answer"
                     required
                 />
               </form>
+              <div className={style.chartContainer}>
+                  <div className={style.chartImage}>
+                      { chartImage &&
+                        <img className={style.chartImage} src={chartImage}/>
+                      } 
+                    :<></>
+                    
+                  </div>  
+              </div>
             </div>
     </div>
   )

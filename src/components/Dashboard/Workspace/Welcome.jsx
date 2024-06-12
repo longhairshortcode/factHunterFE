@@ -23,7 +23,7 @@ function Welcome() {
             </div>
             
             <div className={style.numImageContainer}>
-              <img className={style.numbersImage} src={numbers} alt="colorful scattered numbers"/>
+              {/* <img className={style.numbersImage} src={numbers} alt="colorful scattered numbers"/> */}
             </div>
     </div>
   )

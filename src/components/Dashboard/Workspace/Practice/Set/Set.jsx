@@ -1,4 +1,3 @@
-import React from 'react';
 import style from "./Set.module.css";
 import { useParams } from "react-router-dom";
 

@@ -10,7 +10,6 @@ import Create from "./components/Dashboard/Workspace/Create/Create.jsx"
 import Quiz from "./components/Dashboard/Workspace/Quiz/Quiz.jsx"
 import Set from "./components/Dashboard/Workspace/Practice/Set/Set.jsx"
 import CreatedSet from "./components/Dashboard/Workspace/Create/CreatedSet/CreatedSet.jsx"
-
 export const AuthContext = createContext()
 
 function App() {
@@ -32,8 +31,8 @@ function App() {
             <Route path={"practice"} element={<Practice/>}>
               <Route path={":practiceId"} element={<Set/>}/> 
             </Route>
-            <Route path={"flashcard"} element={<Create/>}/>
-              <Route path={"create"} element={<CreatedSet/>}/>
+            <Route path={"create"} element={<Create/>}/>
+              <Route path={"created-set"} element={<CreatedSet/>}/>
             <Route path={"quiz"} element={<Quiz/>}/>
           </Route>
           
