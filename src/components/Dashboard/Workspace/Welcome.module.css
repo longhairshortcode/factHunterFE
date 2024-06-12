@@ -10,8 +10,9 @@
 }
 
 .topContainer{
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow;
     display: flex;
+    width: 100%;
 }
 
 .greetingAndDirectionsContainer{
@@ -20,7 +21,8 @@
     /* border: 2px solid blue; */
     /* height: 30%; */
     display: flex;
-    width: 60%;
+    width: 70%;
+    justify-content: space-between;
 }
 
 .greeting{
@@ -29,13 +31,36 @@
 }
 
 .directions{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.directionsOne, .directionsTwo, .directionsThree{
     font-size: 2rem;
+    border: black solid 3px;
+    border-radius: 5px;
+}
+
+.directionsOne{
+    background-color:  rgb(68, 68, 179);
+    color: rgb(234, 230, 230);
+}
+.directionsTwo{
+    background-color: rgb(238, 183, 2);
+    color:white;
+}
+.directionsThree{
+    background-color:  rgb(108, 144, 65);
+    color: rgb(234, 230, 230);
 }
 
 .imageContainer{
-    /* border: 2px solid red; */
+    border: 2px solid red;
     width: 150px;
     /* height: 70%; */
+
 
 }
 

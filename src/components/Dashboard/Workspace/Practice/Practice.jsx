@@ -4,10 +4,10 @@ import style from "./Practice.module.css"
 function Practice() {
   return (
     <div>
-      <p>This is practice!</p>
+      <p className={style.practice}>Practice</p>
       <div className={style.links}>
         {Array(12).fill(null).map((_, index)=>(
-          <Link key={index + 1} to={`${index + 1}`}>{index + 1}</Link>
+          <Link className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </Link>
         ))}
         
 

@@ -1,15 +1,25 @@
 import style from "./Create.module.css"
+import axios from "axios"
 import { useState, useContext } from "react"
 import { AuthContext } from "../../../../App"
-import axios from "axios"
+
 
 function Create() {
 const {user} = useContext(AuthContext)
 
 const [flashcardData, setFlashcardData] = useState({
-  fact: "",
-  product: "",
+  question: "",
+  answer: "",
+  id: "",
+  category: "",
 })
+
+const math = ["addition", "subtration", "multiplication", "division"]
+const reading = ["vowels", "consonants"]
+
+const [subCategory, setSubCategory] = useState(flash.category == "math" ? math : flash.category == "reading" ? reading : [])
+
+
 
 function handleChange(e){
   const {name, value} = e.target 
@@ -38,20 +48,31 @@ async function handleSubmit(e){
     <div className={style.componentContainer}>
             <div className={style.formContainer}>
               <form className={style.form} onSubmit={handleSubmit}>
+                <select
+                    className={style.category}
+                    name="category"
+                    value={flashcardData.category}
+                    onChange={handleChange}
+                    required
+                >
+                  <option className={style.pickSubject}>Pick Subject</option>
+                  <option className={style.math} value="math">Math</option>
+                  <option className={style.reading} value="reading">Reading</option> 
+                </select>
                 <input
                     type="text"
-                    className={style.fact}
+                    className={style.question}
                     name="fact"
-                    value={flashcardData.fact}
+                    value={flashcardData.question}
                     onChange={handleChange}
                     placeholder="Fact:"
                     required
                 />
                 <input
                     type="text"
-                    className={style.product}
+                    className={style.answer}
                     name="product"
-                    value={flashcardData.product}
+                    value={flashcardData.answer}
                     onChange={handleChange}
                     placeholder="Product:"
                     required

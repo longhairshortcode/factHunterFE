@@ -1,0 +1,25 @@
+.practice{
+    font-size: 55px;
+    color: rgb(68, 68, 179);
+    font-weight: bold;
+    
+
+}
+.numberButton{
+    /* border: 2px solid blue; */
+    border-radius: 20px;
+    font-size: 15px;
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgb(68, 68, 179);
+}
+
+.links{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 0;
+    background-color: rgb(201, 224, 245);
+}

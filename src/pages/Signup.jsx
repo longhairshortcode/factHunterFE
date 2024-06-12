@@ -7,8 +7,8 @@ import {Link, useNavigate} from "react-router-dom"
 import { AuthContext } from "../App"
 
 function Signup() {
-
   const navigate = useNavigate()
+  const {setUser} = useContext(AuthContext)
 
   const [userSignUpData, setUserSignUpData] = useState({
     name: "",
@@ -78,6 +78,10 @@ function Signup() {
         alert("User was created")
         //3) Set localStorages, navigate
         window.localStorage.setItem("currentUserLoggedIn", res.data.id)
+        setUser(prev => ({
+          ...prev,
+          id : res.data.id
+        }));
         navigate("/dashboard")
       }
     //4) Catch
