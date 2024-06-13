@@ -3,15 +3,24 @@
   background-repeat: repeat;
 }
 
-.set{
-    /* border: 2px solid red; */
+.setsContainer{
+  /* border: 2px solid hotpink; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* .singleSet{
+    border: 4px solid yellow;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
 
-}
+} */
 
 .flipCardFront{
     display: flex;
@@ -39,7 +48,7 @@
     background-color: transparent;
     width: 300px;
     height: 200px;
-    border: 1px solid #f1f1f1;
+    /* border: 1px solid #f1f1f1; */
     border-radius: 20px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
@@ -52,6 +61,7 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    /* border: 3px solid red; */
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */

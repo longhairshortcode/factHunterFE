@@ -10,6 +10,11 @@ import Create from "./components/Dashboard/Workspace/Create/Create.jsx"
 import Quiz from "./components/Dashboard/Workspace/Quiz/Quiz.jsx"
 import Set from "./components/Dashboard/Workspace/Practice/Set/Set.jsx"
 import CreatedSet from "./components/Dashboard/Workspace/Create/CreatedSet/CreatedSet.jsx"
+import MathFlashcards from "./components/Dashboard/Workspace/Create/CreatedSet/MathFlashcards.jsx"
+import ReadingFlashcards from "./components/Dashboard/Workspace/Create/CreatedSet/ReadingFlashcards.jsx"
+import SingleMathFlashcards from "./components/Dashboard/Workspace/Create/CreatedSet/SingleMathFlashcards.jsx"
+import SingleReadingFlashcards from "./components/Dashboard/Workspace/Create/CreatedSet/SingleReadingFlashcards.jsx"
+
 export const AuthContext = createContext()
 
 function App() {
@@ -29,10 +34,17 @@ function App() {
           <Route path={"/dashboard"} element={<Dashboard/>}>
             <Route index element={<Welcome/>}/>
             <Route path={"practice"} element={<Practice/>}>
-              <Route path={":practiceFact"} element={<Set/>}/> 
+              <Route path={":practiceFactId"} element={<Set/>}/> 
             </Route>
             <Route path={"create"} element={<Create/>}>
-              <Route path={"created-set"} element={<CreatedSet/>}/>
+              <Route path={"created-set"} element={<CreatedSet/>}>
+                <Route path={"math-flashcards"} element={<MathFlashcards/>}>
+                  <Route path={":singleMathFlashcardId"} element={<SingleMathFlashcards/>}/>
+                </Route>  
+                <Route path={"reading-flashcards"} element={<ReadingFlashcards/>}>
+                  <Route path={":singleReadingFlashcardId"} element={<SingleReadingFlashcards/>}/>
+                </Route>
+              </Route>
             </Route>
             <Route path={"quiz"} element={<Quiz/>}/>
           </Route>

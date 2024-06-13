@@ -10,7 +10,8 @@ function shuffleArray(array) {
 }
 
 function Set() {
-  const { practiceFact } = useParams();
+  //QQQQQQQwhere below come from and what is it
+  const { practiceFactId } = useParams();
 
   // Generate an array of indices // [0, 1, 2, 3....] //length of array, index of each item in array
   const indices = Array.from({ length: 13 }, (_, index) => index);
@@ -20,27 +21,21 @@ function Set() {
 
   return (
     <div className={style.componentContainer}>
-      <div className={style.titleAndSet}>
-        {/* This is set {practiceFact} */}
-        <div className={style.set}>
+      <div className={style.setsContainer}>
         {shuffledIndices.map((index) => (
           <div className={style.singleCard} key={index}>
-
             <div className={style.flipCard}>
               <div className={style.flipCardInner}>
                 <div className={style.flipCardFront}>
-                    <div className={style.question}>{practiceFact} x {index}</div>
+                  <div className={style.question}>{practiceFactId} x {index}</div>
                 </div>
                 <div className={style.flipCardBack}>
-                    <div className={style.answer}>{practiceFact * index}</div>  
+                  <div className={style.answer}>{practiceFactId * index}</div>  
                 </div>
               </div>
-            </div>
-
-             
+            </div>             
           </div>
         ))}
-        </div>
       </div>
     </div>
   );

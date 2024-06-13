@@ -1,4 +1,9 @@
 import style  from "./CreatedSet.module.css"
+import {Link, useNavigate} from "react-router-dom"
+import MathFlashcards from "./MathFlashcards"
+import ReadingFlashcards from "./ReadingFlashcards" 
+import { useEffect } from "react"
+import { Outlet } from "react-router-dom"
 
 // function shuffleArray(array) {
 //     for (let i = array.length - 1; i > 0; i--) {
@@ -15,9 +20,12 @@ function CreatedSet() {
   
   // Shuffle the indices
   // const shuffledIndices = shuffleArray(indices);
+
   return (
     <div className={style.componentContainer}>
-      <p>Hi</p>
+      <Link className={style.mathFlashcardsButton} to='math-flashcards'>Math Flashcards</Link>
+      <Link className={style.readingFlashcardsButton} to='reading-flashcards'>Reading Flashcards</Link>
+    <Outlet/>
     </div>
   )
 }
