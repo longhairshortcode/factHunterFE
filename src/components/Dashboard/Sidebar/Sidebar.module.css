@@ -21,6 +21,7 @@
     font-weight: bold;
     color: black;
         /* border: 2px solid red; */
+        text-decoration: none;
 }
 
 
@@ -42,6 +43,7 @@
     padding: 20px;
     font-size:  15px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .createContainer{
@@ -50,6 +52,7 @@
     padding: 20px;
     font-size:  15px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .quizContainer{
@@ -58,6 +61,7 @@
     padding: 20px;
     font-size:  15px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .practice, .create, .quiz{

@@ -6,14 +6,14 @@ function Practice() {
     <div className={style.componentContainer}>
       <div className={style.titleAndLinks}>
       <p className={style.practice}>Practice</p>
-      <div className={style.links}>
-        {Array(12).fill(null).map((_, index)=>(
-          <Link className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </Link>
-        ))}
-        
-
+      <div className={style.linksContainer}>
+        <div className={style.links}>
+          {Array(12).fill(null).map((_, index)=>(
+            <Link className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </Link>
+          ))}
+        </div>
       </div>  
-      </div>
+    </div>
       
       <Outlet/>
       
