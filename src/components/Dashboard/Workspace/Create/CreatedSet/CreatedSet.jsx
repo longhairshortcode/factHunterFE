@@ -28,6 +28,6 @@ function CreatedSet() {
     <Outlet/>
     </div>
   )
-}
+} 
 
-export default CreatedSet
+export default CreatedSet ss
