@@ -1,6 +1,6 @@
 import style from "./Welcome.module.css"
 import detectives from "../../../assets/detectives.png"
-import numbers from "./numbers.jpg"
+// import numbers from "./numbers.jpg"
 
 function Welcome() {
   return (

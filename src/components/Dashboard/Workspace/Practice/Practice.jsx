@@ -4,6 +4,7 @@ import style from "./Practice.module.css"
 function Practice() {
   return (
     <div className={style.componentContainer}>
+      <div className={style.titleAndLinks}>
       <p className={style.practice}>Practice</p>
       <div className={style.links}>
         {Array(12).fill(null).map((_, index)=>(
@@ -11,9 +12,11 @@ function Practice() {
         ))}
         
 
-        
+      </div>  
       </div>
+      
       <Outlet/>
+      
     </div>
   )
 }

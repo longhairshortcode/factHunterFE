@@ -29,13 +29,13 @@ function App() {
           <Route path={"/dashboard"} element={<Dashboard/>}>
             <Route index element={<Welcome/>}/>
             <Route path={"practice"} element={<Practice/>}>
-              <Route path={":practiceId"} element={<Set/>}/> 
+              <Route path={":practiceFact"} element={<Set/>}/> 
             </Route>
-            <Route path={"create"} element={<Create/>}/>
+            <Route path={"create"} element={<Create/>}>
               <Route path={"created-set"} element={<CreatedSet/>}/>
+            </Route>
             <Route path={"quiz"} element={<Quiz/>}/>
           </Route>
-          
         </Routes>
       </AuthContext.Provider>
     </>

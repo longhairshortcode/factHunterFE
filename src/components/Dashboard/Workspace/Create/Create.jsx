@@ -6,6 +6,7 @@ import additionChart from "./additionChart.png"
 import subtractionChart from "./subtractionChart.png"
 import multiplicationChart from "./multiplicationChart.png"
 import divisionChart from "./divisionChart.png"
+import {Outlet, Link} from "react-router-dom"
 
 
 function Create() {
@@ -20,7 +21,7 @@ const [flashcardData, setFlashcardData] = useState({
   subtopic: "",
 })
 
-const mathTopic = ["addition", "subtration", "multiplication", "division"]
+const mathTopic = ["addition", "subtraction", "multiplication", "division"]
 const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] 
 const readingTopic = ["vowels", "consonants"]
 
@@ -65,8 +66,19 @@ async function handleSubmit(e){
 }
 
   return (
-    <div className={style.componentContainer}>
-            <div className={style.formContainer}>
+  <div className={style.componentContainer}>
+    <div className={style.titleLinksFormAndChartContainer}>
+      <div className={style.titleLinksFormContainer}>
+      <p className={style.practice}>Create</p>
+      <div>
+        
+      </div>
+      {/* <div className={style.links}>
+        {Array(12).fill(null).map((_, index)=>(
+          <Link className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </Link>
+        ))}
+      </div>  */}
+      <div className={style.formContainer}>
               <form className={style.form} onSubmit={handleSubmit}>
                 <select
                     className={style.subject}
@@ -125,17 +137,20 @@ async function handleSubmit(e){
                     required
                 />
               </form>
-              <div className={style.chartContainer}>
-                  <div className={style.chartImage}>
-                      { chartImage &&
-                        <img className={style.chartImage} src={chartImage}/>
-                      } 
-                    :<></>
-                    
-                  </div>  
-              </div>
-            </div>
+      </div>
+    </div>    
+    <div className={style.chartContainer}>
+          <div className={style.chartImageContainer}>
+              { chartImage &&
+                <img className={style.image} src={chartImage}/>
+              } 
+            :<></>
+            
+          </div>  
+      </div>  
     </div>
+    <Outlet/>
+  </div>
   )
 }
   

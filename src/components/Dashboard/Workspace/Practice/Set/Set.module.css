@@ -1,5 +1,6 @@
 .componentContainer{
-  background-image: url("./numbers.jpg");
+  background-image: url("./numbersPractice.png");
+  background-repeat: repeat;
 }
 
 .set{

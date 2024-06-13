@@ -21,7 +21,7 @@ function Set() {
   return (
     <div className={style.componentContainer}>
       <div className={style.titleAndSet}>
-        This is set {practiceId}
+        {/* This is set {practiceId} */}
         <div className={style.set}>
         {shuffledIndices.map((index) => (
           <div className={style.singleCard} key={index}>

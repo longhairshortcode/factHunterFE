@@ -1,12 +1,22 @@
 .componentContainer{
     width: 100%;
-    /* border: 2px solid black; */
+    /* border: 2px solid red; */
+    height: 100%;
+    background-image: url("./numbersPractice.png");
+    background-repeat: repeat;
+}
+
+.titleAndLinks{
+/* border: 4px solid black; */
 }
 
 .practice{
-    font-size: 55px;
+    font-size: 85px;
     color: rgb(68, 68, 179);
     font-weight: bold;
+    background-color: white;
+    height: 120px;
+    /* border: 2px solid green; */
 }
 .numberButton{
     /* border: 2px solid blue; */
