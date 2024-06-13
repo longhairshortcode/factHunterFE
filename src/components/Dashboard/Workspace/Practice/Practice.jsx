@@ -19,6 +19,6 @@ function Practice() {
       
     </div>
   )
-}sszxd
+}sszxdx
 
 export default Practice
