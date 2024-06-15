@@ -7,12 +7,14 @@ import subtractionChart from "./subtractionChart.png"
 import multiplicationChart from "./multiplicationChart.png"
 import divisionChart from "./divisionChart.png"
 import {Outlet, Link, useNavigate} from "react-router-dom"
+import {useChart} from "../../../../pages/Dashboard"
 
 
 function Create() {
 
   const navigate = useNavigate()
-
+  const { setChartImage, chartImage } = useChart(); // Access the context here
+  
   useEffect(()=>{
     navigate("created-set")
   },[])
