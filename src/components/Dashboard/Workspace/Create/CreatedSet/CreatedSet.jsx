@@ -29,6 +29,5 @@ function CreatedSet() {
     </div>
   )
 } 
-s
-export default CreatedSet sssss
-sss
+
+export default CreatedSet 

@@ -79,15 +79,8 @@ async function handleSubmit(e){
 
   return (
   <div className={style.componentContainer}>
-    {/* should remove chart from className since i took it out and put it under */}
-    <div className={style.titleFormContainer}>
-      {/* <div className={style.titleAndFormContainer}> */}
+     <div className={style.titleFormContainer}>
         <p className={style.create}>Create</p>
-      {/* <div className={style.links}>
-        {Array(12).fill(null).map((_, index)=>(
-          <Link className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </Link>
-        ))}
-      </div>  */}
         <div className={style.formContainer}>
           <form className={style.form} onSubmit={handleSubmit}>
             <select
@@ -158,9 +151,9 @@ async function handleSubmit(e){
               required
           />
           <button className={style.button}>Create Flashcard!</button>
-        </form>
-      </div>
-     </div> 
+          </form>
+     </div>
+    </div> 
      <Outlet/>     
      <div className={style.chartContainer}>
           <div className={style.chartImageContainer}>
