@@ -1,0 +1,14 @@
+.componentContainer{
+    border: 2px solid green;
+    height: 40px;
+}
+
+.mathFlashcardsButton{
+    border: 2px solid black;
+    /* height: 600px; */
+    /* padding: 5px; */
+}
+
+.readingFlashcardsButton{
+    
+}

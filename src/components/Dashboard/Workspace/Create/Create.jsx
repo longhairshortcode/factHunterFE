@@ -36,7 +36,8 @@ const readingTopic = ["vowels", "consonants"]
 const [topic, setTopic] = useState([])
 // const [subtopic, setSubtopic] = useState(number)
 //null means empty on purpose for now 
-const [chartImage, setChartImage] = useState(null) 
+// moved to dshabord so create-set can also access it
+//const [chartImage, setChartImage] = useState(null) 
 
 useEffect(()=>{
 setTopic(flashcardData.subject === "math" ? mathTopic : flashcardData.subject == "reading" ? readingTopic : [])
@@ -61,7 +62,7 @@ function handleChange(e){
 
 async function handleSubmit(e){
   e.preventDefault()
-  //change this when sent to db works!!!!!
+  //change this and move to before catch when sent to db works!!!!!
   setChartImage(null)
   console.log("handleSubmit has run")
   const {fact, product} = flashcardData
@@ -159,13 +160,14 @@ async function handleSubmit(e){
           <div className={style.chartImageContainer}>
               { chartImage &&
                 <img className={style.image} src={chartImage}/>
-              } 
-            :<></>
+                // : <></>
+            } 
+            
             
           </div>  
       </div>
   </div>
   )
 }
-  ssssssssss
+
 export default Create
