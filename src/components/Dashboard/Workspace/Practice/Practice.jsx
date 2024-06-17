@@ -11,6 +11,7 @@ function Practice() {
           {Array(12).fill(null).map((_, index)=>(
             <Link className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </Link>
           ))}
+          
         </div>
       </div>  
     </div>
