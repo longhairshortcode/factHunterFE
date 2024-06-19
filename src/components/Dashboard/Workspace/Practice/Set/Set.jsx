@@ -14,6 +14,7 @@ function shuffleArray(array) {
 function Set() {
   //QQQQQQQwhere below come from and what is it
   const { practiceFactId } = useParams();
+  const numberPracticeFactId = Number(practiceFactId)
   const [operation, setOperation] = useState("")
 
   function chooseOperation(opp){
@@ -42,26 +43,27 @@ function Set() {
                 <div className={style.flipCardInner}>
                   <div className={style.flipCardFront}>
                     <div className={style.question}>
-                      {practiceFactId === 1 && operation === "/" ? 
-                      index 
-                      : practiceFactId > 1 && operation === "/" ?  
-                      index * practiceFactId 
-                      : Number(practiceFactId) === 1 && operation === "-" ? 
-                      index + 1
-                      : practiceFactId > 1 && operation === "-" ? 
-                      Number(practiceFactId) + index
-                      : index
+                    {operation === "/" ?
+                        index * numberPracticeFactId
+                        : operation === "-" ?
+                          numberPracticeFactId + index
+                          : index
                       } 
                       { operation === "/" ? <FaDivide /> : operation ? operation :  "+"} 
-                      {practiceFactId}
+                      {numberPracticeFactId}
                     </div>
                   </div>
                   <div className={style.flipCardBack}>
-                    <div className={style.answer}>{operation === "/" && practiceFactId > 1 ?
-                    index * 2 / practiceFactId : operation === "/" && practiceFactId === 1 ? index / practiceFactId : 
-                    operation === "*" ? index * practiceFactId :
-                    operation === "-" ? index - practiceFactId :
-                    operation === "+" ? index + practiceFactId : index + practiceFactId }</div>  
+                    <div className={style.answer}> {operation === "/" ?
+                        index
+                        : operation === "-" ?
+                          index
+                          : operation === "*" ?
+                            index * numberPracticeFactId
+                            : operation === "+" ?
+                              index + numberPracticeFactId
+                              : index + numberPracticeFactId
+                      }</div>  
                   </div>
                 </div>
               </div>             
@@ -75,28 +77,3 @@ function Set() {
 export default Set;
 
 
-
-// import style from "./Set.module.css"
-// import { useParams } from "react-router-dom"
-
-// function Set() {
-//     const {practiceId} = useParams()
-
-//   return (
-//     <div className={style.componentContainer}>
-//         <div className={style.set}>
-//         This is set {practiceId}
-//         {Array(13).fill(null).map((_, index)=>(
-//             <div className={style.singleCard}>
-//                 <div className={style.front}>{practiceId} x {index}</div>                
-//                 <div className={style.back}>{practiceId * index }</div>                
-//             </div>
-//         ))
-
-//         }
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Set
