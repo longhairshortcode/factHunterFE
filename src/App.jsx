@@ -1,5 +1,7 @@
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route, Navigate} from "react-router-dom"
 import { useState, createContext } from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home.jsx"
 import Signup from "./pages/Signup.jsx"
 import Login from "./pages/Login.jsx"
@@ -16,6 +18,7 @@ import SingleMathFlashcards from "./components/Dashboard/Workspace/Create/Create
 import SingleReadingFlashcards from "./components/Dashboard/Workspace/Create/CreatedSet/SingleReadingFlashcards.jsx"
 
 export const AuthContext = createContext()
+export const ToastContext = createContext()
 
 function App() {
   const [user, setUser] = useState({
@@ -24,32 +27,66 @@ function App() {
     id: "",
   
   })
+
+  const notifySuccess = (message) =>{
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }
+
+  const notifyError = (message) =>{
+    toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }
+
+
+
   return (
     <>
-      <AuthContext.Provider value={{setUser, user}}>
-        <Routes>
-          <Route path={"/"} element={<Home/>}/>
-          <Route path={"/sign-up"} element={<Signup/>}/>
-          <Route path={"/login"} element={<Login/>}/>
-          <Route path={"/dashboard"} element={<Dashboard/>}>
-            <Route index element={<Welcome/>}/>
-            <Route path={"practice"} element={<Practice/>}>
-              <Route path={":practiceFactId"} element={<Set/>}/> 
-            </Route>
-            <Route path={"create"} element={<Create/>}>
-              <Route path={"created-set"} element={<CreatedSet/>}>
-                <Route path={"math-flashcards"} element={<MathFlashcards/>}>
-                  <Route path={":singleMathFlashcardId"} element={<SingleMathFlashcards/>}/>
-                </Route>  
-                <Route path={"reading-flashcards"} element={<ReadingFlashcards/>}>
-                  <Route path={":singleReadingFlashcardId"} element={<SingleReadingFlashcards/>}/>
+      <ToastContainer/>
+        <ToastContext.Provider value={{notifySuccess, notifyError}}>
+          <AuthContext.Provider value={{setUser, user}}>
+            <Routes>
+              <Route path={"/"} element={<Home/>}/>
+              <Route path={"/sign-up"} element={<Signup/>}/>
+              <Route path={"/login"} element={<Login/>}/>
+              <Route path={"/dashboard"} element={user.id ? <Dashboard /> : <Navigate to="/login" />}>
+                <Route index element={<Welcome/>}/>
+                <Route path={"practice"} element={<Practice/>}>
+                  <Route path={":practiceFactId"} element={<Set/>}/> 
                 </Route>
+                <Route path={"create"} element={<Create/>}>
+                  <Route path={"created-set"} element={<CreatedSet/>}>
+                    <Route path={"math-flashcards"} element={<MathFlashcards/>}>
+                      <Route path={":singleMathFlashcardId"} element={<SingleMathFlashcards/>}/>
+                    </Route>  
+                    <Route path={"reading-flashcards"} element={<ReadingFlashcards/>}>
+                      <Route path={":singleReadingFlashcardId"} element={<SingleReadingFlashcards/>}/>
+                    </Route>
+                  </Route>
+                </Route>
+                <Route path={"quiz"} element={<Quiz/>}/>
               </Route>
-            </Route>
-            <Route path={"quiz"} element={<Quiz/>}/>
-          </Route>
-        </Routes>
-      </AuthContext.Provider>
+            </Routes>
+          </AuthContext.Provider>
+        </ToastContext.Provider>
     </>
   )
 }

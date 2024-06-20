@@ -24,7 +24,6 @@ const {user} = useContext(AuthContext)
 const [flashcardData, setFlashcardData] = useState({
   question: "",
   answer: "",
-  id: "",
   subject: "",
   topic: "",
   subtopic: "",
@@ -67,9 +66,9 @@ async function handleSubmit(e){
   //change this and move to before catch when sent to db works!!!!!
   setChartImage(null)
   console.log("handleSubmit has run")
-  const {fact, product} = flashcardData
+  const {subject, topic, subtopic, question, answer, userID} = flashcardData
   try{
-    const res = await axios.post("http://localhost:4000/flashcard/create", {fact, product, userId : user.id})
+    const res = await axios.post("http://localhost:4000/flashcard/createFlashcard", {subject, topic, subtopic, question, answer, userID : user.id})
     console.log("THIS IS THE RES: ", res)
     if (res.status === 200)
       console.log("The flashcard was created successfully")

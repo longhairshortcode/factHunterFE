@@ -5,9 +5,11 @@ import signupStudent from "../assets/signupStudent.jpeg"
 //Is useNavigate even used here, or for when directed to dashboard which haven't done yet?
 import {Link, useNavigate} from "react-router-dom"
 import { AuthContext } from "../App"
+import {ToastContext} from "../App"
 
 function Signup() {
   const navigate = useNavigate()
+  const {notifySuccess, notifyError} = useContext(ToastContext)
   const {setUser} = useContext(AuthContext)
 
   const [userSignUpData, setUserSignUpData] = useState({
@@ -75,13 +77,14 @@ function Signup() {
       const res = await axios.post("http://localhost:4000/user/sign-up", {email, name, password})
       console.log("THIS IS THE RES", res)
       if (res.status === 200){
-        alert("User was created")
+      
         //3) Set localStorages, navigate
         window.localStorage.setItem("currentUserLoggedIn", res.data.id)
         setUser(prev => ({
           ...prev,
           id : res.data.id
         }));
+        notifySuccess("Sign-up successful, welcome!")
         navigate("/dashboard")
       }
     //4) Catch
@@ -155,3 +158,4 @@ function Signup() {
 }
 
 export default Signup
+a
