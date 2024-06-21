@@ -21,10 +21,12 @@ export const AuthContext = createContext()
 export const ToastContext = createContext()
 
 function App() {
+  const userIdFromLocalStorage = window.localStorage.getItem("userID");
   const [user, setUser] = useState({
     email: "",
     name: "",
-    id: "",
+    id: userIdFromLocalStorage || "",
+    // id: "",
   
   })
 
@@ -92,3 +94,4 @@ function App() {
 }
 
 export default App
+s
