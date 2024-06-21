@@ -77,14 +77,14 @@ function Signup() {
       const res = await axios.post("http://localhost:4000/user/sign-up", {email, name, password})
       console.log("THIS IS THE RES", res)
       if (res.status === 200){
-      
-        //3) Set localStorages, navigate
-        window.localStorage.setItem("currentUserLoggedIn", res.data.id)
+
         setUser(prev => ({
           ...prev,
           id : res.data.id
         }));
-        notifySuccess("Sign-up successful, welcome!")
+        //3) Set localStorages, navigate
+        window.localStorage.setItem("currentUserLoggedIn", res.data.id)
+        // notifySuccess("Sign-up successful, welcome!")
         navigate("/dashboard")
       }
     //4) Catch
