@@ -2,10 +2,10 @@ import style from "./Styles/Signup.module.css"
 import axios from "axios"
 import { useState, useEffect, useContext} from "react"
 import signupStudent from "../assets/signupStudent.jpeg"
+import detectives from "../assets/detectives.png"
 //Is useNavigate even used here, or for when directed to dashboard which haven't done yet?
 import {Link, useNavigate} from "react-router-dom"
-import { AuthContext } from "../App"
-import {ToastContext} from "../App"
+import { ToastContext, AuthContext } from "../App"
 
 function Signup() {
   const navigate = useNavigate()
@@ -84,7 +84,7 @@ function Signup() {
         }));
         //3) Set localStorages, navigate
         window.localStorage.setItem("currentUserLoggedIn", res.data.id)
-        // notifySuccess("Sign-up successful, welcome!")
+        notifySuccess("Sign-up successful, welcome!")
         navigate("/dashboard")
       }
     //4) Catch
@@ -96,7 +96,7 @@ function Signup() {
   return (
     <div className={style.componentContainer}>
       <div className={style.leftImageContainer}>
-        <img className={style.leftImage} src={signupStudent} alt="student and adult using a laptop"/>
+        <img className={style.leftImage} src={detectives} alt="student and adult using a laptop"/>
       </div>
 
       <div className={style.rightTextContainer}>

@@ -6,17 +6,20 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    background-image: url("../../assets/numbers.jpg");
 }
 
 .middleContainer{
     /* border: 6px solid blue; */
-    height: 600px;
-    width: 500px;
-    background-color: rgb(68, 68, 179);
+    height: 475px;
+    width: 400px;
+    background-color: white; 
+    /* rgb(68, 68, 179); */
 }
 
 .contentsContainer{
-    border: 10px solid rgb(250, 209, 72);
+    border: 10px solid rgb(68, 68, 179);
+     /* rgb(250, 209, 72); */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -34,12 +37,12 @@
 
 .title{
     font-size: 3rem;
-    color: white;
+    color: rgb(27, 24, 24);
 }
 
 .subheader{
     font-size: 1.5rem;
-    color: white;
+    color: black;
 }
 
 .formContainer{
@@ -61,7 +64,7 @@
 .forgot{
     font-size: 1.2rem;
     /* border: 2px solid red; */
-    color: white;
+    color: black;
 }
     
 .buttonAndMessage{
@@ -73,7 +76,7 @@
 
 .message{
     font-size: 1.2rem;
-    color: white;
+    color: black;
 }
 
 .createOne{

@@ -25,8 +25,10 @@ function CreatedSet() {
 
   return (
     <div className={style.componentContainer}>
-      <Link onClick={() => setChartImage(null)}className={style.mathFlashcardsButton} to='math-flashcards'>Math Flashcards</Link>
-      <Link className={style.readingFlashcardsButton} to='reading-flashcards'>Reading Flashcards</Link>
+      <div className={style.mathAndReadingButtonContainer}>
+        <Link onClick={() => setChartImage(null)}className={style.mathFlashcardsButton} to='math-flashcards'>Math Flashcards</Link>
+        <Link onClick={() => setChartImage(null)} className={style.readingFlashcardsButton} to='reading-flashcards'>Reading Flashcards</Link>
+      </div>
     <Outlet/>
     </div>
   )

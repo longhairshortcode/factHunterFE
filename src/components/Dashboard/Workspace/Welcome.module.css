@@ -4,59 +4,116 @@
     background-color: white;
     /* width: 100vw; */
     height: 100vh;
-    /* border: 2px solid black; */
+    /* border: 6px solid black; */
     /* align-items: center; */
+    background-image: url("../../../assets/numbers.jpg");
 
 }
 
 .topContainer{
     /* border: 5px solid green; */
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     height: 170px;
 }
 
 .greetingAndDirectionsContainer{
     display: flex;
     flex-direction: column;
-    /* border: 2px solid blue; */
+    /* border: 2px solid brown; */
     /* height: 30%; */
     display: flex;
-    width: 70%;
+    width: 100%;
     justify-content:space-around;
 }
 
-.greeting{
+.greeting {
+    /* border: 2px solid blue; */
     font-size: 50px;
     font-weight: bold;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; 
 }
 
-.directions{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
+/* dQQQ WHY BLACK OUTLINE DOESNT WORk? */
+.icon {
+    color: white; /* Ensures the icon color is white */
+    margin-left: 0.5rem; /* Adjust this as needed */
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
-.directionsOne, .directionsTwo, .directionsThree{
-    font-size: 2rem;
-    border: black solid 3px;
+.h2{
+    background-color: beige;
+}
+
+.mag{
+    width:150px;
+    height: 150px;
+    /* border: 2px solid red; */
+    width: 30%;
+    /* min-width: 30%; */
+}
+
+.directionsOneParagraph, .directionsTwoParagraph, .directionsThreeParagraph{
+    font-size: 2.3rem;
+    /* border: black solid 3px; */
     border-radius: 5px;
+    padding: 10px;
+    width: 70%;
+    height: 110px;
 }
 
-.directionsOne{
+.directionsOneContainer{
     background-color:  rgb(68, 68, 179);
     color: rgb(234, 230, 230);
+    display: flex;
+    /* border: 2px solid hotpink; */
+    width: 600px;
+    padding: 10px;
 }
-.directionsTwo{
+.directionsTwoContainer{
     background-color: rgb(238, 183, 2);
     color:white;
+    display: flex;
+    /* border: 2px solid hotpink; */
+    width: 600px;
+    padding: 10px;
 }
-.directionsThree{
+.directionsThreeContainer{
     background-color:  rgb(108, 144, 65);
     color: rgb(234, 230, 230);
+    display: flex;
+    /* border: 2px solid hotpink; */
+    width: 600px;
+    padding: 10px;
+}
+.directionsBottom{
+    display: flex;
+    /* align-items: center;  */
+    gap: 50px;
+    /* margin-left: 50px; */
+    padding: 0px 40px;
 }
 
+.leftDirectionsBottom, .rightDirectionsBottom{
+    /* border: 4px solid white; */
+    width: 50%;
+}
+
+.leftDirectionsBottom{
+    /* border: 2px solid black; */
+    padding: 20px;
+    background-color:rgb(199, 199, 97);
+    box-sizing:content-box;
+}
 .imageContainer{
     display: flex;
     justify-content: center;
@@ -68,10 +125,24 @@
 
 }
 
-.detectivesImage{
-    height: 200px;
-    width: 200px;
-    /* object-fit: cover; */
+.rightDirectionsBottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+
+}
+
+.rightDirectionsBottomTop, .rightDirectionsBottomBottom {
+/* border: 2px solid yellow; */
+height: 45%;
+background-color: rgb(199, 199, 97);
+border-radius: 5px;
+padding: 5px;
+}
+
+.factsStatus, .somethingElse{
+    font-size: 30px;
+    text-align: center;
 
 }
 
@@ -81,3 +152,4 @@
     width: 100%;
     height: 100%;
 }
+

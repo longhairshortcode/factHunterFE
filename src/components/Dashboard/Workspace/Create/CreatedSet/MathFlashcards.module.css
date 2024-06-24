@@ -1,8 +1,12 @@
+.componentContainer{
+}
+
 .allButtonsContainer{
     /* border: 3px solid blue; */
     display: flex;
-    flex-direction: column;
     gap: 13px;
+    border: 2px solid white;
+    justify-content: center;
 }
 
 .additionTitle{

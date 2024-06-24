@@ -1,6 +1,7 @@
 .componentContainer{
-  background-image: url("./numbersPractice.png");
+  background-image: url("./numbers.jpg");
   background-repeat: repeat;
+  
 }
 
 .setsContainer{
@@ -21,6 +22,23 @@
     width: 100%;
 
 } */
+
+.buttonsContainer{
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+  background-color:  rgb(68, 68, 179);
+}
+
+.buttonAdd, .buttonSub, .buttonMulti, .buttonDiv{
+  background-color: rgb(221, 37, 56);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  
+}
 
 .flipCardFront{
     display: flex;

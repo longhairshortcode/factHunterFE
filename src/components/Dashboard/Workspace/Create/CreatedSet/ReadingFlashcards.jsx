@@ -2,7 +2,7 @@ import style from './ReadingFlashcards.module.css'
 
 function ReadingFlashcards() {
   return (
-    <div>
+    <div className={style.componentContainer}>
       
     </div>
   )

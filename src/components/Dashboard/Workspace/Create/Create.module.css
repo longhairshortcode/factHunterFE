@@ -3,21 +3,28 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-image: url("./numbers.jpg");
+    background-repeat: repeat;
 }
 .titleFormContainer{
     display: flex;
     border: 2px solid red;
-    height: 135px;
-    background-color: white;
+    /* height: 135px; */
+    background-color:  rgb(238, 183, 2);
     display: flex;
     flex-direction: column;
     /* width: 39%; */
 }
 
 .create{
-    font-weight: bold;
     font-size: 50px;
-    color: rgb(238, 183, 2);
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; 
 }
 
 

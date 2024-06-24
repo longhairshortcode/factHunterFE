@@ -1,14 +1,24 @@
 .componentContainer{
     border: 2px solid green;
-    height: 40px;
+    /* height: 40px; */
+    background-color: rgb(238, 183, 2);
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
 }
-
-.mathFlashcardsButton{
-    border: 2px solid black;
-    /* height: 600px; */
-    /* padding: 5px; */
+.mathAndReadingButtonContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
-
-.readingFlashcardsButton{
-    
+.readingFlashcardsButton, .mathFlashcardsButton{
+        background-color: rgb(221, 37, 56);
+        color: white;
+        padding: 5px;
+        /* border-radius: 3px; */
+        text-decoration: none;
+        width: 60px;
 }

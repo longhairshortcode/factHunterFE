@@ -2,18 +2,24 @@
     display: flex;
     /* border: 2px solid red; */
     height: 100vh;
+    min-width: 800px;
 }
 
 .leftImageContainer{
     /* border: 5px solid green; */
-    width: 40%;
+    width: 45%;
     /* max-width: 32%; */
+    /* border: 2px solid blue; */
 }
 
 .leftImage{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:contain;
+    padding-left: 30px;
+    /* border: 2px solid red; */
+    /* min-width: 300px; */
+    /* min-height: 300px; */
 }
 
 .rightTextContainer{
@@ -26,13 +32,17 @@
     /* padding: 12rem 5rem 0 5rem; */
     /* border: 5px solid blue; */
     /* max-width: 68%; */
-    width: 60%;
-
+    width: 55%;
+    background-image: url(../../assets/floating2.avif);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .title{
-    font-size: 4.5rem;
-    color: rgb(250, 209, 72);
+    font-size: 7rem;
+    color:  rgb(68, 68, 179);
+    /* background-color: rgb(250, 209, 72); */
     /* border: 2px solid hotpink; */
     width: fit-content;
 }
@@ -66,6 +76,12 @@
     font-size: 13px;
     height: 35px;
     padding-left: 5px;
+    background-color: rgb(230, 226, 226);
+    color:rgb(68, 68, 179)
+}
+
+.pwLengthInvalid, .nameLengthInvalid, .passwordsMatch{
+    color: red;
 }
 .buttonAndMessage{
     display: flex;

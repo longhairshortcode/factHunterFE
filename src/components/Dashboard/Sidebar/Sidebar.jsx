@@ -5,6 +5,7 @@ import { TfiPencilAlt } from "react-icons/tfi";
 import { TbBrandSpeedtest } from "react-icons/tb";
 import { PiDetectiveBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import detectives from "../../../assets/detectives.png"
 
 function Sidebar() {
   return (
@@ -25,6 +26,9 @@ function Sidebar() {
         <NavLink to={"quiz"}className={style.quizContainer}>
           <p className={style.quiz} to={"quiz"}><TbBrandSpeedtest />Quiz Myself</p>
         </NavLink>        
+      </div>
+      <div className={style.detectivesImageContainer}>
+        <img className={style.detectives} src={detectives} alt="cartoon kids with magnifying glasses"/>
       </div>
     </div>
   )

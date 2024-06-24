@@ -2,7 +2,7 @@
     width: 100%;
     /* border: 2px solid red; */
     height: 100%;
-    background-image: url("./numbersPractice.png");
+    background-image: url("./numbers.jpg");
     background-repeat: repeat;
 }
 
@@ -11,27 +11,32 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 /* border: 4px solid black; */
-height: 170px;
-background-color: white;
+height: 120px;
+}
+
+.titleAndLinks, .practice{
+    background-color: rgb(68, 68, 179);
 }
 
 .practice{
     font-size: 50px;
-    color: rgb(68, 68, 179);
     font-weight: bold;
-    background-color: white;
-    /* height: 125px; */
-    /* border: 5px solid green; */
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; 
 }
 .numberButton{
     /* border: 2px solid blue; */
     border-radius: 20px;
     font-size: 15px;
-    color: white;
+    color: rgb(68, 68, 179); 
     padding: 5px 15px;
     text-decoration: none;
     font-weight: bold;
-    background-color: rgb(68, 68, 179);
+    background-color:white; 
 }
 
 .linksContainer{
@@ -43,7 +48,7 @@ background-color: white;
     display: flex;
     justify-content: space-evenly;
     padding: 5px 0;
-    background-color: rgb(201, 224, 245);
+    background-color: rgb(68, 68, 179);
     /* border: 2px solid red; */
     width: 100%;
 }

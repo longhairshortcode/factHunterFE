@@ -25,7 +25,8 @@ function App() {
   const [user, setUser] = useState({
     email: "",
     name: "",
-    id: userIdFromLocalStorage || "",
+    id: "1" 
+    //userIdFromLocalStorage || "",
     // id: "",
   
   })
@@ -40,7 +41,8 @@ function App() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      transition: Bounce,
+      transition: "bounce",
+      // transition: Bounce,
       });
   }
 
