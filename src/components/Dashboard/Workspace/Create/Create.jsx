@@ -8,37 +8,41 @@ import multiplicationChart from "./multiplicationChart.png"
 import divisionChart from "./divisionChart.png"
 import {Outlet, Link, useNavigate} from "react-router-dom"
 import {useChart} from "../../../../pages/Dashboard"
-
+import { FlashcardContext } from "../../../../App"
 
 function Create() {
 
   const navigate = useNavigate()
   const { setChartImage, chartImage } = useChart(); // Access the context here
+  const {user} = useContext(AuthContext)
+  const { flashcards, setFlashcards } = useContext(FlashcardContext);
+
+  const [flashcardData, setFlashcardData] = useState({
+    question: "",
+    answer: "",
+    subject: "",
+    topic: "",
+    subtopic: "",
+  })
+  
+  const mathTopic = ["addition", "subtraction", "multiplication", "division"]
+  const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] 
+  const sounds = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o' ]
+  const readingTopic = ["vowels", "consonants"]
+  
+  const [topic, setTopic] = useState([])
+  // const [subtopic, setSubtopic] = useState(number)
+  //null means empty on purpose for now 
+  // moved to dshabord so create-set can also access it
+  //const [chartImage, setChartImage] = useState(null) 
   
   useEffect(()=>{
     navigate("created-set")
   },[])
 
-const {user} = useContext(AuthContext)
 
-const [flashcardData, setFlashcardData] = useState({
-  question: "",
-  answer: "",
-  subject: "",
-  topic: "",
-  subtopic: "",
-})
 
-const mathTopic = ["addition", "subtraction", "multiplication", "division"]
-const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] 
-const sounds = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o' ]
-const readingTopic = ["vowels", "consonants"]
 
-const [topic, setTopic] = useState([])
-// const [subtopic, setSubtopic] = useState(number)
-//null means empty on purpose for now 
-// moved to dshabord so create-set can also access it
-//const [chartImage, setChartImage] = useState(null) 
 
 useEffect(()=>{
 setTopic(flashcardData.subject === "math" ? mathTopic : flashcardData.subject == "reading" ? readingTopic : [])
@@ -49,8 +53,15 @@ setTopic(flashcardData.subject === "math" ? mathTopic : flashcardData.subject ==
 // }, [])
 
 useEffect(()=>{
-  setChartImage(flashcardData.topic === "addition" ? additionChart : flashcardData.topic === "subtraction" ? subtractionChart 
-  : flashcardData.topic === "multiplication" ? multiplicationChart : flashcardData.topic === "division" ? divisionChart : null) 
+  setChartImage(flashcardData.topic === "addition" 
+  ? additionChart 
+  : flashcardData.topic === "subtraction" 
+  ? subtractionChart 
+  : flashcardData.topic === "multiplication" 
+  ? multiplicationChart 
+  : flashcardData.topic === "division" 
+  ? divisionChart 
+  : null) 
 }, [flashcardData.topic])
 
 function handleChange(e){
@@ -66,15 +77,43 @@ async function handleSubmit(e){
   //change this and move to before catch when sent to db works!!!!!
   setChartImage(null)
   console.log("handleSubmit has run")
+  
   const {subject, topic, subtopic, question, answer, userID} = flashcardData
+  const newFlashcard = { subject, topic, subtopic, question, answer };
+  
+  // Add new flashcard to state
+    setFlashcards((prev) => [...prev, newFlashcard]);
+  
+  // Reset form
+  setFlashcardData({
+    question: '',
+    answer: '',
+    subject: '',
+    topic: '',
+    subtopic: '',
+  });
+
+   // Eventually send data to the server:
   try{
-    const res = await axios.post("http://localhost:4000/flashcard/createFlashcard", {subject, topic, subtopic, question, answer, userID : user.id})
+    const res = await axios.post("http://localhost:4000/flashcard/createFlashcard", {
+      subject, 
+      topic, 
+      subtopic, 
+      question, 
+      answer, 
+      userID : user.id})
     console.log("THIS IS THE RES: ", res)
+    
     if (res.status === 200)
       console.log("The flashcard was created successfully")
+      notifySuccess("The flashcard was created successfully!!!")
+       
+      // Redirect to the appropriate URL based on subject, topic, and subtopic
+       navigate(`/dashboard/create/created-set/math-flashcards/${subtopic}`);
       // setChartImage(null)
   }catch(err){
     console.log(err)
+    notifyError("Failed to create flashcard. Please try again.");
   } 
   
 }
@@ -155,6 +194,11 @@ async function handleSubmit(e){
           <button className={style.button}>Create Flashcard!</button>
           </form>
      </div>
+     {/* <div className={style.mathAndReadingButtonContainer}>
+        <Link onClick={() => setChartImage(null)}className={style.mathFlashcardsButton} to='math-flashcards'>Math Flashcards</Link>
+        <Link onClick={() => setChartImage(null)} className={style.readingFlashcardsButton} to='reading-flashcards'>Reading Flashcards</Link>
+      </div> */}
+      
     </div> 
      <Outlet/>     
      <div className={style.chartContainer}>

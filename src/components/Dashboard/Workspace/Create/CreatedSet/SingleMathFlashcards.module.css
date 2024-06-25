@@ -1,4 +1,5 @@
 .componentContainer{
     background-image: url("./numbers.jpg");
     background-repeat: repeat;
+    height: 100vh;
 }

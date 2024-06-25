@@ -14,6 +14,7 @@
     justify-content: center;
     gap: 20px;
 }
+
 .readingFlashcardsButton, .mathFlashcardsButton{
         background-color: rgb(221, 37, 56);
         color: white;

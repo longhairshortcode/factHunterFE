@@ -34,7 +34,19 @@
     /* border: 5px solid green; */
     /* width: 39%; */
 /* } */ 
-
+.mathAndReadingButtonContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.readingFlashcardsButton, .mathFlashcardsButton{
+    background-color: rgb(221, 37, 56);
+    color: white;
+    padding: 5px;
+    /* border-radius: 3px; */
+    text-decoration: none;
+    width: 60px;
+}
 
 .chartContainer{
     /* border: 5px solid brown; */

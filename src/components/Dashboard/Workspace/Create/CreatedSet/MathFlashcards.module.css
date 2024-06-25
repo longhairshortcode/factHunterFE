@@ -1,21 +1,25 @@
-.componentContainer{
-}
+
 
 .allButtonsContainer{
     /* border: 3px solid blue; */
     display: flex;
-    gap: 13px;
-    border: 2px solid white;
-    justify-content: center;
+    /* flex-direction: column; */
+    width: 1000px;
+    margin: 0 auto;
+    gap: 90px;
+    /* border: 2px solid white; */
+    justify-content: space-between;
+    height: 75px;
+    padding-right: 100px;
 } 
 
-.additionTitle{
-   color: rgb(89, 174, 202);
+.additionTitle, .subtractionTitle, .multiplicationTitle, .divisionTitle {
+   color: rgb(177, 41, 41);
    font-weight: bold;
-   font-size: 18px;
+   font-size: 20px;
 }
 
-.subtractionTitle{
+/* .subtractionTitle{
     color: rgb(220, 210, 20);
     font-weight: bold;
     font-size: 18px;
@@ -31,4 +35,4 @@
     color: rgb(176, 189, 193);
     font-weight: bold;
     font-size: 18px;
- }
+ } */
