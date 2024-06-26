@@ -41,21 +41,21 @@ function App() {
       draggable: true,
       progress: undefined,
       theme: 'light',
-      transition: 'bounce',
+      // transition: 'bounce',
     });
   };
 
   const notifyError = (message) => {
     toast.error(message, {
       position: 'top-center',
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       theme: 'light',
-      transition: 'bounce',
+      // transition: 'bounce',
     });
   };
 

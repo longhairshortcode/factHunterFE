@@ -1,14 +1,14 @@
 import style from "./Create.module.css"
 import axios from "axios"
 import { useState, useContext, useEffect } from "react"
-import { AuthContext } from "../../../../App"
+import { AuthContext, ToastContext, FlashcardContext  } from "../../../../App"
 import additionChart from "./additionChart.png"
 import subtractionChart from "./subtractionChart.png"
 import multiplicationChart from "./multiplicationChart.png"
 import divisionChart from "./divisionChart.png"
 import {Outlet, Link, useNavigate} from "react-router-dom"
 import {useChart} from "../../../../pages/Dashboard"
-import { FlashcardContext } from "../../../../App"
+
 
 function Create() {
 
@@ -16,6 +16,7 @@ function Create() {
   const { setChartImage, chartImage } = useChart(); // Access the context here
   const {user} = useContext(AuthContext)
   const { flashcards, setFlashcards } = useContext(FlashcardContext);
+  const {notifyError, notifySuccess} = useContext(ToastContext)
 
   const [flashcardData, setFlashcardData] = useState({
     question: "",

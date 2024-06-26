@@ -60,7 +60,7 @@ function MathFlashcards() {
             <Link
               key={subtopic}
               className={style.numberButton}
-              to={`${subtopic}`}
+              to={`math-addition-${subtopic}`}
             >
               {subtopic} Facts
             </Link>
@@ -74,12 +74,12 @@ function MathFlashcards() {
           {/* Map through subtraction subtopics and render buttons */}
           {subtopics.subtraction.map((subtopic) => (
             <Link
-              key={subtopic}
-              className={style.numberButton}
-              to={`${subtopic}`}
-            >
-              {subtopic} Facts
-            </Link>
+            key={subtopic}
+            className={style.numberButton}
+            to={`math-subtraction-${subtopic}`}
+          >
+            {subtopic} Facts
+          </Link>
           ))}
         </div>
 
@@ -90,12 +90,12 @@ function MathFlashcards() {
           {/* Map through multiplication subtopics and render buttons */}
           {subtopics.multiplication.map((subtopic) => (
             <Link
-              key={subtopic}
-              className={style.numberButton}
-              to={`${subtopic}`}
-            >
-              {subtopic} Facts
-            </Link>
+            key={subtopic}
+            className={style.numberButton}
+            to={`math-multiplication-${subtopic}`}
+          >
+            {subtopic} Facts
+          </Link>
           ))}
         </div>
 
@@ -106,12 +106,12 @@ function MathFlashcards() {
           {/* Map through division subtopics and render buttons */}
           {subtopics.division.map((subtopic) => (
             <Link
-              key={subtopic}
-              className={style.numberButton}
-              to={`${subtopic}`}
-            >
-              {subtopic} Facts
-            </Link>
+            key={subtopic}
+            className={style.numberButton}
+            to={`math-division-${subtopic}`}
+          >
+            {subtopic} Facts
+          </Link>
           ))}
         </div>
       </div>
