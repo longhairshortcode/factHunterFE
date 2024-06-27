@@ -16,13 +16,15 @@ import MathFlashcards from './components/Dashboard/Workspace/Create/CreatedSet/M
 import ReadingFlashcards from './components/Dashboard/Workspace/Create/CreatedSet/ReadingFlashcards.jsx';
 import SingleMathFlashcards from './components/Dashboard/Workspace/Create/CreatedSet/SingleMathFlashcards.jsx';
 import SingleReadingFlashcards from './components/Dashboard/Workspace/Create/CreatedSet/SingleReadingFlashcards.jsx';
+import {FlashcardDataProvider} from './hoc/FlashcardContext'
 
 export const AuthContext = createContext();
 export const ToastContext = createContext();
 export const FlashcardContext = createContext();
 
 function App() {
-  const userIdFromLocalStorage = window.localStorage.getItem('userID');
+  const userIdFromLocalStorage = window.localStorage.getItem('currentUserLoggedIn');
+  console.log("here is my id ", userIdFromLocalStorage)
   const [user, setUser] = useState({
     email: '',
     name: '',
@@ -65,6 +67,7 @@ function App() {
       <ToastContext.Provider value={{ notifySuccess, notifyError }}>
         <AuthContext.Provider value={{ setUser, user }}>
           <FlashcardContext.Provider value={{ flashcards, setFlashcards }}>
+          <FlashcardDataProvider>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/sign-up' element={<Signup />} />
@@ -92,6 +95,7 @@ function App() {
                 <Route path='quiz' element={<Quiz />} />
               </Route>
             </Routes>
+            </FlashcardDataProvider>
           </FlashcardContext.Provider>
         </AuthContext.Provider>
       </ToastContext.Provider>

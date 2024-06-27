@@ -8,6 +8,7 @@ import multiplicationChart from "./multiplicationChart.png"
 import divisionChart from "./divisionChart.png"
 import {Outlet, Link, useNavigate} from "react-router-dom"
 import {useChart} from "../../../../pages/Dashboard"
+import { FlashcardDataContext } from "../../../../hoc/FlashcardContext"
 
 
 function Create() {
@@ -17,15 +18,9 @@ function Create() {
   const {user} = useContext(AuthContext)
   const { flashcards, setFlashcards } = useContext(FlashcardContext);
   const {notifyError, notifySuccess} = useContext(ToastContext)
+  const { flashcardData, setFlashcardData } = useContext(FlashcardDataContext);
 
-  const [flashcardData, setFlashcardData] = useState({
-    question: "",
-    answer: "",
-    subject: "",
-    topic: "",
-    subtopic: "",
-  })
-  
+ 
   const mathTopic = ["addition", "subtraction", "multiplication", "division"]
   const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] 
   const sounds = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o' ]
@@ -40,9 +35,6 @@ function Create() {
   useEffect(()=>{
     navigate("created-set")
   },[])
-
-
-
 
 
 useEffect(()=>{
@@ -79,23 +71,17 @@ async function handleSubmit(e){
   setChartImage(null)
   console.log("handleSubmit has run")
   
-  const {subject, topic, subtopic, question, answer, userID} = flashcardData
+  const {subject, topic, subtopic, question, answer} = flashcardData
   const newFlashcard = { subject, topic, subtopic, question, answer };
   
   // Add new flashcard to state
     setFlashcards((prev) => [...prev, newFlashcard]);
   
-  // Reset form
-  setFlashcardData({
-    question: '',
-    answer: '',
-    subject: '',
-    topic: '',
-    subtopic: '',
-  });
+
 
    // Eventually send data to the server:
   try{
+    console.log("just before send ", subject, topic, subtopic, question, answer)
     const res = await axios.post("http://localhost:4000/flashcard/createFlashcard", {
       subject, 
       topic, 
@@ -107,13 +93,23 @@ async function handleSubmit(e){
     
     if (res.status === 200)
       console.log("The flashcard was created successfully")
+      // Reset form
+  setFlashcardData({
+    question: '',
+    answer: '', 
+    subject: '',
+    topic: '',
+    subtopic: '',
+  });
+    console.log("qustion ", question)
       notifySuccess("The flashcard was created successfully!!!")
        
       // Redirect to the appropriate URL based on subject, topic, and subtopic
        navigate(`/dashboard/create/created-set/math-flashcards/${subtopic}`);
       // setChartImage(null)
   }catch(err){
-    console.log(err)
+    console.log("here is the issue", err)
+    console.log("here is the error message", err.message)
     notifyError("Failed to create flashcard. Please try again.");
   } 
   
@@ -201,7 +197,7 @@ async function handleSubmit(e){
       </div> */}
       
     </div> 
-     <Outlet/>     
+     <Outlet />     
      <div className={style.chartContainer}>
           <div className={style.chartImageContainer}>
               { chartImage &&

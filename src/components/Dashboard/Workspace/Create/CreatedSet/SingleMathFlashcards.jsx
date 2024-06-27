@@ -3,9 +3,11 @@ import {useParams} from "react-router-dom"
 import {useState, useEffect, useContext} from "react"
 import {AuthContext} from "../../../../../App"
 import axios from "axios"
+import { FlashcardDataContext } from "../../../../../hoc/FlashcardContext"
 
 function SingleMathFlashcards() {
   const {user} = useContext(AuthContext)
+  const {flashcardData } = useContext(FlashcardDataContext)
   const {subtopicId} = useParams();
   const [flashcardCategories, setFlashcardCategories] = useState({
     subject: "",
@@ -35,6 +37,7 @@ function SingleMathFlashcards() {
   useEffect(() => {
     async function displayCreatedFlashcards() {
       try {
+        console.log("before getting data ", flashcardData)
         const { subject, topic, subtopic, userId } = flashcardCategories;
         const response = await axios.get('http://localhost:4000/flashcard/displayCreatedFlashcards', {
           params: { subject, topic, subtopic, userId }
