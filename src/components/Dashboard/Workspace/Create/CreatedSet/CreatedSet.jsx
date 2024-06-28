@@ -1,37 +1,43 @@
-import style  from "./CreatedSet.module.css"
-import {Link, useNavigate} from "react-router-dom"
-import MathFlashcards from "./MathFlashcards"
-import ReadingFlashcards from "./ReadingFlashcards" 
-import { useEffect } from "react"
-import { Outlet } from "react-router-dom"
-import { useChart } from "../../../../../pages/Dashboard"
-
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//       const j = Math.floor(Math.random() * (i + 1));
-//       [array[i], array[j]] = [array[j], array[i]];
-//     }
-//     return array;
-//   }
+import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import style from "./CreatedSet.module.css";
+import { AuthContext } from "../../../../../App";
 
 function CreatedSet() {
-    const { setChartImage } = useChart();
-  // Generate an array of indices // [0, 1, 2, 3....] //length of array, index of each item in array
-  // const indices = Array.from({ length: dbArray.length }, (_, index) => index);
-  // const indices = Array.from({ length: 13 }, (_, index) => index);
+  const { topic, subtopic } = useParams();
+  const { user } = useContext(AuthContext);
+  const [flashcards, setFlashcards] = useState([]);
+
+  useEffect(() => {
+    async function fetchFlashcards() {
+      try {
+        const res = await axios.get(`http://localhost:4000/flashcard/displayCreatedFlashcards/${user.id}`, {
+          params: { topic, subtopic }
+        });
+        setFlashcards(res.data.createdFlashcards);
+      } catch (err) {
+        console.error("Error fetching flashcards:", err);
+      }
+    }
+
+    if (user.id && topic && subtopic) {
+      fetchFlashcards();
+    }
+  }, [user.id, topic, subtopic]);
+
   
-  // Shuffle the indices
-  // const shuffledIndices = shuffleArray(indices);
-
   return (
-    <div className={style.componentContainer}>
-      <div className={style.mathAndReadingButtonContainer}>
-        <Link onClick={() => setChartImage(null)}className={style.mathFlashcardsButton} to='math-flashcards'>Math Flashcards</Link>
-        <Link onClick={() => setChartImage(null)} className={style.readingFlashcardsButton} to='reading-flashcards'>Reading Flashcards</Link>
-      </div>
-    <Outlet/>
+    <div className={style.flashcardSetContainer}>
+      {flashcards.map((flashcard, index) => (
+        <div key={index} className={style.flashcard}>
+          <p>Question: {flashcard.question}</p>
+          <p>Answer: {flashcard.answer}</p>
+        </div>
+      ))}
     </div>
-  )
-} 
+  );
+}
+  
 
-export default CreatedSet 
+export default CreatedSet;
