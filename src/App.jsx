@@ -73,7 +73,7 @@ function App() {
                   <Route path=':practiceFactId' element={<Set />} />
                 </Route>
                 <Route path='create' element={<Create />}>
-                  <Route path='flashcards/:topic/:subtopic' element={<CreatedSet />} />
+                  <Route path='flashcards/:subject/:topic/:subtopic' element={<CreatedSet />} />
                 </Route>
                 <Route path='quiz' element={<Quiz />} />
               </Route>

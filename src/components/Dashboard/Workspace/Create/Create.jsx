@@ -9,8 +9,13 @@ import divisionChart from "./divisionChart.png";
 import axios from "axios";
 
 function Create() {
+
+//Initialize Contexts/Navigate Brought In
   const { user } = useContext(AuthContext);
   const { notifySuccess, notifyError } = useContext(ToastContext);
+  const navigate = useNavigate();
+  
+  //STATES
   const [flashcardData, setFlashcardData] = useState({
     subject: "",
     topic: "",
@@ -19,18 +24,22 @@ function Create() {
     answer: "",
     userId: user ? user.id : null
   });
+
   const [topicsToShow, setTopicsToShow] = useState([]);
   const [subtopicsToShow, setSubtopicsToShow] = useState([]);
-  const [chartImage, setChartImage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [flashcards, setFlashcards] = useState([]);
-  const navigate = useNavigate();
+  const [chartImage, setChartImage] = useState(null);
   
+  
+  //Variable Arrays
   const mathTopics = ["addition", "subtraction", "multiplication", "division"];
   const readingTopics = ["vowels", "consonants"];
   const mathSubtopics = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const readingSubtopics = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o'];
 
+
+  //useEffects
   useEffect(() => {
     if (flashcardData.subject === "math") {
       setTopicsToShow(mathTopics);
@@ -61,8 +70,9 @@ function Create() {
   }, [flashcardData.topic]);
 
   useEffect(() => {
-    // Fetch existing flashcards from the database for the logged-in user
-    async function fetchExistingFlashcards() {
+          // Fetch existing flashcards from the database for the logged-in user
+          // on mount it defines fetchExistingFlashcards BUT ONLY RUNS after checks if user.id truthy
+          async function fetchExistingFlashcards() {
       try {
         const res = await axios.get(`http://localhost:4000/flashcard/displayCreatedFlashcards/${user.id}`, {
           params: {
@@ -71,7 +81,7 @@ function Create() {
             subtopic: flashcardData.subtopic
           }
         });
-        setFlashcards(res.data.createdFlashcards); // Assuming response structure has a field `createdFlashcards`
+        setFlashcards(res.data.createdFlashcardsResult); // Assuming response structure has a field `createdFlashcards`
       } catch (err) {
         console.error("Error fetching existing flashcards:", err);
       }
@@ -82,6 +92,7 @@ function Create() {
     }
   }, [user.id, flashcardData.subject, flashcardData.topic, flashcardData.subtopic]); // Fetch on user.id or flashcardData change
 
+//Event Handlers aka Handlers
   function handleChange(e) {
     const { name, value } = e.target;
     setFlashcardData(prev => ({
@@ -130,16 +141,15 @@ function Create() {
   }
 
   function renderFlashcardButtons(topic) {
-    // Render buttons only if flashcards exist for the selected topic
+        // Render buttons only if flashcards exist for the selected topic
     if (flashcards.length === 0) {
       return null;
     }
-
-    // Filter flashcards for the selected topic and get unique subtopics
+        // Filter flashcards for the selected topic and get unique subtopics
     const filteredFlashcards = flashcards.filter(flashcard => flashcard.topic === topic);
     const uniqueSubtopics = Array.from(new Set(filteredFlashcards.map(flashcard => flashcard.subtopic)));
 
-    // Render buttons for each unique subtopic
+        // Render buttons for each unique subtopic
     const buttons = uniqueSubtopics.map((subtopic, index) => (
       <button
         key={index}
@@ -219,14 +229,20 @@ function Create() {
       <div className={style.mathAndReadingButtonContainer}>
         <button
           className={style.mathFlashcardsButton}
-          onClick={() => { setSelectedCategory("math") }}
+          onClick={() => {
+            setSelectedCategory("math");
+            setChartImage(null);
+          }}
         >
           Math Flashcards
         </button>
         
         <button
           className={style.readingFlashcardsButton}
-          onClick={() => { setSelectedCategory("reading") }}
+          onClick={() => {
+            setSelectedCategory("reading");
+            setChartImage(null);
+          }}
         >
           Reading Flashcards
         </button>  

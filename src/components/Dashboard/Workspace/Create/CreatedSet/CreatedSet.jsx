@@ -5,7 +5,7 @@ import style from "./CreatedSet.module.css";
 import { AuthContext } from "../../../../../App";
 
 function CreatedSet() {
-  const { topic, subtopic } = useParams();
+  const { subject, topic, subtopic } = useParams();
   const { user } = useContext(AuthContext);
   const [flashcards, setFlashcards] = useState([]);
 
@@ -13,19 +13,23 @@ function CreatedSet() {
     async function fetchFlashcards() {
       try {
         const res = await axios.get(`http://localhost:4000/flashcard/displayCreatedFlashcards/${user.id}`, {
-          params: { topic, subtopic }
+          params: { subject, topic, subtopic }
         });
-        setFlashcards(res.data.createdFlashcards);
+        setFlashcards(res.data.createdFlashcardsResult);
       } catch (err) {
         console.error("Error fetching flashcards:", err);
       }
     }
 
-    if (user.id && topic && subtopic) {
+    if (user.id && subject && topic && subtopic) {
       fetchFlashcards();
     }
-  }, [user.id, topic, subtopic]);
+  }, [user.id, subject, topic, subtopic]);
 
+  // Reset flashcards when selectedCategory changes
+  // useEffect(() => {
+  //   setFlashcards([]);
+  // }, [selectedCategory]);
   
   return (
     <div className={style.flashcardSetContainer}>
