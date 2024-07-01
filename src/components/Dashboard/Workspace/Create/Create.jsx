@@ -7,7 +7,7 @@ import subtractionChart from "./subtractionChart.png";
 import multiplicationChart from "./multiplicationChart.png";
 import divisionChart from "./divisionChart.png";
 import axios from "axios";
-a
+
 function Create() {
 
 //Initialize Contexts/Navigate Brought In
