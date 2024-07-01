@@ -10,7 +10,7 @@ import Welcome from './components/Dashboard/Workspace/Welcome.jsx';
 import Practice from './components/Dashboard/Workspace/Practice/Practice.jsx';
 import Create from './components/Dashboard/Workspace/Create/Create.jsx';
 import Quiz from './components/Dashboard/Workspace/Quiz/Quiz.jsx';
-// import Set from './components/Dashboard/Workspace/Practice/Set/Set.jsx';
+import Set from './components/Dashboard/Workspace/Practice/Set/Set.jsx';
 import CreatedSet from "./components/Dashboard/Workspace/Create/CreatedSet/CreatedSet.jsx"
 
 export const AuthContext = createContext();
