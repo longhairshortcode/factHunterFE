@@ -43,19 +43,12 @@ function Create() {
   useEffect(() => {
     if (flashcardData.subject === "math") {
       setTopicsToShow(mathTopics);
-    } else if (flashcardData.subject === "reading") {
-      setTopicsToShow(readingTopics);
-    } else {
-      setTopicsToShow([]);
-    }
-  }, [flashcardData.subject]);
-
-  useEffect(() => {
-    if (flashcardData.subject === "math") {
       setSubtopicsToShow(mathSubtopics);
     } else if (flashcardData.subject === "reading") {
+      setTopicsToShow(readingTopics);
       setSubtopicsToShow(readingSubtopics);
     } else {
+      setTopicsToShow([]);
       setSubtopicsToShow([]);
     }
   }, [flashcardData.subject]);
@@ -68,6 +61,16 @@ function Create() {
       flashcardData.topic === "division" ? divisionChart : null
     );
   }, [flashcardData.topic]);
+
+
+
+
+
+
+//********************************************* */
+
+
+
 
   useEffect(() => {
           // Fetch existing flashcards from the database for the logged-in user
@@ -90,7 +93,7 @@ function Create() {
     if (user.id) {
       fetchExistingFlashcards();
     }
-  }, [user.id, flashcardData.subject, flashcardData.topic, flashcardData.subtopic]); // Fetch on user.id or flashcardData change
+  }, [user.id, flashcardData.subject && flashcardData.topic && flashcardData.subtopic]); // Fetch on user.id or flashcardData change
 
 //Event Handlers aka Handlers
   function handleChange(e) {
