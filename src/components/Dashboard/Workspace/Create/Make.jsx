@@ -6,7 +6,7 @@ import additionChart from "./additionChart.png";
 import subtractionChart from "./subtractionChart.png";
 import multiplicationChart from "./multiplicationChart.png";
 import divisionChart from "./divisionChart.png";
-import { Outlet } from "react-router-dom";
+import CreatedSet from "./CreatedSet/CreatedSet.jsx"
 
 function Make() {
   // CONTEXTS (Initializing)
@@ -29,6 +29,10 @@ function Make() {
   const [chartImage, setChartImage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [fetchTrigger, setFetchTrigger] = useState(false); // NEW STATE VARIABLE
+  const [topicAndSubtopic, setTopicAndSubtopic] = useState({
+    topic: "",
+    subtopic: "",
+  })
 
   // VARIABLES ARRAYS
   const mathTopics = ["addition", "subtraction", "multiplication", "division"];
@@ -146,7 +150,11 @@ function Make() {
     );
 
     return uniqueSubtopics.map((subtopic, index) => (
-      <button key={index} className={style.flashcardButton}>
+      <button key={index} onClick={() => setTopicAndSubtopic(prev => ({
+        ...prev,
+        topic: topic,
+        subtopic: subtopic
+      }))} className={style.flashcardButton}>
         {`${subtopic} Facts`}
       </button>
     ));
@@ -280,7 +288,7 @@ function Make() {
       <div className={style.chart}>
         {chartImage && <img src={chartImage} alt={flashcardData.topic} />}
       </div>
-      <Outlet />
+      <CreatedSet topicAndSubtopic={topicAndSubtopic} />
     </div>
   );
 }

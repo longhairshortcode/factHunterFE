@@ -20,8 +20,8 @@ function Sidebar() {
         <NavLink to={"practice"} className={style.practiceContainer}>
           <p className={style.practice} to={"practice"}><FiSmile />Practice Facts</p>
         </NavLink>
-        <NavLink to={"create"} className={style.createContainer}>
-          <p className={style.create} to={"create"}><TfiPencilAlt />Create Deck</p>    
+        <NavLink to={"make"} className={style.createContainer}>
+          <p className={style.create} to={"make"}><TfiPencilAlt />Create Deck</p>    
         </NavLink>
         <NavLink to={"quiz"}className={style.quizContainer}>
           <p className={style.quiz} to={"quiz"}><TbBrandSpeedtest />Quiz Myself</p>
