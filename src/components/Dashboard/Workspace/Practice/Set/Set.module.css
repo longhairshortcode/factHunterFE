@@ -32,13 +32,16 @@
   background-color:  rgb(68, 68, 179);
 }
 
-.buttonAdd, .buttonSub, .buttonMulti, .buttonDiv{
+/* .button{
   background-color: rgb(221, 37, 56);
   color: white;
   padding: 5px;
   border-radius: 3px;
-  
-}
+} */
+
+
+
+
 
 .flipCardFront{
     display: flex;

@@ -8,10 +8,10 @@ import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Welcome from './components/Dashboard/Workspace/Welcome.jsx';
 import Practice from './components/Dashboard/Workspace/Practice/Practice.jsx';
-import Create from './components/Dashboard/Workspace/Create/Create.jsx';
+// import Create from './components/Dashboard/Workspace/Create/Create.jsx';
 import Quiz from './components/Dashboard/Workspace/Quiz/Quiz.jsx';
 import Set from './components/Dashboard/Workspace/Practice/Set/Set.jsx';
-import CreatedSet from "./components/Dashboard/Workspace/Create/CreatedSet/CreatedSet.jsx"
+// import CreatedSet from "./components/Dashboard/Workspace/Create/CreatedSet/CreatedSet.jsx"
 import Make from "./components/Dashboard/Workspace/Create/Make.jsx"
 
 export const AuthContext = createContext();
@@ -70,13 +70,11 @@ function App() {
                 element={user.id ? <Dashboard /> : <Navigate to='/login' />}
               >
                 <Route index element={<Welcome />} />
-                <Route path='practice' element={<Practice />}>
-                  <Route path=':practiceFactId' element={<Set />} />
-                </Route>
+                <Route path='practice' element={<Practice />}/>
                 <Route path='make' element={<Make />}/>
-                <Route path='create' element={<Create />}>
+                {/* <Route path='create' element={<Create />}>
                   <Route path='flashcards/:topic/:subtopic' element={<CreatedSet />} />
-                </Route>
+                </Route> */}
                 <Route path='quiz' element={<Quiz />} />
               </Route>
             </Routes>
