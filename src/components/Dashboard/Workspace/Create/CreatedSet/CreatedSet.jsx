@@ -4,7 +4,7 @@ import axios from "axios";
 import style from "./CreatedSet.module.css";
 import { AuthContext } from "../../../../../App";
 
-function CreatedSet({topicAndSubtopic}) {
+function CreatedSet({topicAndSubtopic, fetchTrigger}) {
   const { topic, subtopic } = topicAndSubtopic;
   const { user } = useContext(AuthContext);
   const [flashcards, setFlashcards] = useState([]);
@@ -25,7 +25,7 @@ function CreatedSet({topicAndSubtopic}) {
     if (user.id && topic && subtopic) {
       fetchFlashcards();
     }
-  }, [user.id, topic && subtopic]);
+  }, [user.id, topic && subtopic, fetchTrigger]);
 
   // Reset flashcards when selectedCategory changes
   // useEffect(() => {

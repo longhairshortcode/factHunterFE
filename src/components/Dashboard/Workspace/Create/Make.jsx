@@ -108,6 +108,7 @@ function Make() {
             userID: user.id,
           }
         );
+
         if (response.status === 201) {
           notifySuccess("The flashcard was created successfully!");
           setFlashcardData({
@@ -288,7 +289,7 @@ function Make() {
       <div className={style.chart}>
         {chartImage && <img src={chartImage} alt={flashcardData.topic} />}
       </div>
-      <CreatedSet topicAndSubtopic={topicAndSubtopic} />
+      <CreatedSet topicAndSubtopic={topicAndSubtopic} fetchTrigger={fetchTrigger} />
     </div>
   );
 }
