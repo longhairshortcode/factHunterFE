@@ -120,8 +120,9 @@ function Make() {
             if (checkExistingFlashcard) {
               return prev;
             }
-            return [...prev, { subject, topic, subtopic }];
+            return [...prev, { subject, topic, subtopic, question, answer }];
           });
+          setFetchTrigger(prev => !prev); // Toggle fetchTrigger to refetch flashcards
         }
       } catch (err) {
         notifyError("Failed to create flashcard. Please try again.");
