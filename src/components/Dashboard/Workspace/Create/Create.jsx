@@ -8,13 +8,26 @@ import multiplicationChart from "./multiplicationChart.png";
 import divisionChart from "./divisionChart.png";
 import axios from "axios";
 
+
+
+
+
 function Create() {
+
+
+
+
 
 //Initialize Contexts/Navigate Brought In
   const { user } = useContext(AuthContext);
   const { notifySuccess, notifyError } = useContext(ToastContext);
   const navigate = useNavigate();
   
+
+
+
+
+
   //STATES
   const [flashcardData, setFlashcardData] = useState({
     subject: "",
@@ -32,11 +45,19 @@ function Create() {
   const [chartImage, setChartImage] = useState(null);
   
   
+
+
+
+
   //Variable Arrays
   const mathTopics = ["addition", "subtraction", "multiplication", "division"];
   const readingTopics = ["vowels", "consonants"];
   const mathSubtopics = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const readingSubtopics = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o'];
+
+
+
+
 
 
   //useEffects
@@ -63,15 +84,7 @@ function Create() {
   }, [flashcardData.topic]);
 
 
-
-
-
-
 //********************************************* */
-
-
-
-
   useEffect(() => {
           // Fetch existing flashcards from the database for the logged-in user
           // on mount it defines fetchExistingFlashcards BUT ONLY RUNS after checks if user.id truthy
@@ -84,7 +97,13 @@ function Create() {
             subtopic: flashcardData.subtopic
           }
         });
-        setFlashcards(res.data.createdFlashcardsResult); // Assuming response structure has a field `createdFlashcards`
+        // Check if the response contains the expected field
+      if (res.data && res.data.createdFlashcardsResult) {
+        setFlashcards(res.data.createdFlashcardsResult); // Assuming response structure has a field `createdFlashcardsResult`
+      } else {
+        setFlashcards([]); // No flashcards found
+      }
+        // setFlashcards(res.data.createdFlashcardsResult); // Assuming response structure has a field `createdFlashcards`
       } catch (err) {
         console.error("Error fetching existing flashcards:", err);
       }
@@ -95,7 +114,13 @@ function Create() {
     }
   }, [user.id, flashcardData.subject && flashcardData.topic && flashcardData.subtopic]); // Fetch on user.id or flashcardData change
 
-//Event Handlers aka Handlers
+
+
+
+
+
+
+//EVENT HANDLERS/HANDLERS
   function handleChange(e) {
     const { name, value } = e.target;
     setFlashcardData(prev => ({
@@ -127,20 +152,22 @@ function Create() {
           subtopic: '',
         });
         setFlashcards(prev => {
-          const existingFlashcard = prev.find(flashcard => flashcard.subject === subject && flashcard.topic === topic && flashcard.subtopic === subtopic);
-          if (existingFlashcard) {
+          const checkExistingFlashcard = prev.find(flashcard => flashcard.subject === subject && flashcard.topic === topic && flashcard.subtopic === subtopic);
+          if (checkExistingFlashcard) {
             return prev;
           }
           return [...prev, { subject, topic, subtopic }];
         });
       }
     } catch (err) {
+      console.log(err)
       notifyError("Failed to create flashcard. Please try again.");
     }
   }
 
   function handleFlashcardClick(topic, subtopic) {
     navigate(`/dashboard/create/flashcards/${topic}/${subtopic}`);
+
   }
 
   function renderFlashcardButtons(topic) {
@@ -170,6 +197,12 @@ function Create() {
     );
   }
 
+
+
+
+
+
+  
   return (
     <div className={style.componentContainer}>
       <p className={style.create}>Create</p>
