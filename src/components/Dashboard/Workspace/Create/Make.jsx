@@ -24,6 +24,7 @@ function Make() {
   });
 
   const [flashcards, setFlashcards] = useState([]);
+  const [flashcardsTopicSubtopic, setFlashcardsTopicSubtopic] = useState([]);
   const [topicsToShow, setTopicsToShow] = useState([]);
   const [subtopicsToShow, setSubtopicsToShow] = useState([]);
   const [chartImage, setChartImage] = useState(null);
@@ -235,6 +236,7 @@ function Make() {
           onClick={() => {
             setSelectedCategory("math");
             setChartImage(null);
+            setFlashcardsTopicSubtopic([])
           }}
         >
           Math Flashcards
@@ -244,6 +246,7 @@ function Make() {
           onClick={() => {
             setSelectedCategory("reading");
             setChartImage(null);
+            setFlashcardsTopicSubtopic([])
           }}
         >
           Reading Flashcards
@@ -289,7 +292,7 @@ function Make() {
       <div className={style.chart}>
         {chartImage && <img src={chartImage} alt={flashcardData.topic} />}
       </div>
-      <CreatedSet topicAndSubtopic={topicAndSubtopic} fetchTrigger={fetchTrigger} />
+      <CreatedSet topicAndSubtopic={topicAndSubtopic} fetchTrigger={fetchTrigger} flashcardsTopicSubtopic={flashcardsTopicSubtopic}  setFlashcardsTopicSubtopic={setFlashcardsTopicSubtopic} />
     </div>
   );
 }

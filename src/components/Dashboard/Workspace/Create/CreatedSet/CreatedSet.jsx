@@ -1,29 +1,28 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import style from "./CreatedSet.module.css";
 import { AuthContext } from "../../../../../App";
 
-function CreatedSet({topicAndSubtopic, fetchTrigger}) {
+function CreatedSet({topicAndSubtopic, fetchTrigger, flashcardsTopicSubtopic, setFlashcardsTopicSubtopic}) {
   const { topic, subtopic } = topicAndSubtopic;
   const { user } = useContext(AuthContext);
-  const [flashcards, setFlashcards] = useState([]);
+  
   
 
   useEffect(() => {
-    async function fetchFlashcards() {
+    async function fetchFlashcardsTopicSubtopic() {
       try {
         const res = await axios.get(`http://localhost:4000/flashcard/displayCreatedFlashcards/${user.id}`, {
           params: { topic, subtopic }
         });
-        setFlashcards(res.data.createdFlashcardsResult || []);
+        setFlashcardsTopicSubtopic(res.data.createdFlashcardsResult || []);
       } catch (err) {
         console.error("Error fetching flashcards:", err);
       }
     }
 
     if (user.id && topic && subtopic) {
-      fetchFlashcards();
+      fetchFlashcardsTopicSubtopic();
     }
   }, [user.id, topic && subtopic, fetchTrigger]);
 
@@ -34,29 +33,20 @@ function CreatedSet({topicAndSubtopic, fetchTrigger}) {
   
   return (
   <>
-    {/* <div className={style.flashcardSetContainer}>
-      {flashcards.map((flashcard, index) => (
-        <div key={index} className={style.flashcard}>
-          <p>Question: {flashcard.question}</p>
-          <p>Answer: {flashcard.answer}</p>
-        </div>
-      ))}
-    </div> */}
-
     <div className={style.componentContainer}>
         <div className={style.setsContainer}>
-          {flashcards.map((flashcard, index) => (
+          {flashcardsTopicSubtopic.map((flashcardTopicSubtopic, index) => (
             <div className={style.singleCard} key={index}>
               <div className={style.flipCard}>
                 <div className={style.flipCardInner}>
                   <div className={style.flipCardFront}>
                     <div className={style.question}>
-                      {flashcard.question}
+                      {flashcardTopicSubtopic.question}
                     </div>
                   </div>
                   <div className={style.flipCardBack}>
                     <div className={style.answer}>
-                      {flashcard.answer}
+                      {flashcardTopicSubtopic.answer}
                     </div>  
                   </div>
                 </div>
