@@ -28,6 +28,7 @@ function Make() {
   const [subtopicsToShow, setSubtopicsToShow] = useState([]);
   const [chartImage, setChartImage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [fetchTrigger, setFetchTrigger] = useState(false); // NEW STATE VARIABLE
 
   // VARIABLE ARRAYS
   const mathTopics = ["addition", "subtraction", "multiplication", "division"];
@@ -51,10 +52,11 @@ function Make() {
 
   useEffect(() => {
     setChartImage(
-      flashcardData.topic === "addition" ? additionChart :
-      flashcardData.topic === "subtraction" ? subtractionChart :
-      flashcardData.topic === "multiplication" ? multiplicationChart :
-      flashcardData.topic === "division" ? divisionChart : null
+      flashcardData.topic === "addition" ? additionChart 
+      : flashcardData.topic === "subtraction" ? subtractionChart 
+      : flashcardData.topic === "multiplication" ? multiplicationChart 
+      : flashcardData.topic === "division" ? divisionChart 
+      : null
     );
   }, [flashcardData.topic]);
 
@@ -72,7 +74,7 @@ function Make() {
     if (user.id) {
       fetchExistingFlashcards();
     }
-  }, [user.id]);
+  }, [user.id, fetchTrigger]);
 
   // EVENT HANDLERS
   function handleChange(e) {
@@ -131,7 +133,7 @@ function Make() {
     }
   }
 
-  //OTHER FUNCTIONS
+  //****OTHER FUNCTIONS (NEED TO GO OVER THIS, KIND OF COMPLICATED)
   // Function to render buttons for each unique subtopic under the respective topic
   function renderFlashcardButtons(topic) {
     const filteredFlashcards = flashcards.filter(
@@ -236,7 +238,7 @@ function Make() {
           Reading Flashcards
         </button>
       </div>
-
+// QQQQ IS THIS TOO ADVANCED, DO I NEED SIMPLER CODE?
       {selectedCategory && (
         <div className={style.categoriesContainer}>
           {selectedCategory === "math" ? (
