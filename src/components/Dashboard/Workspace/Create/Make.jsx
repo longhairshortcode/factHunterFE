@@ -8,8 +8,8 @@ import multiplicationChart from "./multiplicationChart.png";
 import divisionChart from "./divisionChart.png";
 import { Outlet } from "react-router-dom";
 
-function Makeeeesses() {
-  // INITIALIZE CONTEXTS
+function Make() {
+  // CONTEXTS (Initializing)
   const { user } = useContext(AuthContext);
   const { notifySuccess, notifyError } = useContext(ToastContext);
 
@@ -30,7 +30,7 @@ function Makeeeesses() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [fetchTrigger, setFetchTrigger] = useState(false); // NEW STATE VARIABLE
 
-  // VARIABLE ARRAYS
+  // VARIABLES ARRAYS
   const mathTopics = ["addition", "subtraction", "multiplication", "division"];
   const readingTopics = ["vowels", "consonants"];
   const mathSubtopics = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -65,6 +65,7 @@ function Makeeeesses() {
     async function fetchExistingFlashcards() {
       try {
         const res = await axios.get(`http://localhost:4000/flashcard/displayCreatedFlashcards/${user.id}`);
+        console.log(res.data)
         setFlashcards(res.data.createdFlashcardsResult || []);
       } catch (err) {
         console.error("Error fetching existing flashcards:", err);
@@ -111,6 +112,7 @@ function Makeeeesses() {
             subject: '',
             topic: '',
             subtopic: '',
+
           });
           setFlashcards((prev) => {
             const checkExistingFlashcard = prev.find(
@@ -133,7 +135,7 @@ function Makeeeesses() {
     }
   }
 
-  //****OTHER FUNCTIONS (NEED TO GO OVER THIS, KIND OF COMPLICATED)
+//OTHER FUNCTIONS 
   // Function to render buttons for each unique subtopic under the respective topic
   function renderFlashcardButtons(topic) {
     const filteredFlashcards = flashcards.filter(
@@ -238,7 +240,7 @@ function Makeeeesses() {
           Reading Flashcards
         </button>
       </div>
-// QQQQ IS THIS TOO ADVANCED, DO I NEED SIMPLER CODE?
+{/* // QQQQ IS THIS TOO ADVANCED, DO I NEED SIMPLER CODE? */}
       {selectedCategory && (
         <div className={style.categoriesContainer}>
           {selectedCategory === "math" ? (
