@@ -8,7 +8,7 @@ import multiplicationChart from "./multiplicationChart.png";
 import divisionChart from "./divisionChart.png";
 import { Outlet } from "react-router-dom";
 
-function Makeees() {
+function Makeeees() {
   // INITIALIZE CONTEXTS
   const { user } = useContext(AuthContext);
   const { notifySuccess, notifyError } = useContext(ToastContext);
