@@ -1,4 +1,3 @@
-import { Outlet, Link} from "react-router-dom"
 import style from "./Practice.module.css"
 import { useState } from "react"
 import Set from "./Set/Set.jsx"
@@ -12,25 +11,21 @@ const [practiceFactId, setPracticeFactId] = useState("1")
   return (
     <div className={style.componentContainer}>
       <div className={style.titleAndLinks}>
-      <p className={style.practice}>Practice</p>
-
-
-
-      <div className={style.mathAndReadingButtonContainer}>
-        <button
-          className={style.mathFlashcardsButton}
-          onClick={() => {setSelectedCategory("math")}}
-        
-        >
+        <p className={style.practice}>Practice</p>
+        <div className={style.mathAndReadingButtonContainer}>
+          <button
+            className={style.mathFlashcardsButton}
+            onClick={() => {setSelectedCategory("math")}}
+          >
           Math Flashcards
-        </button>
-        <button
-          className={style.readingFlashcardsButton}
-          onClick={() => {setSelectedCategory("reading")}}
-        >
-          Reading Flashcards
-        </button>
-      </div>
+          </button>
+          <button
+            className={style.readingFlashcardsButton}
+            onClick={() => {setSelectedCategory("reading")}}
+          >
+            Reading Flashcards
+          </button>
+        </div>
 {/* // QQQQ IS THIS TOO ADVANCED, DO I NEED SIMPLER CODE? */}
       {selectedCategory && (
         <div className={style.categoriesContainer}>
@@ -45,7 +40,7 @@ const [practiceFactId, setPracticeFactId] = useState("1")
             <div className={style.linksContainer}>
                 <div className={style.links}>
                   {Array(6).fill(null).map((_, index)=>(
-                  <button className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Facts </button>))}          
+                  <button className={style.numberButton} key={index + 1} to={`${index + 1}`}>{index + 1} Sounds </button>))}          
                 </div>
               </div>
           )}
@@ -64,7 +59,7 @@ const [practiceFactId, setPracticeFactId] = useState("1")
         
     </div>
       
-      <Set selectedCategory={selectedCategory} practiceFactId={practiceFactId} setPracticeFactId={setPracticeFactId}/>
+      <Set selectedCategory={selectedCategory} practiceFactId={practiceFactId}/>
       
     </div>
   )

@@ -2,36 +2,63 @@ import style from "./Set.module.css";
 import { useState } from "react";
 import { FaDivide } from "react-icons/fa6";
 
-function Set({ practiceFactId, setPracticeFactId, selectedCategory }) {
-  const numberPracticeFactId = Number(practiceFactId);
-  const [operation, setOperation] = useState("");
-  const [activeButton, setActiveButton] = useState("");
 
-  const operationsAndNames = [
-    {
-      operation: "+",
-      name: "Addition",
-    },
-    {
-      operation: "-",
-      name: "Subtraction",
-    },
-    {
-      operation: "*",
-      name: "Multiplication",
-    },
-    {
-      operation: "/",
-      name: "Division",
-    },
-  ];
 
+function Set({practiceFactId, selectedCategory}) {
+  
+//STATES
+const [operation, setOperation] = useState("")
+//changed intial state to "" 
+const [activeButton, setActiveButton] = useState("")
+
+//VARIABLES
+//QQQQQQQwhere below come from and what is it
+const numberPracticeFactId = Number(practiceFactId)
+    //VARIABLE of ARRAY OF OBJECTS
+const operationsAndNames = [
+    {
+      operation: "+", 
+      name: "Addition", 
+    }, 
+    {
+      operation: "-", 
+      name: "Subtraction", 
+    }, 
+    {
+      operation: "*", 
+      name: "Multiplication", 
+    }, 
+    {
+      operation: "/", 
+      name: "Division", 
+    }, 
+    ]
+
+    const readingTopicButtons = ["Vowels", "Consonants"];
+
+    //changed this: to below it
+  // function handleClick(operationAndName){  
+  //   setActiveButton((prev) => ({
+  //     ...prev,
+  //     operation: operationAndName.operation,
+  //     name: operationAndName.name
+  //   }))
+  //   console.log(operationAndName, activeButton)
+  // }
+
+  //HANDLER
   function handleClick(operationAndName) {
     setActiveButton(operationAndName.name); // Fixed: Set the active button name
     setOperation(operationAndName.operation); // Fixed: Set the operation
     console.log(operationAndName, activeButton);
   }
 
+  function handleReadingClick(topic) {
+    setActiveButton(topic); // Set the active button name
+    console.log(topic, activeButton);
+  }
+
+  //QQQQOTHER FUNCTIONS & 2 MORE VARIABLES???
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -39,6 +66,11 @@ function Set({ practiceFactId, setPracticeFactId, selectedCategory }) {
     }
     return array;
   }
+
+  //is this in new code??? or deleted???
+  // function chooseOperation(opp){
+  //   setOperation(opp)
+  // }
 
   // Generate an array of indices // [0, 1, 2, 3....] //length of array, index of each item in array
   const indices = Array.from({ length: 13 }, (_, index) => index);
@@ -57,9 +89,9 @@ function Set({ practiceFactId, setPracticeFactId, selectedCategory }) {
                 className={style.button}
                 style={{
                   backgroundColor:
-                    activeButton === operationAndName.name ? "yellow" : "red", // Fixed: Compare activeButton with operationAndName.name
+                    activeButton === operationAndName.name ? "yellow" : "red",
                 }}
-                onClick={() => handleClick(operationAndName)} // Fixed: Call handleClick on button click
+                onClick={() => handleClick(operationAndName)}
               >
                 {operationAndName.name}
               </button>
@@ -80,10 +112,8 @@ function Set({ practiceFactId, setPracticeFactId, selectedCategory }) {
                             : index}
                           {operation === "/" ? (
                             <FaDivide />
-                          ) : operation ? (
-                            operation
                           ) : (
-                            "+"
+                            operation || "+"
                           )}
                           {numberPracticeFactId}
                         </div>
@@ -108,14 +138,34 @@ function Set({ practiceFactId, setPracticeFactId, selectedCategory }) {
             </div>
           </div>
         </>
+      ) : selectedCategory === "reading" ? (
+        <>
+          <div className={style.buttonsContainer}>
+            {readingTopicButtons.map((topic, index) => (
+              <button
+                key={index}
+                className={style.button}
+                style={{
+                  backgroundColor: activeButton === topic ? "yellow" : "red",
+                }}
+                onClick={() => handleReadingClick(topic)}
+              >
+                {topic}
+              </button>
+            ))}
+          </div>
+          <div className={style.componentContainer}>
+            {/* Add your reading-related content here */}
+          </div>
+        </>
       ) : (
-        <div>reading</div>
+        <></>
       )}
     </>
   );
 }
 
-export default Set;
+export default Set; 
 
 
 // import { useEffect, useState } from "react";
