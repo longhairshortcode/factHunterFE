@@ -8,6 +8,15 @@ function Practice() {
 const [selectedCategory, setSelectedCategory] = useState(null)
 const [practiceFactId, setPracticeFactId] = useState("1")
 
+const vowelSounds = [
+  "short a sound", "long a sound",
+  "short e sound", "long e sound",
+  "short i sound", "long i sound",
+  "short o sound", "long o sound",
+  "short u sound", "long u sound",
+  "short y sound", "long y sound"
+]
+
   return (
     <div className={style.componentContainer}>
       <div className={style.titleAndLinks}>
@@ -45,22 +54,9 @@ const [practiceFactId, setPracticeFactId] = useState("1")
               </div>
           )}
         </div>
-      )}
-
-
-
-
-
-
-
-
-
-
-        
-    </div>
-      
-      <Set selectedCategory={selectedCategory} practiceFactId={practiceFactId}/>
-      
+      )}    
+    </div>     
+      <Set selectedCategory={selectedCategory} practiceFactId={practiceFactId}/>      
     </div>
   )
 }
