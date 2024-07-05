@@ -11,6 +11,7 @@ function Practice() {
   const [activeReadingButton, setActiveReadingButton] = useState("");
   const [activeMathTopicButton, setActiveMathTopicButton] = useState(null);
   const [activeReadingTopicButton, setActiveReadingTopicButton] = useState(null);
+  
 
   useEffect(() => {
   handleMathTopicClick(0)
@@ -19,6 +20,20 @@ function Practice() {
   function handleMathTopicClick(index){
     setActiveMathTopicButton(index)
   }
+
+  useEffect(() => {
+    handleReadingTopicClick(0)
+    }, [])
+  
+    function handleReadingTopicClick(index){
+      setActiveReadingTopicButton(index)
+    }
+
+    useEffect(() => {
+      setActiveReadingTopicButton(0);
+    }, [activeReadingButton]);
+    
+    
 
   return (
     <div className={style.componentContainer}>
@@ -77,7 +92,15 @@ function Practice() {
                         .map((soundAndName, index) => (
                           <button
                             className={style.soundButton}
+                            style={{
+                              backgroundColor:
+                                activeReadingTopicButton === index ? "yellow" : "lightgrey",
+                            }}
                             key={index + 1}
+                            onClick={() => {
+                              // setPracticeFactId(`${index + 1}`);
+                              handleReadingTopicClick(index)
+                            }}
                           >
                             {soundAndName.emphasis + " " + soundAndName.name}
                           </button>
@@ -88,7 +111,15 @@ function Practice() {
                         .map((soundAndName, index) => (
                           <button
                             className={style.soundButton}
+                            style={{
+                              backgroundColor:
+                                activeReadingTopicButton === index ? "yellow" : "lightgrey",
+                            }}
                             key={index + 1}
+                            onClick={() => {
+                              // setPracticeFactId(`${index + 1}`);
+                              handleReadingTopicClick(index)
+                            }}
                           >
                             {soundAndName.name} sound
                           </button>
