@@ -1,62 +1,46 @@
 import style from "./Set.module.css";
 import { useState } from "react";
 import { FaDivide } from "react-icons/fa6";
+import { useEffect } from "react";
+import { operationsAndNames, soundsAndNames } from "../mathAndReadingData";
 
 
+function Set({practiceFactId, selectedCategory, activeReadingButton, setActiveReadingButton}) {
 
-function Set({practiceFactId, selectedCategory}) {
+  //INITIALIZE
   
 //STATES
 const [operation, setOperation] = useState("")
 //changed intial state to "" 
-const [activeButton, setActiveButton] = useState("")
+const [activeMathButton, setActiveMathButton] = useState("")
 
 //VARIABLES
 //QQQQQQQwhere below come from and what is it
 const numberPracticeFactId = Number(practiceFactId)
     //VARIABLE of ARRAY OF OBJECTS
-const operationsAndNames = [
-    {
-      operation: "+", 
-      name: "Addition", 
-    }, 
-    {
-      operation: "-", 
-      name: "Subtraction", 
-    }, 
-    {
-      operation: "*", 
-      name: "Multiplication", 
-    }, 
-    {
-      operation: "/", 
-      name: "Division", 
-    }, 
-    ]
 
     const readingTopicButtons = ["Vowels", "Consonants"];
 
-    //changed this: to below it
-  // function handleClick(operationAndName){  
-  //   setActiveButton((prev) => ({
-  //     ...prev,
-  //     operation: operationAndName.operation,
-  //     name: operationAndName.name
-  //   }))
-  //   console.log(operationAndName, activeButton)
-  // }
 
   //HANDLER
   function handleClick(operationAndName) {
-    setActiveButton(operationAndName.name); // Fixed: Set the active button name
+    setActiveMathButton(operationAndName.name); // Fixed: Set the active button name
     setOperation(operationAndName.operation); // Fixed: Set the operation
-    console.log(operationAndName, activeButton);
   }
 
   function handleReadingClick(topic) {
-    setActiveButton(topic); // Set the active button name
-    console.log(topic, activeButton);
+    setActiveReadingButton(topic); // Set the active button name
   }
+
+    //USEEFFECT
+    
+    useEffect(() => {
+      handleClick(operationsAndNames[0])
+    }, [])
+
+    useEffect(() => {
+      handleReadingClick(readingTopicButtons[0])
+    }, [])
 
   //QQQQOTHER FUNCTIONS & 2 MORE VARIABLES???
   function shuffleArray(array) {
@@ -89,7 +73,7 @@ const operationsAndNames = [
                 className={style.button}
                 style={{
                   backgroundColor:
-                    activeButton === operationAndName.name ? "yellow" : "red",
+                    activeMathButton === operationAndName.name ? "yellow" : "red",
                 }}
                 onClick={() => handleClick(operationAndName)}
               >
@@ -146,7 +130,7 @@ const operationsAndNames = [
                 key={index}
                 className={style.button}
                 style={{
-                  backgroundColor: activeButton === topic ? "yellow" : "red",
+                  backgroundColor: activeReadingButton === readingTopicButtons[index] ? "yellow" : "red",
                 }}
                 onClick={() => handleReadingClick(topic)}
               >

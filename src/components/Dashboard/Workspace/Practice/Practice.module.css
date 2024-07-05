@@ -28,7 +28,7 @@ height: 120px;
         -1px  1px 0 #000,
          1px  1px 0 #000; 
 }
-.numberButton{
+.numberButton, .soundButton{
     /* border: 2px solid blue; */
     border-radius: 20px;
     font-size: 15px;
