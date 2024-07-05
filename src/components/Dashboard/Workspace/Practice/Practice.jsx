@@ -150,4 +150,4 @@ function Practice() {
   );
 }
 
-export default Practice; sddddv
+export default Practice; sddddvd
