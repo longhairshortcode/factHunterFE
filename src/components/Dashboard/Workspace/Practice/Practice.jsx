@@ -150,4 +150,4 @@ function Practice() {
   );
 }
 
-export default Practice; ss
+export default Practice; ssd
