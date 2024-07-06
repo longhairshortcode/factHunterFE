@@ -149,5 +149,5 @@ function Practice() {
     </div>
   );
 }
-
-export default Practice; sddddvdddddd
+d
+export default Practice; sddddvddddddd
