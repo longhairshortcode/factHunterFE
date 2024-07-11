@@ -4,7 +4,15 @@ import { FaDivide } from "react-icons/fa6";
 import { operationsAndNames, soundsAndNames } from "../mathAndReadingData";
 
 
-function Set({practiceFactId, selectedCategory, activeReadingButton, setActiveReadingButton, selectedSound, selectedEmphasis, setSelectedSound, setSelectedEmphasis }) {
+function Set({
+  practiceFactId, 
+  selectedCategory, 
+  activeReadingButton, 
+  setActiveReadingButton, 
+  selectedSound, 
+  selectedEmphasis, 
+  setSelectedSound, 
+  setSelectedEmphasis }) {
 
   //INITIALIZE
   
