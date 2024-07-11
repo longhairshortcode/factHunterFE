@@ -1,3 +1,4 @@
+ 
 import style from "./Set.module.css";
 import { useState, useEffect } from "react";
 import { FaDivide } from "react-icons/fa6";
@@ -7,19 +8,14 @@ import { operationsAndNames, soundsAndNames } from "../mathAndReadingData";
 function Set({practiceFactId, selectedCategory, activeReadingButton, setActiveReadingButton, selectedSound, selectedEmphasis}) {
 
   //INITIALIZE
-  
-//STATES
-const [operation, setOperation] = useState("")
-//changed intial state to "" 
-const [activeMathButton, setActiveMathButton] = useState("")
 
-//VARIABLES
-//QQQQQQQwhere below come from and what is it
-const numberPracticeFactId = Number(practiceFactId)
-    //VARIABLE of ARRAY OF OBJECTS
+  //STATES
+  const [operation, setOperation] = useState("");
+  const [activeMathButton, setActiveMathButton] = useState("");
 
-    const readingTopicButtons = ["Vowels", "Consonants"];
-
+  //VARIABLES
+  const numberPracticeFactId = Number(practiceFactId);
+  const readingTopicButtons = ["Vowels", "Consonants"];
 
   //HANDLER
   function handleClick(operationAndName) {
@@ -31,17 +27,16 @@ const numberPracticeFactId = Number(practiceFactId)
     setActiveReadingButton(topic); // Set the active button name
   }
 
-    //USEEFFECT
-    
-    useEffect(() => {
-      handleClick(operationsAndNames[0])
-    }, [])
+  //USEEFFECT
+  useEffect(() => {
+    handleClick(operationsAndNames[0]);
+  }, []);
 
-    useEffect(() => {
-      handleReadingClick(readingTopicButtons[0])
-    }, [])
+  useEffect(() => {
+    handleReadingClick(readingTopicButtons[0]);
+  }, []);
 
-  //QQQQOTHER FUNCTIONS & 2 MORE VARIABLES???
+  // Shuffle array function
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -50,12 +45,7 @@ const numberPracticeFactId = Number(practiceFactId)
     return array;
   }
 
-  //is this in new code??? or deleted???
-  // function chooseOperation(opp){
-  //   setOperation(opp)
-  // }
-
-  // Generate an array of indices // [0, 1, 2, 3....] //length of array, index of each item in array
+  // Generate an array of indices
   const indices = Array.from({ length: 13 }, (_, index) => index);
 
   // Shuffle the indices
@@ -144,20 +134,20 @@ const numberPracticeFactId = Number(practiceFactId)
           </div>
           <div className={style.componentContainer}>
             {filteredFlashcards.map((flashcard, index) => (
-                <div className={style.singleCard} key={index}>
-                  <div className={style.flipCard}>
-                    <div className={style.flipCardInner}>
-                      <div className={style.flipCardFront}>
-                        <div className={style.question}>{flashcard.front}</div>
-                      </div>
-                      <div className={style.flipCardBack}>
-                        <div className={style.answer}>{flashcard.back}</div>
-                      </div>
+              <div className={style.singleCard} key={index}>
+                <div className={style.flipCard}>
+                  <div className={style.flipCardInner}>
+                    <div className={style.flipCardFront}>
+                      <div className={style.question}>{flashcard.front}</div>
+                    </div>
+                    <div className={style.flipCardBack}>
+                      <div className={style.answer}>{flashcard.back}</div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
         </>
       ) : (
         <></>
@@ -166,8 +156,7 @@ const numberPracticeFactId = Number(practiceFactId)
   );
 }
 
-export default Set; 
-
+export default Set;
 
 // import { useEffect, useState } from "react";
 // import axios from "axios";
