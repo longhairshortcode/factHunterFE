@@ -164,136 +164,138 @@ function Make() {
 
   return (
     <div className={style.componentContainer}>
-      <div className={style.formContainer}>
-        <form className={style.form} onSubmit={handleSubmit}>
-          <select
-            className={style.subject}
-            name="subject"
-            value={flashcardData.subject}
-            onChange={handleChange}
-            required
-          >
-            <option className={style.pickSubject}>Pick Subject</option>
-            <option className={style.math} value="math">
-              Math
-            </option>
-            <option className={style.reading} value="reading">
-              Reading
-            </option>
-          </select>
-          <select
-            className={style.topic}
-            name="topic"
-            value={flashcardData.topic}
-            onChange={handleChange}
-            required
-          >
-            <option className={style.pickTopic}>Pick Topic</option>
-            {topicsToShow.map((topicToShow, index) => (
-              <option key={index} className={style.topicToShow}>
-                {topicToShow}
+      <div className={style.titleFormContainer}>
+      <p className={style.create}>Create</p>
+        <div className={style.formContainer}>
+          <form className={style.form} onSubmit={handleSubmit}>
+            <select
+              className={style.subject}
+              name="subject"
+              value={flashcardData.subject}
+              onChange={handleChange}
+              required
+            >
+              <option className={style.pickSubject}>Pick Subject</option>
+              <option className={style.math} value="math">
+                Math
               </option>
-            ))}
-          </select>
-          <select
-            className={style.subtopic}
-            name="subtopic"
-            value={flashcardData.subtopic}
-            onChange={handleChange}
-            required
-          >
-            <option className={style.pickSubtopic}>Pick Subtopic</option>
-            {subtopicsToShow.map((subtopicToShow, index) => (
-              <option key={index} className={style.subtopicToShow}>
-                {subtopicToShow}
+              <option className={style.reading} value="reading">
+                Reading
               </option>
-            ))}
-          </select>
-          <input
-            className={style.question}
-            type="text"
-            name="question"
-            value={flashcardData.question}
-            onChange={handleChange}
-            placeholder="Type Question"
-            required
-          />
-          <input
-            type="text"
-            className={style.answer}
-            name="answer"
-            value={flashcardData.answer}
-            onChange={handleChange}
-            placeholder="Type Answer"
-            required
-          />
-          <button className={style.button}>Create Flashcard!</button>
-        </form>
-      </div>
-      <div className={style.mathAndReadingButtonContainer}>
-        <button
-          className={style.mathFlashcardsButton}
-          onClick={() => {
-            setSelectedCategory("math");
-            setChartImage(null);
-            setFlashcardsTopicSubtopic([])
-          }}
-        >
-          Math Flashcards
-        </button>
-        <button
-          className={style.readingFlashcardsButton}
-          onClick={() => {
-            setSelectedCategory("reading");
-            setChartImage(null);
-            setFlashcardsTopicSubtopic([])
-          }}
-        >
-          Reading Flashcards
-        </button>
-      </div>
-{/* // QQQQ IS THIS TOO ADVANCED, DO I NEED SIMPLER CODE? */}
-      {selectedCategory && (
-        <div className={style.categoriesContainer}>
-          {selectedCategory === "math" ? (
-            <>
-              <div className={style.additionFactsCategoryContainer}>
-                <p className={style.additionFactsCategory}>Addition Facts</p>
-                {renderFlashcardButtons("addition")}
-              </div>
-              <div className={style.subtractionFactsCategoryContainer}>
-                <p className={style.subtractionFactsCategory}>Subtraction Facts</p>
-                {renderFlashcardButtons("subtraction")}
-              </div>
-              <div className={style.multiplicationFactsCategoryContainer}>
-                <p className={style.multiplicationFactsCategory}>Multiplication Facts</p>
-                {renderFlashcardButtons("multiplication")}
-              </div>
-              <div className={style.divisionFactsCategoryContainer}>
-                <p className={style.divisionFactsCategory}>Division Facts</p>
-                {renderFlashcardButtons("division")}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={style.vowelsCategoryContainer}>
-                <p className={style.vowelsCategory}>Vowels</p>
-                {renderFlashcardButtons("vowels")}
-              </div>
-              <div className={style.consonantsCategoryContainer}>
-                <p className={style.consonantsCategory}>Consonants</p>
-                {renderFlashcardButtons("consonants")}
-              </div>
-            </>
-          )}
+            </select>
+            <select
+              className={style.topic}
+              name="topic"
+              value={flashcardData.topic}
+              onChange={handleChange}
+              required
+            >
+              <option className={style.pickTopic}>Pick Topic</option>
+              {topicsToShow.map((topicToShow, index) => (
+                <option key={index} className={style.topicToShow}>
+                  {topicToShow}
+                </option>
+              ))}
+            </select>
+            <select
+              className={style.subtopic}
+              name="subtopic"
+              value={flashcardData.subtopic}
+              onChange={handleChange}
+              required
+            >
+              <option className={style.pickSubtopic}>Pick Subtopic</option>
+              {subtopicsToShow.map((subtopicToShow, index) => (
+                <option key={index} className={style.subtopicToShow}>
+                  {subtopicToShow}
+                </option>
+              ))}
+            </select>
+            <input
+              className={style.question}
+              type="text"
+              name="question"
+              value={flashcardData.question}
+              onChange={handleChange}
+              placeholder="Type Question"
+              required
+            />
+            <input
+              type="text"
+              className={style.answer}
+              name="answer"
+              value={flashcardData.answer}
+              onChange={handleChange}
+              placeholder="Type Answer"
+              required
+            />
+            <button className={style.button}>Create Flashcard!</button>
+          </form>
         </div>
-      )}
-
-      <div className={style.chart}>
-        {chartImage && <img src={chartImage} alt={flashcardData.topic} />}
+        <div className={style.mathAndReadingButtonContainer}>
+          <button
+            className={style.mathFlashcardsButton}
+            onClick={() => {
+              setSelectedCategory("math");
+              setChartImage(null);
+              setFlashcardsTopicSubtopic([])
+            }}
+          >
+            Math Flashcards
+          </button>
+          <button
+            className={style.readingFlashcardsButton}
+            onClick={() => {
+              setSelectedCategory("reading");
+              setChartImage(null);
+              setFlashcardsTopicSubtopic([])
+            }}
+          >
+            Reading Flashcards
+          </button>
+        </div>
+  {/* // QQQQ IS THIS TOO ADVANCED, DO I NEED SIMPLER CODE? */}
+        {selectedCategory && (
+          <div className={style.categoriesContainer}>
+            {selectedCategory === "math" ? (
+              <>
+                <div className={style.additionFactsCategoryContainer}>
+                  <p className={style.additionFactsCategory}>Addition Facts</p>
+                  {renderFlashcardButtons("addition")}
+                </div>
+                <div className={style.subtractionFactsCategoryContainer}>
+                  <p className={style.subtractionFactsCategory}>Subtraction Facts</p>
+                  {renderFlashcardButtons("subtraction")}
+                </div>
+                <div className={style.multiplicationFactsCategoryContainer}>
+                  <p className={style.multiplicationFactsCategory}>Multiplication Facts</p>
+                  {renderFlashcardButtons("multiplication")}
+                </div>
+                <div className={style.divisionFactsCategoryContainer}>
+                  <p className={style.divisionFactsCategory}>Division Facts</p>
+                  {renderFlashcardButtons("division")}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={style.vowelsCategoryContainer}>
+                  <p className={style.vowelsCategory}>Vowels</p>
+                  {renderFlashcardButtons("vowels")}
+                </div>
+                <div className={style.consonantsCategoryContainer}>
+                  <p className={style.consonantsCategory}>Consonants</p>
+                  {renderFlashcardButtons("consonants")}
+                </div>
+              </>
+            )}
+          </div>
+        )}
+</div>
+        <div className={style.chart}>
+          {chartImage && <img src={chartImage} alt={flashcardData.topic} />}
+        </div>
+        <CreatedSet topicAndSubtopic={topicAndSubtopic} fetchTrigger={fetchTrigger} flashcardsTopicSubtopic={flashcardsTopicSubtopic}  setFlashcardsTopicSubtopic={setFlashcardsTopicSubtopic} />
       </div>
-      <CreatedSet topicAndSubtopic={topicAndSubtopic} fetchTrigger={fetchTrigger} flashcardsTopicSubtopic={flashcardsTopicSubtopic}  setFlashcardsTopicSubtopic={setFlashcardsTopicSubtopic} />
-    </div>
   );
 }
 
