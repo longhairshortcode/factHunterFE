@@ -1,8 +1,8 @@
 import style from "./Practice.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Set from "./Set/Set.jsx";
 import { soundsAndNames } from "./mathAndReadingData.jsx";
-import { useEffect } from "react";
+
 
 function Practice() {
   const [selectedCategory, setSelectedCategory] = useState(null);
