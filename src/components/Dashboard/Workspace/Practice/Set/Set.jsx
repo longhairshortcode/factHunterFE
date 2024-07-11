@@ -1,11 +1,10 @@
 import style from "./Set.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaDivide } from "react-icons/fa6";
-import { useEffect } from "react";
 import { operationsAndNames, soundsAndNames } from "../mathAndReadingData";
 
 
-function Set({practiceFactId, selectedCategory, activeReadingButton, setActiveReadingButton}) {
+function Set({practiceFactId, selectedCategory, activeReadingButton, setActiveReadingButton, selectedSound, selectedEmphasis}) {
 
   //INITIALIZE
   
@@ -61,6 +60,11 @@ const numberPracticeFactId = Number(practiceFactId)
 
   // Shuffle the indices
   const shuffledIndices = shuffleArray(indices);
+
+  const filteredFlashcards = soundsAndNames
+    .filter((soundAndName) => soundAndName.name === selectedSound && soundAndName.emphasis === selectedEmphasis)
+    .map((soundAndName) => soundAndName.flashcards)
+    .flat();
 
   return (
     <>
