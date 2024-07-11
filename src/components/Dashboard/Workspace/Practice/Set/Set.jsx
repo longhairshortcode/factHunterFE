@@ -1,4 +1,3 @@
- 
 import style from "./Set.module.css";
 import { useState, useEffect } from "react";
 import { FaDivide } from "react-icons/fa6";

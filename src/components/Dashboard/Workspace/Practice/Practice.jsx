@@ -7,7 +7,7 @@ function Practice() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [practiceFactId, setPracticeFactId] = useState("1");
   const [activeReadingButton, setActiveReadingButton] = useState("Vowels"); // Initialize with "Vowels"
-  const [activeMathTopicButton, setActiveMathTopicButton] = useState(null);
+  const [activeMathTopicButton, setActiveMathTopicButton] = useState(0); // Initialize with index 0
   const [activeReadingTopicButton, setActiveReadingTopicButton] = useState(0); // Initialize with index 0
   const [selectedSound, setSelectedSound] = useState("short a"); // Initialize with "short a"
   const [selectedEmphasis, setSelectedEmphasis] = useState("short"); // Initialize with "short"
