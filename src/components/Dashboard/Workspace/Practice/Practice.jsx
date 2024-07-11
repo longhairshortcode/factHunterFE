@@ -1,40 +1,34 @@
 import style from "./Practice.module.css";
-import { useState, useEffect } from "react";
-import Set from "./Set/Set.jsx";
-import { soundsAndNames } from "./mathAndReadingData.jsx";
-
+import { useState } from "react";
+import Set from "./Set/Set";
+import { soundsAndNames } from "./mathAndReadingData";
 
 function Practice() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [practiceFactId, setPracticeFactId] = useState("1");
-  // const [readingSubcategory, setReadingSubcategory] = useState(null);
-  const [activeReadingButton, setActiveReadingButton] = useState("");
+  const [activeReadingButton, setActiveReadingButton] = useState("Vowels"); // Initialize with "Vowels"
   const [activeMathTopicButton, setActiveMathTopicButton] = useState(null);
-  const [activeReadingTopicButton, setActiveReadingTopicButton] = useState(null);
-  const [selectedSound, setSelectedSound] = useState(null);
-  const [selectedEmphasis, setSelectedEmphasis] = useState(null);
+  const [activeReadingTopicButton, setActiveReadingTopicButton] = useState(0); // Initialize with index 0
+  const [selectedSound, setSelectedSound] = useState("short a"); // Initialize with "short a"
+  const [selectedEmphasis, setSelectedEmphasis] = useState("short"); // Initialize with "short"
 
-  useEffect(() => {
-  handleMathTopicClick(0)
-  }, [])
-
-  function handleMathTopicClick(index){
-    setActiveMathTopicButton(index)
+  function handleMathTopicClick(index) {
+    setActiveMathTopicButton(index);
   }
 
-  useEffect(() => {
-    handleReadingTopicClick(0)
-    }, [])
-  
-    function handleReadingTopicClick(index){
-      setActiveReadingTopicButton(index)
-    }
+  function handleReadingTopicClick(index) {
+    setActiveReadingTopicButton(index);
+  }
 
-    useEffect(() => {
+  function handleCategoryClick(category) {
+    setSelectedCategory(category);
+    if (category === "reading") {
+      setActiveReadingButton("Vowels");
       setActiveReadingTopicButton(0);
-    }, [activeReadingButton]);
-    
-    
+      setSelectedSound("a");
+      setSelectedEmphasis("short");
+    }
+  }
 
   return (
     <div className={style.componentContainer}>
@@ -43,17 +37,13 @@ function Practice() {
         <div className={style.mathAndReadingButtonContainer}>
           <button
             className={style.mathFlashcardsButton}
-            onClick={() => {
-              setSelectedCategory("math");
-            }}
+            onClick={() => handleCategoryClick("math")}
           >
             Math Flashcards
           </button>
           <button
             className={style.readingFlashcardsButton}
-            onClick={() => {
-              setSelectedCategory("reading");
-            }}
+            onClick={() => handleCategoryClick("reading")}
           >
             Reading Flashcards
           </button>
@@ -76,7 +66,7 @@ function Practice() {
                         key={index + 1}
                         onClick={() => {
                           setPracticeFactId(`${index + 1}`);
-                          handleMathTopicClick(index)
+                          handleMathTopicClick(index);
                         }}
                       >
                         {index + 1} Facts
@@ -97,11 +87,11 @@ function Practice() {
                               backgroundColor:
                                 activeReadingTopicButton === index ? "yellow" : "lightgrey",
                             }}
-                            key={index + 1}
+                            key={index}
                             onClick={() => {
                               setSelectedSound(soundAndName.name);
                               setSelectedEmphasis(soundAndName.emphasis);
-                              handleReadingTopicClick(index)
+                              handleReadingTopicClick(index);
                             }}
                           >
                             {soundAndName.emphasis + " " + soundAndName.name}
@@ -117,26 +107,17 @@ function Practice() {
                               backgroundColor:
                                 activeReadingTopicButton === index ? "yellow" : "lightgrey",
                             }}
-                            key={index + 1}
+                            key={index}
                             onClick={() => {
                               setSelectedSound(soundAndName.name);
                               setSelectedEmphasis(soundAndName.emphasis);
-                              handleReadingTopicClick(index)
+                              handleReadingTopicClick(index);
                             }}
                           >
                             {soundAndName.name} sound
                           </button>
                         ))
-                    : soundsAndNames
-                        .filter((soundAndName) => soundAndName.soundType === "vowel")
-                        .map((soundAndName, index) => (
-                          <button
-                            className={style.soundButton}
-                            key={index + 1}
-                          >
-                            {soundAndName.emphasis + " " + soundAndName.name}
-                          </button>
-                        ))}
+                    : null}
                 </div>
               </div>
             )}
