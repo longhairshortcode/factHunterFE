@@ -131,6 +131,8 @@ function Practice() {
         setActiveReadingButton={setActiveReadingButton}
         selectedSound={selectedSound}
         selectedEmphasis={selectedEmphasis}
+        setSelectedSound={setSelectedSound}
+        setSelectedEmphasis={setSelectedEmphasis}
       />
     </div>
   );
