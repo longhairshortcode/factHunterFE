@@ -42,7 +42,7 @@ const numberPracticeFactId = Number(practiceFactId)
   function handleReadingClick(topic) {
     setActiveReadingButton(topic); // Set the active button name
     if (topic === "Vowels") {
-      setSelectedSound("short a");
+      setSelectedSound("a");
       setSelectedEmphasis("short");
     } else if (topic === "Consonants") {
       setSelectedSound("b");
@@ -59,6 +59,7 @@ const numberPracticeFactId = Number(practiceFactId)
     useEffect(() => {
       handleReadingClick(readingTopicButtons[0])
     }, [])
+    
 
   //QQQQOTHER FUNCTIONS & 2 MORE VARIABLES???
   function shuffleArray(array) {
