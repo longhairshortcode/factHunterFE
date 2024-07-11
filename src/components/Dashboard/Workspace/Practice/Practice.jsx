@@ -11,7 +11,8 @@ function Practice() {
   const [activeReadingButton, setActiveReadingButton] = useState("");
   const [activeMathTopicButton, setActiveMathTopicButton] = useState(null);
   const [activeReadingTopicButton, setActiveReadingTopicButton] = useState(null);
-  
+  const [selectedSound, setSelectedSound] = useState(null);
+  const [selectedEmphasis, setSelectedEmphasis] = useState(null);
 
   useEffect(() => {
   handleMathTopicClick(0)
@@ -98,7 +99,8 @@ function Practice() {
                             }}
                             key={index + 1}
                             onClick={() => {
-                              // setPracticeFactId(`${index + 1}`);
+                              setSelectedSound(soundAndName.name);
+                              setSelectedEmphasis(soundAndName.emphasis);
                               handleReadingTopicClick(index)
                             }}
                           >
@@ -117,7 +119,8 @@ function Practice() {
                             }}
                             key={index + 1}
                             onClick={() => {
-                              // setPracticeFactId(`${index + 1}`);
+                              setSelectedSound(soundAndName.name);
+                              setSelectedEmphasis(soundAndName.emphasis);
                               handleReadingTopicClick(index)
                             }}
                           >
@@ -145,6 +148,8 @@ function Practice() {
         practiceFactId={practiceFactId}
         activeReadingButton={activeReadingButton}
         setActiveReadingButton={setActiveReadingButton}
+        selectedSound={selectedSound}
+        selectedEmphasis={selectedEmphasis}
       />
     </div>
   );
