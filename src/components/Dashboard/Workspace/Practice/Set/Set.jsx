@@ -142,7 +142,7 @@ const numberPracticeFactId = Number(practiceFactId)
               </button>
             ))}
           </div>
-          <div className={style.componentContainer}>
+          <div className={style.setContainer}>
             {filteredFlashcards.map((flashcard, index) => (
                 <div className={style.singleCard} key={index}>
                   <div className={style.flipCard}>
