@@ -143,8 +143,21 @@ const numberPracticeFactId = Number(practiceFactId)
             ))}
           </div>
           <div className={style.componentContainer}>
-            {/* Add your reading-related content here */}
-          </div>
+            {filteredFlashcards.map((flashcard, index) => (
+                <div className={style.singleCard} key={index}>
+                  <div className={style.flipCard}>
+                    <div className={style.flipCardInner}>
+                      <div className={style.flipCardFront}>
+                        <div className={style.question}>{flashcard.front}</div>
+                      </div>
+                      <div className={style.flipCardBack}>
+                        <div className={style.answer}>{flashcard.back}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
         </>
       ) : (
         <></>

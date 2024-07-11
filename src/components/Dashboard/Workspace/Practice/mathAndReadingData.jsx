@@ -29,161 +29,193 @@ export const operationsAndNames = [
     {
       soundType: "vowel",
       emphasis: "long",
-      name: "a"
+      name: "a",
+      flashcards:["cape", "rate", "date"]
     },
     {
       soundType: "vowel",
       emphasis: "short",
-      name: "e"
+      name: "e",
+      flashcards:["pet", "set", "bet"]
     },
     {
       soundType: "vowel",
       emphasis: "long",
-      name: "e"
+      name: "e",
+      flashcards:["tee", "see", "bee"]
     },
     {
       soundType: "vowel",
       emphasis: "short",
-      name: "i"
+      name: "i",
+      flashcards:["mit", "bit", "sit"]
     },
     {
       soundType: "vowel",
       emphasis: "long",
-      name: "i"
+      name: "i",
+      flashcards:["time", "lime", "fine"]
     },
     {
       soundType: "vowel",
       emphasis: "short",
-      name: "o"
+      name: "o",
+      flashcards:["pot", "bot", "hot"]
     },
     {
       soundType: "vowel",
       emphasis: "long",
-      name: "o"
+      name: "o",
+      flashcards:["pole", "sold", "told"]
     },
     {
       soundType: "vowel",
       emphasis: "short",
-      name: "u"
+      name: "u",
+      flashcards:["cut", "but", "mut"]
     },
     {
       soundType: "vowel",
       emphasis: "long",
-      name: "u"
+      name: "u",
+      flashcards:["cute", "mute"]
     },
     {
       soundType: "vowel",
       emphasis: "short",
-      name: "y"
+      name: "y",
+      flashcards:["yes", "you", "yip"]
     },
     {
       soundType: "vowel",
       emphasis: "long",
-      name: "y"
+      name: "y",
+      flashcards:["my", "by", "fly"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "b"
+      name: "b",
+      flashcards:["bat", "bet", "bib"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "c"
+      name: "c",
+      flashcards:["cot", "cut", "cat"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "d"
+      name: "d",
+      flashcards:["led", "med", "red"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "f"
+      name: "f",
+      flashcards:["fun", "fat", "fit"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "g"
+      name: "g",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "h"
+      name: "h",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "j"
+      name: "j",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "k"
+      name: "k",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "l"
+      name: "l",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "m"
+      name: "m",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "n"
+      name: "n",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "p"
+      name: "p",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "q"
+      name: "q",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "r"
+      name: "r",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "s"
+      name: "s",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "t"
+      name: "t",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "v"
+      name: "v",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "w"
+      name: "w",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "x"
+      name: "x",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "y"
+      name: "y",
+      flashcards:["TBD"]
     },
     {
       soundType: "consonant",
       emphasis: "",
-      name: "z"
+      name: "z",
+      flashcards:["TBD"]
     }
   ];
