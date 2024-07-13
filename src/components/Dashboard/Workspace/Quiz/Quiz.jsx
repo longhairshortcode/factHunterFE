@@ -1,9 +1,14 @@
+import style from "./Quiz.module.css"
 
 
 function Quiz() {
   return (
-    <div>
-            <p>This is quiz!</p>
+    <div className={style.componentContainer}>
+      <div className={style.titleAndButtonsContainer}>
+        <p className={style.title}>Quiz</p>
+
+      </div>
+    
     </div>
   )
 }

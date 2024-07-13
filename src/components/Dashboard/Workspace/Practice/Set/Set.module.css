@@ -32,12 +32,11 @@
   background-color:  rgb(68, 68, 179);
 }
 
-/* .button{
-  background-color: rgb(221, 37, 56);
-  color: white;
-  padding: 5px;
-  border-radius: 3px;
-} */
+.button{
+  border: 3px solid black;
+  padding: 4px;
+  margin-top: 25px;
+}
 
 
 

@@ -1,5 +1,5 @@
 .componentContainer{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -8,8 +8,8 @@
 }
 .titleFormContainer{
     display: flex;
-    border: 2px solid red;
-    height: 150px;
+    /* border: 2px solid red; */
+    height: 200px;
     background-color:  rgb(238, 183, 2);
     display: flex;
     flex-direction: column;
@@ -26,7 +26,8 @@
         -1px -1px 0 #000,  
          1px -1px 0 #000,
         -1px  1px 0 #000,
-         1px  1px 0 #000; 
+         1px  1px 0 #000;
+    margin-left: 9px; 
 }
 
 
@@ -42,8 +43,8 @@
     gap: 20px;
 }
 .readingFlashcardsButton, .mathFlashcardsButton{
-    background-color: white;
-    color: red;
+    background-color: red;
+    color: black;
     font-weight: bold;
     padding: 5px;
     /* border-radius: 3px; */
@@ -58,11 +59,11 @@
 }
 
 .categoriesContainer{
-   border: 4px solid black;
+   /* border: 4px solid black; */
    display: flex; 
    justify-content: space-between;
    padding: 0 50px;
-   background-color: white;
+   background-color: rgb(238, 183, 2);
    height: 75px;
    /* gap: 10px; */
 
@@ -73,10 +74,12 @@
     letter-spacing: 2px;
     /* background-color: goldenrod; */
     color: red;
+    padding: 0 7px;
 }
 
 .additionFactsCategoryContainer, .subtractionFactsCategoryContainer, .multiplicationFactsCategoryContainer, .divisionFactsCategoryContainer{
-    border: 2px solid green;
+    border: 2px solid black;
+    background-color: white;
     width: 400px;
 }
 
@@ -89,4 +92,9 @@
     /* border: 5px solid blue; */
     width: 100%;
     height: 100%;
+}
+
+.flashcardsButton{
+   font-weight: bold; 
+   margin: 2.5px;
 }

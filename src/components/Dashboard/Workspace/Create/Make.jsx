@@ -40,6 +40,8 @@ function Make() {
   const readingTopics = ["vowels", "consonants"];
   const mathSubtopics = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const readingSubtopics = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o'];
+  const readingVowelSubtopics = ['long a', 'short a', 'long e', 'short e', 'long i', 'short i', 'long o', 'short o'];
+  const readingConsonantSubtopics = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', ];
 
   //USEEFFECTS
   useEffect(() => {
@@ -152,11 +154,11 @@ function Make() {
     );
 
     return uniqueSubtopics.map((subtopic, index) => (
-      <button key={index} onClick={() => setTopicAndSubtopic(prev => ({
+      <button  className={style.flashcardsButton} key={index} onClick={() => setTopicAndSubtopic(prev => ({
         ...prev,
         topic: topic,
         subtopic: subtopic
-      }))} className={style.flashcardButton}>
+      }))}>
         {`${subtopic} Facts`}
       </button>
     ));
