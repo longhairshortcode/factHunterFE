@@ -6,6 +6,8 @@ import style from "./Quiz.module.css"
 function Quiz() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  const numberFacts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
   function handleCategoryClick(category) {
     setSelectedCategory(category);
   } 
@@ -33,10 +35,24 @@ function Quiz() {
         <div className={style.categoriesContainer}>
           {selectedCategory === "math" && (
             <div>
-              <p>Addition</p>
-              <p>Subtraction</p>
-              <p>Multiplication</p>
-              <p>Division</p>
+              <div className={style.singleCategoryContainer}>
+                <p>Addition</p>
+                {numberFacts.map((numberFact, index) => (
+                  <span key={index + 1}>{numberFact}</span>
+                ))}
+                <p>Subtraction</p>
+                {numberFacts.map((numberFact, index) => (
+                  <span key={index + 1}>{numberFact}</span>
+                ))}
+                <p>Multiplication</p>
+                {numberFacts.map((numberFact, index) => (
+                  <span key={index + 1}>{numberFact}</span>
+                ))}
+                <p>Division</p>
+                {numberFacts.map((numberFact, index) => (
+                  <span key={index + 1}>{numberFact}</span>
+                ))}
+              </div>
             </div>
           )}
           {selectedCategory === "reading" && (
