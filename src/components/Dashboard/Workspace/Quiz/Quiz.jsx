@@ -17,9 +17,9 @@ function Quiz() {
 
   return (
     <div className={style.componentContainer}>
-      <div className={style.titleAndButtonsContainer}>
-        <p className={style.title}>Quiz</p>
-        <div className={style.mathAndReadingButtonContainer}>
+      <div className={style.titleAndQuizzesCategoryContainer}>
+        <p className={style.titleQuiz}>Quiz</p>
+        <div className={style.mathAndReadingQuizButtonContainer}>
           <button
             className={style.mathQuizButton}
             onClick={() => handleCategoryClick("math")}
@@ -33,32 +33,44 @@ function Quiz() {
             Reading Quizzes
           </button>
         </div>
-         <div className={style.categoriesAndPassedContainer}>   
-          <div className={style.categoriesContainer}>
+
+         <div className={style.allAndPassedContainer}>   
             {selectedCategory === "math" && (
-              <div>
+              <div className={style.allContainer}>
                 <p className={style.allTitle}>ALL QUIZZES</p>
-                <div className={style.singleCategoryContainer}>
-                  <p className={style.singleCategory}>Addition
-                  {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
+                <div className={style.allSingleCategoryContainer}>
+                  <div className={style.singleCategoryAndButtons}>
+                    <p className={style.categoryTitle}>Addition</p>
+                    <div>
+                    {numberFacts.map((numberFact, index) => (
+                      <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                    ))}
+                    </div>
+                  </div>
+                  <div className={style.singleCategoryAndButtons}>  
+                    <p className={style.categoryTitle}>Subtraction</p>
+                    <div>
+                    {numberFacts.map((numberFact, index) => (
+                      <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
-                  </p>
-                  <p className={style.singleCategory}>Subtraction
+                    </div>
+                  </div>
+                  <div className={style.singleCategoryAndButtons}>
+                  <p className={style.categoryTitle}>Multiplication</p>
+                  <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
+                    <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
-                  </p>
-                  <p className={style.singleCategory}>Multiplication
+                  </div>
+                  </div>
+                  <div className={style.singleCategoryAndButtons}>
+                  <p className={style.categoryTitle}>Division</p>
+                  <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
+                    <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
-                  </p>
-                  <p className={style.singleCategory}>Division
-                  {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
-                  ))}
-                  </p>
+                  </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -74,47 +86,50 @@ function Quiz() {
                   ))}
               </div>
             )}
-          </div>
-          <div className={style.passedContainer}>
-            {selectedCategory === "math" && (
-              <div>
-                <p className={style.passedTitle}>PASSED QUIZZES</p>
-                <div className={style.singleCategoryContainer}>
-                  <p className={style.singleCategory}>Addition</p>
-                  {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
+
+          
+          {selectedCategory === "math" && (
+           <div className={style.passedContainer}> 
+              <p className={style.passedTitle}>PASSED QUIZZES</p>
+                <div className={style.allSingleCategoryContainer}>
+                  <div className={style.singleCategoryAndButtons}>
+                    <p className={style.categoryTitle}>Addition</p>
+                    <div>
+                    {numberFacts.map((numberFact, index) => (
+                      <button className={style.categoryButton}key={index + 1}>{numberFact}</button>
+                    ))}
+                    </div>
+                  </div>
+                  <div className={style.singleCategoryAndButtons}>  
+                    <p className={style.categoryTitle}>Subtraction</p>
+                    <div>
+                    {numberFacts.map((numberFact, index) => (
+                      <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
-                  <p className={style.singleCategory}>Subtraction</p>
+                    </div>
+                  </div>
+                  <div className={style.singleCategoryAndButtons}>
+                  <p className={style.categoryTitle}>Multiplication</p>
+                  <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
+                    <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
-                  <p className={style.singleCategory}>Multiplication</p>
+                  </div>
+                  </div>
+                  <div className={style.singleCategoryAndButtons}>
+                  <p className={style.categoryTitle}>Division</p>
+                  <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
+                    <button className={style.categoryButton}key={index + 1}>{numberFact}</button>
                   ))}
-                  <p className={style.singleCategory}>Division</p>
-                  {numberFacts.map((numberFact, index) => (
-                    <button key={index + 1}>{numberFact}</button>
-                  ))}
+                  </div>
+                  </div>
                 </div>
               </div>
-            )}
-            {selectedCategory === "reading" && (
-              <div>
-                <p>Vowels</p>
-                {vowels.map((vowel, index) => (
-                    <span key={index + 1}>{vowel}</span>
-                  ))}
-                <p>Consonants</p>
-                {consonants.map((consonant, index) => (
-                    <span key={index + 1}>{consonant}</span>
-                  ))}
-              </div>
-            )}
+            )}  
           </div>
           </div>
-         </div>
-      </div>
+       </div>
   );
 }
 

@@ -12,12 +12,12 @@ body, html {
     
 }
 
-.titleAndButtonsContainer{
-    height: 230px;
+.titleAndQuizzesCategoryContainer{
+    height: 260px;
     background-color:  rgb(108, 144, 65);
 }
 
-.title{
+.titleQuiz{
     font-size: 50px;
     font-weight: bold;
     color: white;
@@ -29,23 +29,48 @@ body, html {
     margin-left: 9px;
 }
 
-.singleCategory{
-    font-size: 14px;
-    color: white;
-}
-
-.categoriesAndPassedContainer{
-    border: 2px solid lavender;
+.allAndPassedContainer{
+    border: 2px solid red;
     display: flex;
     justify-content: center;
     gap: 40px;
 }
 
-.categoriesContainer{
-    /* border: 2px solid blue; */
-    /* margin-top: 5px; */
+
+.allContainer, .passedContainer{
+    border: 3px solid brown;
 }
 
-.passedContainer{
-    /* border: 2px solid red; */
+.allTitle, .passedTitle{
+    color: white;
+    font-size: 22px;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
+
+.allSingleCategoryContainer{
+    border: 3px lime solid;
+   }
+   
+.singleCategoryAndButtons{
+    display: flex;
+    border: 2px solid black;
+    width: 500px;
+}
+
+.categoryTitle{
+    font-size: 14px;
+    color: blue;
+    width: 90px;
+    border: 2px solid hotpink;
+}
+
+.categoryButton{
+    padding: 6px 10px;
+}
+
+
+
