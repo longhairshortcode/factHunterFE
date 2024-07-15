@@ -1,5 +1,5 @@
 
-assssimport { useState } from "react";
+asssssimport { useState } from "react";
 import style from "./Quiz.module.css"
 
 
