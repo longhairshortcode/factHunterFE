@@ -1,4 +1,4 @@
-dsimport { useState } from "react";
+dssimport { useState } from "react";
 import style from "./Quiz.module.css"
 
 
