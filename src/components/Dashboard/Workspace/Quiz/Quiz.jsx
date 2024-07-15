@@ -1,5 +1,6 @@
 import { useState } from "react";
 import style from "./Quiz.module.css"
+import QuizSet from "./QuizSet/QuizSet";
 
 
 function Quiz() {
@@ -128,6 +129,7 @@ function Quiz() {
             )}  
           </div>
           </div>
+          <QuizSet/>
        </div>
   );
 }
