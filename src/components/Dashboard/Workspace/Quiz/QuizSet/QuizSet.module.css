@@ -1,0 +1,46 @@
+.componentContainer{
+  border: 6px solid blue;
+  height: calc(100vh - 260px);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+.singleCard{
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 6px;
+    width: 500px;
+    height: 350px;
+    margin-top: 30px;
+}
+
+.question{
+    border: 2px solid brown;
+    height: 65%;
+    color: black;
+    font-size: 100px;
+}
+
+.answerFillInContainer{
+    border: 2px solid hotpink;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+.answerFillIn{
+    border: 2px solid green;
+    width: 80px;
+    height: 80px;
+    font-size: 70px;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.next{
+    height: fit-content;
+    padding: 7px;
+    margin-top: 32px;
+    margin-left: 20px;
+}

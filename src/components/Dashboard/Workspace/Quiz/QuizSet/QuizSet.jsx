@@ -1,45 +1,65 @@
 import style from "./QuizSet.module.css"
+import { mathQuizzes } from "./data"
+import { useState } from "react"
 
 function QuizSet() {
+
+const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+const [answerData, setAnswerData] = useState({
+  answer: ""
+})
+
+function nextQuestion() {
+  if (answerData.answer === ""){
+    return;
+  }
+  setCurrentQuestionIndex(currentQuestionIndex + 1)
+  setAnswerData((prev) => ({
+    ...prev,
+    answer : ""
+  }))
+}
+
+
+// function handleChange(e){
+//   const [value] = e.target
+//   setAnswerData((prev) => ({
+//     ...prev,
+//     answer : value 
+//   }))
+// }
+
+function handleChange(e){
+  const quizAnswer = e.target.value 
+  setAnswerData((prev) => ({
+    ...prev,
+    answer : quizAnswer
+  }))
+}
+
+
+
   return (
-    <div className={style.componentContainer}>
-            <div className={style.setsContainer}>
-              {shuffledIndices.map((index) => (
-                <div className={style.singleCard} key={index}>
-                  <div className={style.flipCard}>
-                    <div className={style.flipCardInner}>
-                      <div className={style.flipCardFront}>
-                        <div className={style.question}>
-                          {operation === "/"
-                            ? index * numberPracticeFactId
-                            : operation === "-"
-                            ? numberPracticeFactId + index
-                            : index}
-                          {operation === "/" ? (
-                            <FaDivide />
-                          ) : (
-                            operation || "+"
-                          )}
-                          {numberPracticeFactId}
-                        </div>
-                      </div>
-                      <div className={style.flipCardBack}>
-                        <div className={style.answer}>
-                          {operation === "/"
-                            ? index
-                            : operation === "-"
-                            ? index
-                            : operation === "*"
-                            ? index * numberPracticeFactId
-                            : operation === "+"
-                            ? index + numberPracticeFactId
-                            : index + numberPracticeFactId}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+          <div className={style.componentContainer}>
+            <div className={style.singleCard}>
+              <div className={style.question}>
+                {mathQuizzes.addition.one[currentQuestionIndex].question}
+              </div>
+              <div className={style.answerFillInContainer}>
+                <input 
+                  type="text"
+                  name="answer"
+                  value={answerData.answer}
+                  className={style.answerFillIn}
+                  onChange={handleChange}
+                  placeholder="?"/>
+                <button 
+                  className={style.next}
+                  onClick={nextQuestion}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
   )

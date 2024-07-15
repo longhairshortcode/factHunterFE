@@ -1,6 +1,6 @@
 export const mathQuizzes = {
    addition: {
-     "1": [
+     one: [
        {
          question: "1 + 1",
          answer: "2"
@@ -50,7 +50,7 @@ export const mathQuizzes = {
          answer: "13"
        }
      ],
-     "2": [
+     two: [
        {
          question: "2 + 1",
          answer: "3"
@@ -100,7 +100,7 @@ export const mathQuizzes = {
          answer: "14"
        }
      ],
-     "3": [
+     three: [
        {
          question: "3 + 1",
          answer: "4"
@@ -150,7 +150,7 @@ export const mathQuizzes = {
          answer: "15"
        }
      ],
-     "4": [
+     four: [
        {
          question: "4 + 1",
          answer: "5"
@@ -200,7 +200,7 @@ export const mathQuizzes = {
          answer: "16"
        }
      ],
-     "5": [
+     five: [
        {
          question: "5 + 1",
          answer: "6"
@@ -250,7 +250,7 @@ export const mathQuizzes = {
          answer: "17"
        }
      ],
-     "6": [
+     six: [
        {
          question: "6 + 1",
          answer: "7"
@@ -300,7 +300,7 @@ export const mathQuizzes = {
          answer: "18"
        }
      ],
-     "7": [
+     seven: [
        {
          question: "7 + 1",
          answer: "8"
@@ -350,7 +350,7 @@ export const mathQuizzes = {
          answer: "19"
        }
      ],
-     "8": [
+     eight: [
        {
          question: "8 + 1",
          answer: "9"
@@ -400,7 +400,7 @@ export const mathQuizzes = {
          answer: "20"
        }
      ],
-     "9": [
+     nine: [
        {
          question: "9 + 1",
          answer: "10"
@@ -450,7 +450,7 @@ export const mathQuizzes = {
          answer: "21"
        }
      ],
-     "10": [
+     ten: [
        {
          question: "10 + 1",
          answer: "11"
@@ -500,7 +500,7 @@ export const mathQuizzes = {
          answer: "22"
        }
      ],
-     "11": [
+     eleven: [
        {
          question: "11 + 1",
          answer: "12"
@@ -550,7 +550,7 @@ export const mathQuizzes = {
          answer: "23"
        }
      ],
-     "12": [
+     twelve: [
        {
          question: "12 + 1",
          answer: "13"
