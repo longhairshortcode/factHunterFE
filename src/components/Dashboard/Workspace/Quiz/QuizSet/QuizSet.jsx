@@ -6,16 +6,28 @@ function QuizSet({targetQuiz}) {
 
 const {numberFact, operation} = targetQuiz
 
-const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+const twelveIndices = Array(12).fill(null)
+const randomQuestion = Math.floor(Math.random() * (twelveIndices.length))
+
+const [currentQuestionIndex, setCurrentQuestionIndex] = useState(randomQuestion)
 const [answerData, setAnswerData] = useState({
   answer: ""
 })
+
+
+// function shuffleArray(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+//   return array;
+// }
 
 function nextQuestion() {
   if (answerData.answer === ""){
     return;
   }
-  setCurrentQuestionIndex(currentQuestionIndex + 1)
+  setCurrentQuestionIndex(randomQuestion)
   setAnswerData((prev) => ({
     ...prev,
     answer : ""
