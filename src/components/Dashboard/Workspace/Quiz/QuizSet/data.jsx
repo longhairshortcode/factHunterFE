@@ -334,14 +334,14 @@ export const mathQuizzes = {
       { question: "23 - 11", answer: "12" }
     ],
     twelve: [
-      { question: "12 - 12", answer: "0" }
-      { question: "13 - 12", answer: "1" }
-      { question: "14 - 12", answer: "2" }
-      { question: "15 - 12", answer: "3" }
-      { question: "16 - 12", answer: "4" }
-      { question: "17 - 12", answer: "5" }
-      { question: "18 - 12", answer: "6" }
-      { question: "19 - 12", answer: "7" }
+      { question: "12 - 12", answer: "0" },
+      { question: "13 - 12", answer: "1" },
+      { question: "14 - 12", answer: "2" },
+      { question: "15 - 12", answer: "3" },
+      { question: "16 - 12", answer: "4" },
+      { question: "17 - 12", answer: "5" },
+      { question: "18 - 12", answer: "6" },
+      { question: "19 - 12", answer: "7" },
       { question: "20 - 12", answer: "8" }
       { question: "21 - 12", answer: "9" }
       { question: "22 - 12", answer: "10" }
