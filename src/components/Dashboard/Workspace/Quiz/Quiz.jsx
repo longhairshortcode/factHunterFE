@@ -70,7 +70,7 @@ function Quiz() {
                     <p className={style.categoryTitle}>Subtraction</p>
                     <div>
                     {numberFacts.map((numberFact, index) => (
-                      <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                      <button onClick={() => showTargetQuiz(numberFact, "subtraction")} className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
                     </div>
                   </div>
@@ -78,7 +78,7 @@ function Quiz() {
                   <p className={style.categoryTitle}>Multiplication</p>
                   <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                    <button onClick={() => showTargetQuiz(numberFact, "multiplication")} className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
                   </div>
                   </div>
@@ -86,7 +86,7 @@ function Quiz() {
                   <p className={style.categoryTitle}>Division</p>
                   <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                    <button onClick={() => showTargetQuiz(numberFact, "division")} className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
                   </div>
                   </div>
