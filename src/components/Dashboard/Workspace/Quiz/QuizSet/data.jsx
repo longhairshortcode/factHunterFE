@@ -306,31 +306,31 @@ export const mathQuizzes = {
     ten: [
       { question: "10 - 10", answer: "0" },
       { question: "11 - 10", answer: "1" },
-      { question: "12 - 10", answer: "2" }
-      { question: "13 - 10", answer: "3" }
-      { question: "14 - 10", answer: "4" }
-      { question: "15 - 10", answer: "5" }
-      { question: "16 - 10", answer: "6" }
-      { question: "17 - 10", answer: "7" }
-      { question: "18 - 10", answer: "8" }
-      { question: "19 - 10", answer: "9" }
-      { question: "20 - 10", answer: "10" }
-      { question: "21 - 10", answer: "11" }
+      { question: "12 - 10", answer: "2" },
+      { question: "13 - 10", answer: "3" },
+      { question: "14 - 10", answer: "4" },
+      { question: "15 - 10", answer: "5" },
+      { question: "16 - 10", answer: "6" },
+      { question: "17 - 10", answer: "7" },
+      { question: "18 - 10", answer: "8" },
+      { question: "19 - 10", answer: "9" },
+      { question: "20 - 10", answer: "10" },
+      { question: "21 - 10", answer: "11" },
       { question: "22 - 10", answer: "12" }
     ],
     eleven: [
       { question: "11 - 11", answer: "0" },
-      { question: "12 - 11", answer: "1" }
-      { question: "13 - 11", answer: "2" }
-      { question: "14 - 11", answer: "3" }
-      { question: "15 - 11", answer: "4" }
-      { question: "16 - 11", answer: "5" }
-      { question: "17 - 11", answer: "6" }
-      { question: "18 - 11", answer: "7" }
-      { question: "19 - 11", answer: "8" }
-      { question: "20 - 11", answer: "9" }
-      { question: "21 - 11", answer: "10" }
-      { question: "22 - 11", answer: "11" }
+      { question: "12 - 11", answer: "1" },
+      { question: "13 - 11", answer: "2" },
+      { question: "14 - 11", answer: "3" },
+      { question: "15 - 11", answer: "4" },
+      { question: "16 - 11", answer: "5" },
+      { question: "17 - 11", answer: "6" },
+      { question: "18 - 11", answer: "7" },
+      { question: "19 - 11", answer: "8" },
+      { question: "20 - 11", answer: "9" },
+      { question: "21 - 11", answer: "10" },
+      { question: "22 - 11", answer: "11" },
       { question: "23 - 11", answer: "12" }
     ],
     twelve: [
