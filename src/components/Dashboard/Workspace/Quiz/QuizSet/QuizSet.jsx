@@ -1,4 +1,4 @@
-ssimport style from "./QuizSet.module.css"
+sssimport style from "./QuizSet.module.css"
 import { mathQuizzes } from "./data"
 import { useState } from "react"
 
