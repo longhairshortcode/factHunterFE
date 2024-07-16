@@ -1,18 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./Quiz.module.css"
 import QuizSet from "./QuizSet/QuizSet";
 
 
 function Quiz() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [targetQuiz, setTargetQuiz] = useState({
+    numberFact: "1",
+    operation: "addition"
+  })
 
   const numberFacts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const vowels = ["short a", "short e", "short i", "short o", "short u", "short y", "long a", "long e", "long i", "long o", "long u", "long y"]
   const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"]
+  const numberFactsAsWords = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
 
   function handleCategoryClick(category) {
     setSelectedCategory(category);
-  } 
+  }
+  
+  function showTargetQuiz(factButton, operation){
+    const numberFactWord = numberFactsAsWords[factButton - 1]
+    setTargetQuiz((prev) => ({
+      ...prev,
+      numberFact : numberFactWord,
+      operation : operation 
+    }))
+    console.log(numberFactWord, operation)  
+  }
+
+  useEffect(() => {
+    // showTargetQuiz()
+  },)
 
 
   return (
@@ -43,7 +62,7 @@ function Quiz() {
                     <p className={style.categoryTitle}>Addition</p>
                     <div>
                     {numberFacts.map((numberFact, index) => (
-                      <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                      <button onClick={() => showTargetQuiz(numberFact, "addition")} className={style.categoryButton} key={index + 1}>{numberFact}</button>
                     ))}
                     </div>
                   </div>
@@ -129,7 +148,7 @@ function Quiz() {
             )}  
           </div>
           </div>
-          <QuizSet/>
+          <QuizSet targetQuiz={targetQuiz} />
        </div>
   );
 }

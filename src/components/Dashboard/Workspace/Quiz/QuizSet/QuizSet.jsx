@@ -2,7 +2,9 @@ import style from "./QuizSet.module.css"
 import { mathQuizzes } from "./data"
 import { useState } from "react"
 
-function QuizSet() {
+function QuizSet({targetQuiz}) {
+
+const {numberFact, operation} = targetQuiz
 
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 const [answerData, setAnswerData] = useState({
@@ -43,7 +45,10 @@ function handleChange(e){
           <div className={style.componentContainer}>
             <div className={style.singleCard}>
               <div className={style.question}>
-                {mathQuizzes.addition.one[currentQuestionIndex].question}
+              {mathQuizzes[operation] &&
+            mathQuizzes[operation][numberFact] &&
+            mathQuizzes[operation][numberFact][currentQuestionIndex]?.question}
+              
               </div>
               <div className={style.answerFillInContainer}>
                 <input 
