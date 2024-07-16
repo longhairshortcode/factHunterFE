@@ -211,6 +211,7 @@ export const mathQuizzes = {
       { question: "12 - 3", answer: "9" },
       { question: "13 - 3", answer: "10" },
       { question: "14 - 3", answer: "11" },
+      { question: "15 - 3", answer: "13" },
     ],
     four: [
       { question: "4 - 4", answer: "0" },
@@ -222,7 +223,10 @@ export const mathQuizzes = {
       { question: "10 - 4", answer: "6" },
       { question: "11 - 4", answer: "7" },
       { question: "12 - 4", answer: "8" },
-      { question: "13 - 4", answer: "9" }
+      { question: "13 - 4", answer: "9" },
+      { question: "14 - 4", answer: "10" },
+      { question: "15 - 4", answer: "11" },
+      { question: "16 - 4", answer: "12" }
     ],
     five: [
       { question: "5 - 5", answer: "0" },
@@ -232,7 +236,12 @@ export const mathQuizzes = {
       { question: "9 - 5", answer: "4" },
       { question: "10 - 5", answer: "5" },
       { question: "11 - 5", answer: "6" },
-      { question: "12 - 5", answer: "7" }
+      { question: "12 - 5", answer: "7" },
+      { question: "13 - 5", answer: "8" },
+      { question: "14 - 5", answer: "9" },
+      { question: "15 - 5", answer: "10" },
+      { question: "16 - 5", answer: "11" },
+      { question: "17 - 5", answer: "12" }
     ],
     six: [
       { question: "6 - 6", answer: "0" },
@@ -241,7 +250,13 @@ export const mathQuizzes = {
       { question: "9 - 6", answer: "3" },
       { question: "10 - 6", answer: "4" },
       { question: "11 - 6", answer: "5" },
-      { question: "12 - 6", answer: "6" }
+      { question: "12 - 6", answer: "6" },
+      { question: "13 - 6", answer: "7" },
+      { question: "14 - 6", answer: "8" },
+      { question: "15 - 6", answer: "9" },
+      { question: "16 - 6", answer: "10" },
+      { question: "17 - 6", answer: "11" },
+      { question: "18 - 6", answer: "12" }
     ],
     seven: [
       { question: "7 - 7", answer: "0" },
@@ -249,7 +264,14 @@ export const mathQuizzes = {
       { question: "9 - 7", answer: "2" },
       { question: "10 - 7", answer: "3" },
       { question: "11 - 7", answer: "4" },
-      { question: "12 - 7", answer: "5" }
+      { question: "12 - 7", answer: "5" },
+      { question: "13 - 7", answer: "6" },
+      { question: "14 - 7", answer: "7" },
+      { question: "15 - 7", answer: "8" },
+      { question: "16 - 7", answer: "9" },
+      { question: "17 - 7", answer: "10" },
+      { question: "18 - 7", answer: "11" },
+      { question: "19 - 7", answer: "12" }
     ],
     eight: [
       { question: "8 - 8", answer: "0" },
@@ -257,6 +279,14 @@ export const mathQuizzes = {
       { question: "10 - 8", answer: "2" },
       { question: "11 - 8", answer: "3" },
       { question: "12 - 8", answer: "4" }
+      { question: "13 - 8", answer: "5" }
+      { question: "14 - 8", answer: "6" }
+      { question: "15 - 8", answer: "7" }
+      { question: "16 - 8", answer: "8" }
+      { question: "17 - 8", answer: "9" }
+      { question: "18 - 8", answer: "10" }
+      { question: "18 - 8", answer: "11" }
+      { question: "20 - 8", answer: "12" }
     ],
     nine: [
       { question: "9 - 9", answer: "0" },
@@ -268,13 +298,46 @@ export const mathQuizzes = {
       { question: "10 - 10", answer: "0" },
       { question: "11 - 10", answer: "1" },
       { question: "12 - 10", answer: "2" }
+      { question: "13 - 10", answer: "2" }
+      { question: "14 - 10", answer: "2" }
+      { question: "15 - 10", answer: "2" }
+      { question: "16 - 10", answer: "2" }
+      { question: "17 - 10", answer: "2" }
+      { question: "18 - 10", answer: "2" }
+      { question: "19 - 10", answer: "2" }
+      { question: "20 - 10", answer: "2" }
+      { question: "21 - 10", answer: "2" }
+      { question: "22 - 10", answer: "2" }
     ],
     eleven: [
       { question: "11 - 11", answer: "0" },
       { question: "12 - 11", answer: "1" }
+      { question: "13 - 11", answer: "2" }
+      { question: "14 - 11", answer: "3" }
+      { question: "15 - 11", answer: "4" }
+      { question: "16 - 11", answer: "5" }
+      { question: "17 - 11", answer: "6" }
+      { question: "18 - 11", answer: "7" }
+      { question: "19 - 11", answer: "8" }
+      { question: "20 - 11", answer: "9" }
+      { question: "21 - 11", answer: "10" }
+      { question: "22 - 11", answer: "11" }
+      { question: "23 - 11", answer: "12" }
     ],
     twelve: [
       { question: "12 - 12", answer: "0" }
+      { question: "13 - 12", answer: "1" }
+      { question: "14 - 12", answer: "2" }
+      { question: "15 - 12", answer: "3" }
+      { question: "16 - 12", answer: "4" }
+      { question: "17 - 12", answer: "5" }
+      { question: "18 - 12", answer: "6" }
+      { question: "19 - 12", answer: "7" }
+      { question: "20 - 12", answer: "8" }
+      { question: "21 - 12", answer: "9" }
+      { question: "22 - 12", answer: "10" }
+      { question: "23 - 12", answer: "11" }
+      { question: "24 - 12", answer: "12" }
     ]
   },
   multiplication: {
