@@ -1,4 +1,4 @@
-import style from "./QuizSet.module.css"
+simport style from "./QuizSet.module.css"
 import { mathQuizzes } from "./data"
 import { useState } from "react"
 
@@ -20,22 +20,22 @@ function nextQuestion() {
   }))
 }
 
-
-// function handleChange(e){
-//   const [value] = e.target
-//   setAnswerData((prev) => ({
-//     ...prev,
-//     answer : value 
-//   }))
-// }
-
+//if grabbing more than 1, [] destructure, if 1, {} destructure
 function handleChange(e){
-  const quizAnswer = e.target.value 
+  const {value} = e.target
   setAnswerData((prev) => ({
     ...prev,
-    answer : quizAnswer
+    answer : value 
   }))
 }
+
+// function handleChange(e){
+//   const quizAnswer = e.target.value 
+//   setAnswerData((prev) => ({
+//     ...prev,
+//     answer : quizAnswer
+//   }))
+// }
 
 
 
