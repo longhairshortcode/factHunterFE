@@ -342,10 +342,10 @@ export const mathQuizzes = {
       { question: "17 - 12", answer: "5" },
       { question: "18 - 12", answer: "6" },
       { question: "19 - 12", answer: "7" },
-      { question: "20 - 12", answer: "8" }
-      { question: "21 - 12", answer: "9" }
-      { question: "22 - 12", answer: "10" }
-      { question: "23 - 12", answer: "11" }
+      { question: "20 - 12", answer: "8" },
+      { question: "21 - 12", answer: "9" },
+      { question: "22 - 12", answer: "10" },
+      { question: "23 - 12", answer: "11" },
       { question: "24 - 12", answer: "12" }
     ]
   },

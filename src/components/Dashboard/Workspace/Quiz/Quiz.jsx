@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./Quiz.module.css"
 import QuizSet from "./QuizSet/QuizSet";
+import { mathQuizzes } from "./QuizSet/data";
 
 
 function Quiz() {
@@ -20,6 +21,8 @@ function Quiz() {
   }
   
   function showTargetQuiz(factButton, operation){
+    const additionOne = mathQuizzes.addition.one 
+    mathQuizzes[addition][one]
     const numberFactWord = numberFactsAsWords[factButton - 1]
     setTargetQuiz((prev) => ({
       ...prev,
