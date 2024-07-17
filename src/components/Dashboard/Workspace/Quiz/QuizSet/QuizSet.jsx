@@ -8,30 +8,25 @@ const {numberFact, operation} = targetQuiz
 
 
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-const [answerData, setAnswerData] = useState({
-  answer: ""
-})
+const [userAnswers, setUserAnswers] = useState([])
+const [answer, setAnswer] = useState("")
 
 
 
 function nextQuestion() {
-  if (answerData.answer === ""){
+  setUserAnswers(answer)
+  if (answer === ""){
     return;
   }
   setCurrentQuestionIndex(currentQuestionIndex + 1)
-  setAnswerData((prev) => ({
-    ...prev,
-    answer : ""
-  }))
+  setAnswer("")
+  
 }
 
 //if grabbing more than 1, [] destructure, if 1, {} destructure
 function handleChange(e){
   const {value} = e.target
-  setAnswerData((prev) => ({
-    ...prev,
-    answer : value 
-  }))
+  setAnswer(value)
 }
 
 // function handleChange(e){
@@ -60,19 +55,11 @@ function handleChange(e){
                 <input 
                   type="text"
                   name="answer"
-                  value={answerData.answer}
+                  value={answer}
                   className={style.answerFillIn}
                   onChange={handleChange}
                   placeholder="?"
                   />
-                  {/* { currentQuestionIndex
-                  <button>
-                    Next  
-                  </button>
-                  }
-                  <button>
-                    Submit
-                  </button> */}
                 {shuffledCardsArr &&
                  shuffledCardsArr.length - currentQuestionIndex !== 0 ?
                   <button 
