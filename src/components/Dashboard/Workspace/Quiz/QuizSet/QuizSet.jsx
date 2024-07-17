@@ -13,13 +13,6 @@ const [answerData, setAnswerData] = useState({
 })
 
 
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// }
 
 function nextQuestion() {
   if (answerData.answer === ""){
@@ -56,9 +49,13 @@ function handleChange(e){
             <div className={style.singleCard}>
               <div className={style.question}>
               {shuffledCardsArr &&
-            shuffledCardsArr[currentQuestionIndex]?.question}
-              
+            shuffledCardsArr[currentQuestionIndex]?.question} 
               </div>
+              {/* <p>{currentQuestionIndex}/{shuffledCardsArr.length}</p> */}
+              { shuffledCardsArr.length > 0 &&
+                <p>{shuffledCardsArr.length - currentQuestionIndex} left</p>
+              }
+              
               <div className={style.answerFillInContainer}>
                 <input 
                   type="text"
@@ -66,13 +63,32 @@ function handleChange(e){
                   value={answerData.answer}
                   className={style.answerFillIn}
                   onChange={handleChange}
-                  placeholder="?"/>
-                <button 
+                  placeholder="?"
+                  />
+                  {/* { currentQuestionIndex
+                  <button>
+                    Next  
+                  </button>
+                  }
+                  <button>
+                    Submit
+                  </button> */}
+                {shuffledCardsArr &&
+                 shuffledCardsArr.length - currentQuestionIndex !== 0 ?
+                  <button 
                   className={style.next}
                   onClick={nextQuestion}
                 >
                   Next
+                </button> : currentQuestionIndex === 12 ?
+                <button
+                className={style.submit}
+                  // onClick={handleSubmit}
+                >
+                  Submit
                 </button>
+                : <></>
+                }
               </div>
             </div>
           </div>
