@@ -6,6 +6,7 @@ import { mathQuizzes } from "./QuizSet/data";
 
 function Quiz() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [shuffledCardsArr, setShuffledCardsArr] = useState([]);
   const [targetQuiz, setTargetQuiz] = useState({
     numberFact: "1",
     operation: "addition"
@@ -16,14 +17,25 @@ function Quiz() {
   const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"]
   const numberFactsAsWords = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
 
+
   function handleCategoryClick(category) {
     setSelectedCategory(category);
   }
   
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+
   function showTargetQuiz(factButton, operation){
-    const additionOne = mathQuizzes.addition.one 
-    mathQuizzes[addition][one]
     const numberFactWord = numberFactsAsWords[factButton - 1]
+    const operationFactsArr = mathQuizzes[operation][numberFactWord] 
+    const shuffledCards = shuffleArray(operationFactsArr)
+    setShuffledCardsArr(shuffledCards)
     setTargetQuiz((prev) => ({
       ...prev,
       numberFact : numberFactWord,
@@ -31,6 +43,8 @@ function Quiz() {
     }))
     console.log(numberFactWord, operation)  
   }
+
+
 
   useEffect(() => {
     // showTargetQuiz()
@@ -151,7 +165,7 @@ function Quiz() {
             )}  
           </div>
           </div>
-          <QuizSet targetQuiz={targetQuiz} />
+          <QuizSet targetQuiz={targetQuiz} shuffledCardsArr={shuffledCardsArr} />
        </div>
   );
 }

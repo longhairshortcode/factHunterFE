@@ -2,14 +2,12 @@ import style from "./QuizSet.module.css"
 import { mathQuizzes } from "./data"
 import { useState } from "react"
 
-function QuizSet({targetQuiz}) {
+function QuizSet({targetQuiz, shuffledCardsArr}) {
 
 const {numberFact, operation} = targetQuiz
 
-const twelveIndices = Array(12).fill(null)
-const randomQuestion = Math.floor(Math.random() * (twelveIndices.length))
 
-const [currentQuestionIndex, setCurrentQuestionIndex] = useState(randomQuestion)
+const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 const [answerData, setAnswerData] = useState({
   answer: ""
 })
@@ -27,7 +25,7 @@ function nextQuestion() {
   if (answerData.answer === ""){
     return;
   }
-  setCurrentQuestionIndex(randomQuestion)
+  setCurrentQuestionIndex(currentQuestionIndex + 1)
   setAnswerData((prev) => ({
     ...prev,
     answer : ""
@@ -57,9 +55,8 @@ function handleChange(e){
           <div className={style.componentContainer}>
             <div className={style.singleCard}>
               <div className={style.question}>
-              {mathQuizzes[operation] &&
-            mathQuizzes[operation][numberFact] &&
-            mathQuizzes[operation][numberFact][currentQuestionIndex]?.question}
+              {shuffledCardsArr &&
+            shuffledCardsArr[currentQuestionIndex]?.question}
               
               </div>
               <div className={style.answerFillInContainer}>
