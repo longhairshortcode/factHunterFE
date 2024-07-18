@@ -13,7 +13,7 @@ const [answer, setAnswer] = useState("")
 
 useEffect(() => {
   console.log(userAnswers)
-}, [userAnswers, answer ])
+}, [userAnswers])
 
 function nextQuestion() {
   if (answer === ""){
