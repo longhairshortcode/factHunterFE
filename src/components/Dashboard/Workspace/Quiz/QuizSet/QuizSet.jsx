@@ -1,6 +1,6 @@
 import style from "./QuizSet.module.css"
 import { mathQuizzes } from "./data"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function QuizSet({targetQuiz, shuffledCardsArr}) {
 
@@ -11,13 +11,17 @@ const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 const [userAnswers, setUserAnswers] = useState([])
 const [answer, setAnswer] = useState("")
 
-
+useEffect(() => {
+  console.log(userAnswers)
+}, [userAnswers, answer ])
 
 function nextQuestion() {
-  setUserAnswers(answer)
   if (answer === ""){
     return;
   }
+  setUserAnswers((prev) => {
+    return [...prev, answer]
+  })
   setCurrentQuestionIndex(currentQuestionIndex + 1)
   setAnswer("")
   
