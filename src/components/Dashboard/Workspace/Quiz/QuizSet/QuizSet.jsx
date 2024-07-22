@@ -73,9 +73,7 @@ function saveResults(){
     } 
 }) 
 )
-
 setShowResultsCard(false)
-setTargetQuiz({})
 
 
 // setNumOfCorrectAnswersState(0)
