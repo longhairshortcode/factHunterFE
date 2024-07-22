@@ -101,7 +101,15 @@ function Quiz() {
     console.log(numberFactWord, operation)  
   }
 
+// useEffect(()=>{
+  // console.log(savedAnswers.addition)
+  // // console.log(savedAnswers.addition[numberFactsAsWords[1 - 1]])
+  // console.log(savedAnswers.addition[numberFactsAsWords[2 - 1]]?.join(" "))
+  // console.log(savedAnswers.addition[numberFactsAsWords[1 - 1]].join(" ").split(" "))
+  // console.log(savedAnswers.addition[numberFactsAsWords[1 - 1]].join(" ").split(" ").includes("incorrect"))
+// }, [savedAnswers])
 
+// savedAnswers.addition[numberFactsAsWords[numberFact - 1]].join(" ").split(" ").includes("incorrect") ? "red" 
 
 
   return (
@@ -185,7 +193,16 @@ function Quiz() {
                     <p className={style.categoryTitle}>Addition</p>
                     <div>
                     {numberFacts.map((numberFact, index) => (
-                      <button style={color={red}} className={style.categoryButton}key={index + 1}>{numberFact}</button>
+                      <button 
+                        style={{backgroundColor: ( 
+                        savedAnswers.addition[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
+                        : !savedAnswers.addition[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
+                        && savedAnswers.addition[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "lime"
+                        : "grey"
+                      )}} 
+                      className={style.categoryButton}
+                      key={index + 1}>
+                      {numberFact}</button>
                     ))}
                     </div>
                   </div>
@@ -193,7 +210,14 @@ function Quiz() {
                     <p className={style.categoryTitle}>Subtraction</p>
                     <div>
                     {numberFacts.map((numberFact, index) => (
-                      <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                      <button 
+                      style={{backgroundColor: ( 
+                        savedAnswers.subtraction[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
+                        : !savedAnswers.subtraction[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
+                        && savedAnswers.subtraction[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "green"
+                        : "grey"
+                      )}}
+                      className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
                     </div>
                   </div>
@@ -201,7 +225,14 @@ function Quiz() {
                   <p className={style.categoryTitle}>Multiplication</p>
                   <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button className={style.categoryButton} key={index + 1}>{numberFact}</button>
+                    <button 
+                    style={{backgroundColor: ( 
+                      savedAnswers.multiplication[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
+                      : !savedAnswers.multiplication[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
+                      && savedAnswers.multiplication[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "green"
+                      : "grey"
+                    )}}
+                    className={style.categoryButton} key={index + 1}>{numberFact}</button>
                   ))}
                   </div>
                   </div>
@@ -209,7 +240,14 @@ function Quiz() {
                   <p className={style.categoryTitle}>Division</p>
                   <div>
                   {numberFacts.map((numberFact, index) => (
-                    <button className={style.categoryButton}key={index + 1}>{numberFact}</button>
+                    <button 
+                    style={{backgroundColor: ( 
+                      savedAnswers.division[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
+                      : !savedAnswers.division[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
+                      && savedAnswers.division[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "green"
+                      : "grey"
+                    )}}
+                    className={style.categoryButton}key={index + 1}>{numberFact}</button>
                   ))}
                   </div>
                   </div>
@@ -218,7 +256,7 @@ function Quiz() {
             )}  
           </div>
           </div>
-          <QuizSet targetQuiz={targetQuiz} shuffledCardsArr={shuffledCardsArr} numberFactsAsWords={numberFactsAsWords} setSavedAnswers={setSavedAnswers}/>
+          <QuizSet targetQuiz={targetQuiz} setTargetQuiz={setTargetQuiz} shuffledCardsArr={shuffledCardsArr} setShuffledCardsArr={setShuffledCardsArr} numberFactsAsWords={numberFactsAsWords} setSavedAnswers={setSavedAnswers}/>
        </div>
   );
 }

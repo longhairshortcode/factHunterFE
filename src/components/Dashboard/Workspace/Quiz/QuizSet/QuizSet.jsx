@@ -2,7 +2,7 @@ import style from "./QuizSet.module.css"
 // import { mathQuizzes } from "./data"
 import { useState, useEffect } from "react"
 
-function QuizSet({targetQuiz, shuffledCardsArr, numberFactsAsWords, setSavedAnswers}) {
+function QuizSet({targetQuiz, setTargetQuiz, shuffledCardsArr, setShuffledCardsArr, numberFactsAsWords, setSavedAnswers}) {
  
 const {numberFact, operation} = targetQuiz
 
@@ -53,6 +53,8 @@ function handleChange(e){
 // }
 
 function saveResults(){
+  setCurrentQuestionIndex(0)
+  setShuffledCardsArr([])
   const [fact, operation] = userAnswersResultsState[0].split(" ")
   // console.log(fact, operation)
   const numberFactWord = numberFactsAsWords[Number(fact) - 1]
@@ -69,12 +71,15 @@ function saveResults(){
       [numberFactWord] : 
         userAnswersResultsState
     } 
-})
-// [operationWord][numberFactWord].userAnswersResultsState.split(" ").includes("incorrect") ? 
-
-// : 
+}) 
 )
-// console.log(savedAnswers)
+
+setShowResultsCard(false)
+setTargetQuiz({})
+
+
+// setNumOfCorrectAnswersState(0)
+
 }
 
 function handleSubmit(e){
@@ -85,12 +90,12 @@ function handleSubmit(e){
     userAnswersResults.push(
       `${shuffledCardsArr[i].question} = ${shuffledCardsArr[i].answer} correct`)
     numOfCorrectAnswers += 1
-    console.log(userAnswersResults)
+    // console.log(userAnswersResults)
     }
   else{
   //  userAnswersResults.push(`${shuffledCardsArr[i].question} = ${userAnswers[i]} incorrect`)
-   userAnswersResults.push(`${shuffledCardsArr[i].question} = ${userAnswers[i]}, incorrect. Correct answer: ${shuffledCardsArr[i].answer}`)
-   console.log(userAnswersResults)
+   userAnswersResults.push(`${shuffledCardsArr[i].question} = ${userAnswers[i]}, incorrect -------- ANSWER: ${shuffledCardsArr[i].answer}`)
+  //  console.log(userAnswersResults)
   }
  setUserAnswersResultsState(userAnswersResults)
  setNumOfCorrectAnswersState(numOfCorrectAnswers)
@@ -120,7 +125,6 @@ function handleSubmit(e){
               {shuffledCardsArr &&
             shuffledCardsArr[currentQuestionIndex]?.question} 
               </div>
-              {/* <p>{currentQuestionIndex}/{shuffledCardsArr.length}</p> */}
               { shuffledCardsArr.length > 0 &&
                 <p>{shuffledCardsArr.length - currentQuestionIndex} left</p>
               }
