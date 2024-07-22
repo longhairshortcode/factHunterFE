@@ -5,7 +5,7 @@
   justify-content: center;
   /* align-items: center; */
 }
-.singleCard{
+.singleCard, .resultCard{
     background-color: white;
     border: 3px solid black;
     border-radius: 6px;
@@ -22,14 +22,14 @@
 }
 
 .answerFillInContainer{
-    border: 2px solid hotpink;
+    border: 10px solid hotpink;
     height: 35%;
     display: flex;
     justify-content: center;
 }
 
 .answerFillIn{
-    border: 2px solid green;
+    border: 2px solid black;
     width: 80px;
     height: 80px;
     font-size: 70px;
@@ -43,4 +43,16 @@
     padding: 7px;
     margin-top: 32px;
     margin-left: 20px;
+}
+
+.resultsContainer{
+    border: 2px solid red;
+    width: 400px;
+    height: fit-content;
+}
+
+.resultCardItem{
+    font-size: 16px;
+    color: blue;
+    border: 3px solid green;
 }

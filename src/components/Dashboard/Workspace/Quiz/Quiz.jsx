@@ -11,13 +11,70 @@ function Quiz() {
     numberFact: "1",
     operation: "addition"
   })
+  const [savedAnswers, setSavedAnswers] = useState({
+    addition: {
+      one: [],
+      two: [],
+      three: [],
+      four: [],
+      five: [],
+      six: [],
+      seven: [],
+      eight: [],
+      nine: [],
+      ten: [],
+      eleven: [],
+      twelve: []
+    },
+    subtraction: {
+      one: [],
+      two: [],
+      three: [],
+      four: [],
+      five: [],
+      six: [],
+      seven: [],
+      eight: [],
+      nine: [],
+      ten: [],
+      eleven: [],
+      twelve: []
+    },
+    multiplication: {
+      one: [],
+      two: [],
+      three: [],
+      four: [],
+      five: [],
+      six: [],
+      seven: [],
+      eight: [],
+      nine: [],
+      ten: [],
+      eleven: [],
+      twelve: []
+    },
+    division: {
+      one: [],
+      two: [],
+      three: [],
+      four: [],
+      five: [],
+      six: [],
+      seven: [],
+      eight: [],
+      nine: [],
+      ten: [],
+      eleven: [],
+      twelve: []
+    }
+  })
 
   const numberFacts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const vowels = ["short a", "short e", "short i", "short o", "short u", "short y", "long a", "long e", "long i", "long o", "long u", "long y"]
   const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"]
   const numberFactsAsWords = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
-
-
+  
   function handleCategoryClick(category) {
     setSelectedCategory(category);
   }
@@ -45,10 +102,6 @@ function Quiz() {
   }
 
 
-
-  useEffect(() => {
-    // showTargetQuiz()
-  },)
 
 
   return (
@@ -132,7 +185,7 @@ function Quiz() {
                     <p className={style.categoryTitle}>Addition</p>
                     <div>
                     {numberFacts.map((numberFact, index) => (
-                      <button className={style.categoryButton}key={index + 1}>{numberFact}</button>
+                      <button style={color={red}} className={style.categoryButton}key={index + 1}>{numberFact}</button>
                     ))}
                     </div>
                   </div>
@@ -165,7 +218,7 @@ function Quiz() {
             )}  
           </div>
           </div>
-          <QuizSet targetQuiz={targetQuiz} shuffledCardsArr={shuffledCardsArr} />
+          <QuizSet targetQuiz={targetQuiz} shuffledCardsArr={shuffledCardsArr} numberFactsAsWords={numberFactsAsWords} setSavedAnswers={setSavedAnswers}/>
        </div>
   );
 }
