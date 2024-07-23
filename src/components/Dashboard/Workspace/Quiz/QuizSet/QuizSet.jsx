@@ -39,7 +39,7 @@ function nextQuestion() {
 }
 
 //if grabbing more than 1, [] destructure, if 1, {} destructure
-asssdssssssfunction handleChange(e){
+asssdsssssssfunction handleChange(e){
   const {value} = e.target
   setAnswer(value)
 }
