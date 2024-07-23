@@ -27,9 +27,9 @@ useEffect(()=>{
 }, [userAnswersResultsState] )
 
 function nextQuestion() {
-  if (answer === ""){
-    return;
-  }
+  // if (answer === ""){
+  //   return;
+  // }
   setUserAnswers((prev) => {
     return [...prev, answer]
   })
@@ -37,6 +37,23 @@ function nextQuestion() {
   setAnswer("")
   
 }
+
+// useEffect(()=>{
+//  const timer = setInterval(() => {nextQuestion()}, 4500)
+//   return ()=>{
+//     clearInterval(timer)
+//   }
+// }, [userAnswers])
+
+useEffect(() => {
+  if (shuffledCardsArr.length < 1){
+    return;
+  } 
+  const timer = setInterval(nextQuestion, 5500);
+  return () => clearInterval(timer);
+}, [userAnswers, shuffledCardsArr]);
+
+
 
 //if grabbing more than 1, [] destructure, if 1, {} destructure
 function handleChange(e){
