@@ -27,6 +27,9 @@ useEffect(()=>{
 }, [userAnswersResultsState] )
 
 function nextQuestion() {
+  // if (currentQuestionIndex === 12) {
+  //   return;
+  // }
   // if (answer === ""){
   //   return;
   // }
@@ -44,14 +47,27 @@ function nextQuestion() {
 //     clearInterval(timer)
 //   }
 // }, [userAnswers])
-
+let timer;
+// TIMER/INTERVAL USEEFFECT
 useEffect(() => {
+  console.log(currentQuestionIndex)
+ if (currentQuestionIndex === 12) {
+    // setCurrentQuestionIndex(null)
+    // setShuffledCardsArr([])
+    return;
+  }
   if (shuffledCardsArr.length < 1){
     return;
-  } 
-  const timer = setInterval(nextQuestion, 5500);
+  }
+  timer = setInterval(nextQuestion, 5500);
   return () => clearInterval(timer);
 }, [userAnswers, shuffledCardsArr]);
+
+useEffect(()=>{
+  if (currentQuestionIndex >= 12){
+    clearInterval(timer);
+  }
+}, [currentQuestionIndex])
 
 
 
@@ -98,6 +114,7 @@ setShowResultsCard(false)
 }
 
 function handleSubmit(e){
+
   let userAnswersResults = []
   let numOfCorrectAnswers = 0
   for (let i = 0; i < shuffledCardsArr.length; i++)
