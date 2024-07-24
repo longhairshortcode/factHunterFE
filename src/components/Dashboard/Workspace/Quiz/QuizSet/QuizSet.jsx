@@ -1,6 +1,7 @@
 import style from "./QuizSet.module.css"
 // import { mathQuizzes } from "./data"
 import { useState, useEffect } from "react"
+import axios from "axios"
 
 function QuizSet({targetQuiz, setTargetQuiz, shuffledCardsArr, setShuffledCardsArr, numberFactsAsWords, setSavedAnswers}) {
  
@@ -17,22 +18,8 @@ const [showResultsCard, setShowResultsCard] = useState(false)
 
 const operationsAsWords = ["addition", "subtraction", "multiplication", "division"]
 
-useEffect(() => {
-  console.log(userAnswers)
-  console.log(shuffledCardsArr)
-}, [userAnswers])
-
-useEffect(()=>{
-  console.log(userAnswersResultsState)
-}, [userAnswersResultsState] )
 
 function nextQuestion() {
-  // if (currentQuestionIndex === 12) {
-  //   return;
-  // }
-  // if (answer === ""){
-  //   return;
-  // }
   setUserAnswers((prev) => {
     return [...prev, answer]
   })
@@ -50,7 +37,7 @@ function nextQuestion() {
 let timer;
 // TIMER/INTERVAL USEEFFECT
 useEffect(() => {
-  console.log(currentQuestionIndex)
+  // console.log(currentQuestionIndex)
  if (currentQuestionIndex === 12) {
     // setCurrentQuestionIndex(null)
     // setShuffledCardsArr([])
@@ -86,6 +73,7 @@ function handleChange(e){
 // }
 
 function saveResults(){
+
   setCurrentQuestionIndex(0)
   setShuffledCardsArr([])
   const [fact, operation] = userAnswersResultsState[0].split(" ")
@@ -104,10 +92,16 @@ function saveResults(){
       [numberFactWord] : 
         userAnswersResultsState
     } 
-}) 
+})
 )
 setShowResultsCard(false)
-
+async function saveToDB(){
+try{
+  const results = await axios.put("http://localhost:5000/", )
+}catch(err){
+  console.log(err)
+}
+}
 
 // setNumOfCorrectAnswersState(0)
 
@@ -133,6 +127,10 @@ function handleSubmit(e){
  setNumOfCorrectAnswersState(numOfCorrectAnswers)
  setShowResultsCard(true)
 }
+
+useEffect(()=>{
+console.log("This is the userAnswersResultState: ", userAnswersResultsState)
+},[userAnswersResultsState])
 
 
   return (
