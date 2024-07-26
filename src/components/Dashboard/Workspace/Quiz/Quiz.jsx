@@ -256,7 +256,7 @@ function Quiz() {
             )}  
           </div>
           </div>
-          <QuizSet targetQuiz={targetQuiz} setTargetQuiz={setTargetQuiz} shuffledCardsArr={shuffledCardsArr} setShuffledCardsArr={setShuffledCardsArr} numberFactsAsWords={numberFactsAsWords} setSavedAnswers={setSavedAnswers}/>
+          <QuizSet targetQuiz={targetQuiz} setTargetQuiz={setTargetQuiz} shuffledCardsArr={shuffledCardsArr} setShuffledCardsArr={setShuffledCardsArr} numberFactsAsWords={numberFactsAsWords} setSavedAnswers={setSavedAnswers} savedAnswers={savedAnswers}/>
        </div>
   );
 }

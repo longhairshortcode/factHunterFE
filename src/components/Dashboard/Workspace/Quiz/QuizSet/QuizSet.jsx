@@ -1,11 +1,14 @@
 import style from "./QuizSet.module.css"
 // import { mathQuizzes } from "./data"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from "axios"
+import { AuthContext } from "../../../../../App"
 
-function QuizSet({targetQuiz, setTargetQuiz, shuffledCardsArr, setShuffledCardsArr, numberFactsAsWords, setSavedAnswers}) {
+
+function QuizSet({targetQuiz, setTargetQuiz, shuffledCardsArr, setShuffledCardsArr, numberFactsAsWords, setSavedAnswers, savedAnswers}) {
  
 const {numberFact, operation} = targetQuiz
+const {user} = useContext(AuthContext)
 
 
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -72,40 +75,118 @@ function handleChange(e){
 //   }))
 // }
 
-function saveResults(){
 
+//OG before the chat version below
+// async function saveResults(){
+
+//   setCurrentQuestionIndex(0)
+//   setShuffledCardsArr([])
+//   const [fact, operation] = userAnswersResultsState[0].split(" ")
+//   // console.log(fact, operation)
+//   const numberFactWord = numberFactsAsWords[Number(fact) - 1]
+  // console.log(numberFactsAsWords)
+  // console.log(numberFactWord)
+  // const operationWord = operation === "+" ? operationsAsWords[0] 
+  //   : operation === "-" ? operationsAsWords[1] 
+  //   : operation === "x" ? operationsAsWords[2] 
+  //   : operation === "/" ? operationsAsWords[3] 
+  //   : "";
+  // await setSavedAnswers((prev) => ({
+  //   ...prev,
+  //   [operationWord] : {
+  //     [numberFactWord] : 
+  //       userAnswersResultsState
+  //   } 
+  // }))
+  // setShowResultsCard(false)
+  
+  // async function saveToDB(){
+  //   try{
+  //     const results = await axios.post("http://localhost:4000/answers-results/saveAnswersResults", savedAnswers)
+  //     console.log('Saved answers:', results)
+  //   }catch(err){
+  //   console.log(err)
+  //   }
+  // }
+  // saveToDB()
+
+// setNumOfCorrectAnswersState(0)
+
+// }
+
+
+
+//CHATGPT
+async function saveResults(){
   setCurrentQuestionIndex(0)
   setShuffledCardsArr([])
   const [fact, operation] = userAnswersResultsState[0].split(" ")
-  // console.log(fact, operation)
   const numberFactWord = numberFactsAsWords[Number(fact) - 1]
-  // console.log(numberFactsAsWords)
-  // console.log(numberFactWord)
   const operationWord = operation === "+" ? operationsAsWords[0] 
     : operation === "-" ? operationsAsWords[1] 
     : operation === "x" ? operationsAsWords[2] 
     : operation === "/" ? operationsAsWords[3] 
     : "";
-  setSavedAnswers((prev) => ({
+
+  await setSavedAnswers((prev) => ({
     ...prev,
-    [operationWord] : {
-      [numberFactWord] : 
-        userAnswersResultsState
+    [operationWord]: {
+      [numberFactWord]: userAnswersResultsState
     } 
-})
-)
-setShowResultsCard(false)
-async function saveToDB(){
-try{
-  const results = await axios.put("http://localhost:5000/", )
-}catch(err){
-  console.log(err)
-}
+  }))
+
+  setShowResultsCard(false)
 }
 
-// setNumOfCorrectAnswersState(0)
+useEffect(() => {
+  async function fetchResults() {
+    const userID = user.id
+    try {
+      const results = await axios.get(`http://localhost:4000/answers-results/displayAnswersResults/${userID}`)
+      if (results.data.savedAnswersResults) {
+        setSavedAnswers(results.data.savedAnswersResults)
+        const resultsID = results.data.savedAnswersResults._id
+        window.localStorage.setItem("resultsID", resultsID )
+        console.log("This is results: ", results)
+        console.log("Results found: ", results)
+      } else {
+        console.log("Results not found")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  fetchResults()
+}, [user])
 
-}
+useEffect(() => {
+  async function saveToDB() {
+    const userID = user.id 
+    try {
+      const savedExists = await axios.get(`http://localhost:4000/answers-results/displayAnswersResults/${userID}`)
+      
+      if (savedExists.data && savedExists.data.savedAnswersResults) {
+        const resultsID = savedExists.data.savedAnswersResults._id
+        console.log("This is savedExists: ", savedExists)
+        await axios.put("http://localhost:4000/answers-results/updateSaveAnswersResults/", { savedAnswers, resultsID })
+      } else {
+        const results = await axios.post("http://localhost:4000/answers-results/saveAnswersResults/", { savedAnswers, userID })
+        if (results.data && results.data.savedAnswersResults) {
+          const resultsID = results.data.savedAnswersResults._id
+          window.localStorage.setItem("resultsID", resultsID)
+        }
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  if (savedAnswers && Object.keys(savedAnswers).length > 0) {
+    saveToDB()
+  }
+}, [savedAnswers, user])
+
+
 
 function handleSubmit(e){
 
