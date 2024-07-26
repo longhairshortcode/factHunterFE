@@ -115,7 +115,9 @@ function handleChange(e){
 // }
 
 
-
+useEffect(()=>{
+console.log("This is saved answers: ", savedAnswers)
+}, [savedAnswers])
 //CHATGPT
 async function saveResults(){
   setCurrentQuestionIndex(0)
@@ -210,13 +212,13 @@ function handleSubmit(e){
  setUserAnswers([])
 }
 
-useEffect(()=>{
-  console.log("This is userAnswers that should be clear: ", userAnswers)
-}, [userAnswers])
+// useEffect(()=>{
+//   console.log("This is userAnswers that should be clear: ", userAnswers)
+// }, [userAnswers])
 
-useEffect(()=>{
-console.log("This is the userAnswersResultState: ", userAnswersResultsState)
-},[userAnswersResultsState])
+// useEffect(()=>{
+// console.log("This is the userAnswersResultState: ", userAnswersResultsState)
+// },[userAnswersResultsState])
 
 
   return (
