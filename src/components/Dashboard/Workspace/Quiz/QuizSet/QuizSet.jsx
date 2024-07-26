@@ -24,7 +24,7 @@ function nextQuestion() {
     return [...prev, answer]
   })
   setCurrentQuestionIndex(currentQuestionIndex + 1)
-  setAnswer("")
+  setAnswer([""])
   
 }
 
@@ -126,7 +126,12 @@ function handleSubmit(e){
  setUserAnswersResultsState(userAnswersResults)
  setNumOfCorrectAnswersState(numOfCorrectAnswers)
  setShowResultsCard(true)
+ setUserAnswers([])
 }
+
+useEffect(()=>{
+  console.log("This is userAnswers that should be clear: ", userAnswers)
+}, [userAnswers])
 
 useEffect(()=>{
 console.log("This is the userAnswersResultState: ", userAnswersResultsState)
