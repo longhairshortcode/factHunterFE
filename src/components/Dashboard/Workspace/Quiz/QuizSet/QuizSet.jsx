@@ -180,7 +180,7 @@ useEffect(() => {
     const userID = user.id
     console.log("USER ID: ", userID)
     try {
-      const results = await axios.get(`${process.env.}/answers-results/displayAnswersResults/${userID}`)
+      const results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}}/answers-results/displayAnswersResults/${userID}`)
       console.log("Results from server: ", results);
       if (results.data.displayedAnswersResults) {
         setSavedAnswers(results.data.displayedAnswersResults)
