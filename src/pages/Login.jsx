@@ -28,7 +28,7 @@ function Login() {
     e.preventDefault()
     const {email, password} = userLogin
     try{
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, {email, password})
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/login`, {email, password})
       console.log(res)
       if (res.status === 200){
         setUser(prev => ({

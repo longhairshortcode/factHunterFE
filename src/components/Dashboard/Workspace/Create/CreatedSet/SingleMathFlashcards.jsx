@@ -39,7 +39,7 @@ function SingleMathFlashcards() {
       try {
         console.log("before getting data ", flashcardData)
         const { subject, topic, subtopic, userId } = flashcardCategories;
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/flashcard/displayCreatedFlashcards`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/flashcard/displayCreatedFlashcards`, {
           params: { subject, topic, subtopic, userId }
         });
         if (response.status === 200) {

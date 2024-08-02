@@ -90,7 +90,7 @@ function Create() {
           // on mount it defines fetchExistingFlashcards BUT ONLY RUNS after checks if user.id truthy
           async function fetchExistingFlashcards() {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/flashcard/displayCreatedFlashcards/${user.id}`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/flashcard/displayCreatedFlashcards/${user.id}`, {
           params: {
             subject: flashcardData.subject,
             topic: flashcardData.topic,
@@ -134,7 +134,7 @@ function Create() {
     setChartImage(null);
     const { subject, topic, subtopic, question, answer, userId } = flashcardData;
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/flashcard/createFlashcard`, {
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/flashcard/createFlashcard`, {
         subject,
         topic,
         subtopic,
