@@ -137,56 +137,117 @@ async function saveResults(){
     } 
   }))
 
-  setShowResultsCard(false)
+  setShowResultsCard(false);
+
+    async function saveToDB() {
+     
+      const userID = user.id;
+      console.log("User ID issssss: ", userID);
+      try {
+        const savedExists = await axios.get(`${process.env.REACT_APP_API_URL}/answers-results/displayAnswersResults/${userID}`);
+        console.log("GET response: ", savedExists.data);
+        if (savedExists.data && savedExists.data.displayedAnswersResults) {
+          // Document exists, update it
+          console.log("Document exists: ", savedExists.data.displayedAnswersResults);
+          const response = await axios.post(`${process.env.REACT_APP_API_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
+       
+          if (response.data && response.data.data) {
+            const resultsID = response.data.data._id;
+            window.localStorage.setItem("resultsID", resultsID);
+            console.log("Document updated: ", response.data.data);
+          }
+        } else {
+          // Document does not exist, create it
+          const response = await axios.post(`${process.env.REACT_APP_API_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
+          if (response.data && response.data.data) {
+            const resultsID = response.data.data._id;
+            window.localStorage.setItem("resultsID", resultsID);
+            console.log("Document created: ", response.data.data);
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  
+    if (savedAnswers && Object.keys(savedAnswers).length > 0) {
+      saveToDB();
+    }
 }
 
 useEffect(() => {
   async function fetchResults() {
     const userID = user.id
+    console.log("USER ID: ", userID)
     try {
-      const results = await axios.get(`http://localhost:4000/answers-results/displayAnswersResults/${userID}`)
-      if (results.data.savedAnswersResults) {
-        setSavedAnswers(results.data.savedAnswersResults)
-        const resultsID = results.data.savedAnswersResults._id
+      const results = await axios.get(`${process.env.REACT_APP_API_URL}/answers-results/displayAnswersResults/${userID}`)
+      console.log("Results from server: ", results);
+      if (results.data.displayedAnswersResults) {
+        setSavedAnswers(results.data.displayedAnswersResults)
+        const resultsID = results.data.displayedAnswersResults._id
         window.localStorage.setItem("resultsID", resultsID )
-        console.log("This is results: ", results)
+        // console.log("This is results: ", results)
         console.log("Results found: ", results)
       } else {
         console.log("Results not found")
+        setSavedAnswers({});
       }
     } catch (err) {
-      console.log(err)
+      if (err.response && err.response.status === 404) {
+        // setError('No results found.');
+        console.log("No results found.");
+        setSavedAnswers({});
+    } else {
+      console.error("An error occurred while fetching results: ", err);
+        setSavedAnswers({});
+        // setError('An error occurred while fetching results.');
     }
   }
   fetchResults()
+ }
 }, [user])
 
-useEffect(() => {
-  async function saveToDB() {
-    const userID = user.id 
-    try {
-      const savedExists = await axios.get(`http://localhost:4000/answers-results/displayAnswersResults/${userID}`)
-      
-      if (savedExists.data && savedExists.data.savedAnswersResults) {
-        const resultsID = savedExists.data.savedAnswersResults._id
-        console.log("This is savedExists: ", savedExists)
-        await axios.put("http://localhost:4000/answers-results/updateSaveAnswersResults/", { savedAnswers, resultsID })
-      } else {
-        const results = await axios.post("http://localhost:4000/answers-results/saveAnswersResults/", { savedAnswers, userID })
-        if (results.data && results.data.savedAnswersResults) {
-          const resultsID = results.data.savedAnswersResults._id
-          window.localStorage.setItem("resultsID", resultsID)
-        }
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
+// useEffect(()=>{
+// console.log("saveToDB was run")
+// }, [saveToDB])
 
-  if (savedAnswers && Object.keys(savedAnswers).length > 0) {
-    saveToDB()
-  }
-}, [savedAnswers, user])
+// useEffect(() => {
+//   console.log("useEffect triggered that triggers saveToDB");
+//   async function saveToDB() {
+   
+//     const userID = user.id;
+//     console.log("User ID: ", userID);
+//     try {
+//       const savedExists = await axios.get(`http://localhost:4000/answers-results/displayAnswersResults/${userID}`);
+//       console.log("GET response: ", savedExists.data);
+//       if (savedExists.data && savedExists.data.displayedAnswersResults) {
+//         // Document exists, update it
+//         console.log("Document exists: ", savedExists.data.displayedAnswersResults);
+//         const response = await axios.post("http://localhost:4000/answers-results/saveAnswersResults", { savedAnswers, userID });
+     
+//         if (response.data && response.data.data) {
+//           const resultsID = response.data.data._id;
+//           window.localStorage.setItem("resultsID", resultsID);
+//           console.log("Document updated: ", response.data.data);
+//         }
+//       } else {
+//         // Document does not exist, create it
+//         const response = await axios.post("http://localhost:4000/answers-results/saveAnswersResults", { savedAnswers, userID });
+//         if (response.data && response.data.data) {
+//           const resultsID = response.data.data._id;
+//           window.localStorage.setItem("resultsID", resultsID);
+//           console.log("Document created: ", response.data.data);
+//         }
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+
+//   if (savedAnswers && Object.keys(savedAnswers).length > 0) {
+//     saveToDB();
+//   }
+// }, [savedAnswers /*, user*/]);
 
 
 

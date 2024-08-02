@@ -74,7 +74,7 @@ function Signup() {
     console.log("handleSubmit has run")
     const {email, name, password} = userSignUpData
     try{
-      const res = await axios.post("http://localhost:4000/user/sign-up", {email, name, password})
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/sign-up`, {email, name, password})
       console.log("THIS IS THE RES", res)
       if (res.status === 200){
 
