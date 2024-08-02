@@ -1,13 +1,15 @@
 import style from "./Styles/Login.module.css"
 import {Link} from "react-router-dom"
-import {useState, useContext} from "react"
+import {useState, useContext, useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import { AuthContext } from "../App"
 
 
 function Login() {
-
+useEffect(()=>{
+  console.log(process.env.REACT_APP_API_BASE_URL);
+},[])
   const {setUser} = useContext(AuthContext)
   const navigate = useNavigate()
 
