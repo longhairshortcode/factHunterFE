@@ -8,7 +8,7 @@ import { AuthContext } from "../App"
 
 function Login() {
 useEffect(()=>{
-  console.log(process.env.REACT_APP_API_BASE_URL);
+  console.log(import.meta.env.VITE_APP_API_BASE_URL);
 },[])
   const {setUser} = useContext(AuthContext)
   const navigate = useNavigate()
@@ -30,7 +30,7 @@ useEffect(()=>{
     e.preventDefault()
     const {email, password} = userLogin
     try{
-      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/user/login`, {email, password})
+      const res = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/user/login`, {email, password})
       console.log(res)
       if (res.status === 200){
         setUser(prev => ({

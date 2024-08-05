@@ -14,7 +14,7 @@ function CreatedSet({topicAndSubtopic, fetchTrigger, flashcardsTopicSubtopic, se
   useEffect(() => {
     async function fetchFlashcardsTopicSubtopic() {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/flashcard/displayCreatedFlashcards/${user.id}`, {
+        const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/flashcard/displayCreatedFlashcards/${user.id}`, {
           params: { topic, subtopic }
         });
         setFlashcardsTopicSubtopic(res.data.createdFlashcardsResult || []);

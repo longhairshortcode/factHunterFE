@@ -71,7 +71,7 @@ function Make() {
   useEffect(() => {
     async function fetchExistingFlashcards() {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/flashcard/displayCreatedFlashcards/${user.id}`);
+        const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/flashcard/displayCreatedFlashcards/${user.id}`);
         console.log(res.data)
         setFlashcards(res.data.createdFlashcardsResult || []);
       } catch (err) {
@@ -101,7 +101,7 @@ function Make() {
     if ({ ...flashcardData }) {
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API_BASE_URL}/flashcard/createFlashcard`,
+          `${import.meta.env.VITE_APP_API_BASE_URL}/flashcard/createFlashcard`,
           {
             subject,
             topic,

@@ -144,12 +144,12 @@ async function saveResults(){
       const userID = user.id;
       console.log("User ID issssss: ", userID);
       try {
-        const savedExists = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/answers-results/displayAnswersResults/${userID}`);
+        const savedExists = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/displayAnswersResults/${userID}`);
         console.log("GET response: ", savedExists.data);
         if (savedExists.data && savedExists.data.displayedAnswersResults) {
           // Document exists, update it
           console.log("Document exists: ", savedExists.data.displayedAnswersResults);
-          const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
+          const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
        
           if (response.data && response.data.data) {
             const resultsID = response.data.data._id;
@@ -158,7 +158,7 @@ async function saveResults(){
           }
         } else {
           // Document does not exist, create it
-          const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
+          const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
           if (response.data && response.data.data) {
             const resultsID = response.data.data._id;
             window.localStorage.setItem("resultsID", resultsID);
@@ -180,7 +180,7 @@ useEffect(() => {
     const userID = user.id
     console.log("USER ID: ", userID)
     try {
-      const results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}}/answers-results/displayAnswersResults/${userID}`)
+      const results = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}}/answers-results/displayAnswersResults/${userID}`)
       console.log("Results from server: ", results);
       if (results.data.displayedAnswersResults) {
         setSavedAnswers(results.data.displayedAnswersResults)
