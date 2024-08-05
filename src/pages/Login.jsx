@@ -7,9 +7,9 @@ import { AuthContext } from "../App"
 
 
 function Login() {
-useEffect(()=>{
-  console.log(import.meta.env.VITE_APP_API_BASE_URL);
-},[])
+// useEffect(()=>{
+//   console.log(import.meta.env.VITE_APP_API_BASE_URL);
+// },[])
   const {setUser} = useContext(AuthContext)
   const navigate = useNavigate()
 
