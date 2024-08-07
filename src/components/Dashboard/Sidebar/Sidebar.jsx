@@ -13,9 +13,9 @@ function Sidebar() {
       <div className={style.logoContainer}>
       <Link to={"/dashboard"}className={style.logo}><PiDetectiveBold />FactHunter</Link>
       </div>
-      <div className={style.profileContainer}>
+      {/* <div className={style.profileContainer}>
         <p>Profile pic or info can go here?</p>
-      </div>
+      </div> */}
       <div className={style.pracCreateQuizContainer}>
         <NavLink to={"practice"} className={style.practiceContainer}>
           <p className={style.practice} to={"practice"}><FiSmile />Practice Facts</p>

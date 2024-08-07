@@ -41,8 +41,8 @@ function Welcome() {
                       <img src={mag} className={style.mag}/>
                       <p className={style.directionsThreeParagraph}>3. When you feel ready to test your knowledge of your facts, click on Quiz Myself. If you pass your quiz, you will see your pass status on the right.</p>  
                     </div>
-                  </div>
-                  <div className={style.rightDirectionsBottom}>
+              </div>
+                  {/* <div className={style.rightDirectionsBottom}>
                     <div className={style.rightDirectionsBottomTop}>
                       <p className={style.factsStatus}>Facts Status</p>
                     </div>
@@ -50,7 +50,7 @@ function Welcome() {
                     <p className={style.somethingElse}>Something Else</p>
                       </div>
                     
-                  </div>
+                  </div> */}
                   </div>   
             </div>
     </div>

@@ -1,5 +1,10 @@
 .headerContainer{
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
     justify-content: space-between;
     align-items: center;
     background-color: var(--white-color);
@@ -8,7 +13,7 @@
     margin: auto;
     background-color: #fbf9f9;
     /* border: 2px solid black; */
-    height: 5.6rem; 
+    height:15.6rem;  
 }
 
 .logo{

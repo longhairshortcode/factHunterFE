@@ -1,3 +1,7 @@
+/* 
+padding: 20px;
+border-radius: 5px; */
+
 .componentContainer{
     /* border: 2px solid blue; */
     height: 100%;
@@ -28,6 +32,7 @@
         -1px  1px 0 #000,
          1px  1px 0 #000;
     margin-left: 9px; 
+    
 }
 
 
@@ -41,6 +46,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    
 }
 .readingFlashcardsButton, .mathFlashcardsButton{
     background-color: red;
@@ -51,6 +57,7 @@
     text-decoration: none;
     width: fit-content;
     margin-top: 7px;
+    
 }
 
 .chartContainer{
@@ -66,6 +73,7 @@
    background-color: rgb(238, 183, 2);
    height: 75px;
    /* gap: 10px; */
+   
 
 }
 
@@ -75,12 +83,14 @@
     /* background-color: goldenrod; */
     color: red;
     padding: 0 7px;
+    
 }
 
 .additionFactsCategoryContainer, .subtractionFactsCategoryContainer, .multiplicationFactsCategoryContainer, .divisionFactsCategoryContainer{
     border: 2px solid black;
     background-color: white;
     width: 400px;
+    
 }
 
 .chartImageContainer{
@@ -98,3 +108,9 @@
    font-weight: bold; 
    margin: 2.5px;
 }
+
+
+.subject, .topic, .subtopic, .question, .answer, .button{
+    padding: 20px;
+    border-radius: 5px;  
+} 
