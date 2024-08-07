@@ -101,16 +101,6 @@ function Quiz() {
     console.log(numberFactWord, operation)  
   }
 
-// useEffect(()=>{
-  // console.log(savedAnswers.addition)
-  // // console.log(savedAnswers.addition[numberFactsAsWords[1 - 1]])
-  // console.log(savedAnswers.addition[numberFactsAsWords[2 - 1]]?.join(" "))
-  // console.log(savedAnswers.addition[numberFactsAsWords[1 - 1]].join(" ").split(" "))
-  // console.log(savedAnswers.addition[numberFactsAsWords[1 - 1]].join(" ").split(" ").includes("incorrect"))
-// }, [savedAnswers])
-
-// savedAnswers.addition[numberFactsAsWords[numberFact - 1]].join(" ").split(" ").includes("incorrect") ? "red" 
-
 
   return (
     <div className={style.componentContainer}>
@@ -256,7 +246,14 @@ function Quiz() {
             )}  
           </div>
           </div>
-          <QuizSet targetQuiz={targetQuiz} setTargetQuiz={setTargetQuiz} shuffledCardsArr={shuffledCardsArr} setShuffledCardsArr={setShuffledCardsArr} numberFactsAsWords={numberFactsAsWords} setSavedAnswers={setSavedAnswers} savedAnswers={savedAnswers}/>
+          <QuizSet 
+          targetQuiz={targetQuiz} 
+          setTargetQuiz={setTargetQuiz} 
+          shuffledCardsArr={shuffledCardsArr} 
+          setShuffledCardsArr={setShuffledCardsArr} 
+          numberFactsAsWords={numberFactsAsWords} 
+          setSavedAnswers={setSavedAnswers} 
+          savedAnswers={savedAnswers}/>
        </div>
   );
 }
