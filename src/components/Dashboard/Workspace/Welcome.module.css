@@ -6,7 +6,7 @@
     height: 100vh;
     /* border: 6px solid black; */
     /* align-items: center; */
-    background-image: url("../../../assets/numbers.jpg");
+    /* background-image: url("../../../assets/numbers.jpg"); */
 
 }
 
@@ -29,19 +29,19 @@
 
 .greeting {
     /* border: 2px solid blue; */
-    font-size: 50px;
+    font-size: 80px;
     font-weight: bold;
-    color: white;
-    text-shadow: 
+    color: rgb(239, 28, 28);
+    /* text-shadow: 
         -1px -1px 0 #000,  
          1px -1px 0 #000,
         -1px  1px 0 #000,
-         1px  1px 0 #000; 
+         1px  1px 0 #000;  */
 }
 
 /* dQQQ WHY BLACK OUTLINE DOESNT WORk? */
 .icon {
-    color: white; /* Ensures the icon color is white */
+    color: black; /* Ensures the icon color is white */
     margin-left: 0.5rem; /* Adjust this as needed */
     text-shadow: 
         -1px -1px 0 #000,  
