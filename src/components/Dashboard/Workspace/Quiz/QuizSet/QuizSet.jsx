@@ -121,7 +121,7 @@ useEffect(() => {
   // Check if user is defined. If not, do nothing.
   if (!user) return;
 
-  // console.log("useEffect ran", user);
+  console.log("useEffect ran and fetch Should run", user);
   async function fetchResults() {
     // console.log("fetchResults ran");
     const userID = user.id;

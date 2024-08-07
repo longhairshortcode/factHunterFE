@@ -177,85 +177,147 @@ function Quiz() {
           
           {selectedCategory === "math" && (
            <div className={style.passedContainer}> 
-              <p className={style.passedTitle}>PASSED QUIZZES</p>
-                <div className={style.allSingleCategoryContainer}>
-                  <div className={style.singleCategoryAndButtons}>
-                    <p className={style.categoryTitle}>Addition</p>
-                    <div>
-                    {numberFacts.map((numberFact, index) => (
-                      <button 
-                        style={{backgroundColor: ( 
-                        savedAnswers.addition[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
-                        : !savedAnswers.addition[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
-                        && savedAnswers.addition[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "lime"
-                        : "grey"
-                      )}} 
-                      className={style.categoryButton}
-                      key={index + 1}>
-                      {numberFact}</button>
-                    ))}
-                    </div>
-                  </div>
-                  <div className={style.singleCategoryAndButtons}>  
-                    <p className={style.categoryTitle}>Subtraction</p>
-                    <div>
-                    {numberFacts.map((numberFact, index) => (
-                      <button 
-                      style={{backgroundColor: ( 
-                        savedAnswers.subtraction[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
-                        : !savedAnswers.subtraction[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
-                        && savedAnswers.subtraction[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "green"
-                        : "grey"
-                      )}}
-                      className={style.categoryButton} key={index + 1}>{numberFact}</button>
-                  ))}
-                    </div>
-                  </div>
-                  <div className={style.singleCategoryAndButtons}>
-                  <p className={style.categoryTitle}>Multiplication</p>
+             <p className={style.passedTitle}>PASSED QUIZZES</p>
+              <div className={style.allSingleCategoryContainer}>
+                <div className={style.singleCategoryAndButtons}>
+                  <p className={style.categoryTitle}>Addition</p>
                   <div>
-                  {numberFacts.map((numberFact, index) => (
-                    <button 
-                    style={{backgroundColor: ( 
-                      savedAnswers.multiplication[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
-                      : !savedAnswers.multiplication[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
-                      && savedAnswers.multiplication[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "green"
-                      : "grey"
-                    )}}
-                    className={style.categoryButton} key={index + 1}>{numberFact}</button>
-                  ))}
-                  </div>
-                  </div>
-                  <div className={style.singleCategoryAndButtons}>
-                  <p className={style.categoryTitle}>Division</p>
-                  <div>
-                  {numberFacts.map((numberFact, index) => (
-                    <button 
-                    style={{backgroundColor: ( 
-                      savedAnswers.division[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") ? "red" 
-                      : !savedAnswers.division[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("incorrect") 
-                      && savedAnswers.division[numberFactsAsWords[numberFact - 1]]?.join(" ").split(" ").includes("correct")  ? "green"
-                      : "grey"
-                    )}}
-                    className={style.categoryButton}key={index + 1}>{numberFact}</button>
-                  ))}
-                  </div>
-                  </div>
-                </div>
-              </div>
-            )}  
-          </div>
-          </div>
-          <QuizSet 
-          targetQuiz={targetQuiz} 
-          setTargetQuiz={setTargetQuiz} 
-          shuffledCardsArr={shuffledCardsArr} 
-          setShuffledCardsArr={setShuffledCardsArr} 
-          numberFactsAsWords={numberFactsAsWords} 
-          setSavedAnswers={setSavedAnswers} 
-          savedAnswers={savedAnswers}/>
-       </div>
-  );
-}
+                {numberFacts.map((numberFact, index) => {
+                  const fact = numberFactsAsWords[numberFact - 1];
+                  const additionValue = savedAnswers.addition?.[fact];
 
-export default Quiz;
+                  // Debugging console logs for Addition category
+                  // console.log('numberFact:', numberFact);
+                  // console.log('fact:', fact);
+                  // console.log('additionValue:', additionValue);
+
+                  const backgroundColor = additionValue
+                    ? additionValue.join(" ").split(" ").includes("incorrect") ? "red"
+                    : additionValue.join(" ").split(" ").includes("correct") ? "lime"
+                    : "grey"
+                    : "grey";
+
+                  return (
+                    <button
+                      style={{ backgroundColor }}
+                      className={style.categoryButton}
+                      key={index + 1}
+                    >
+                      {numberFact}
+                    </button>
+                  );
+                })}
+              </div>
+              </div>
+              {/* Subtraction category with background color calculation */}
+              <div className={style.singleCategoryAndButtons}>  
+              <p className={style.categoryTitle}>Subtraction</p>
+              <div>
+                {numberFacts.map((numberFact, index) => {
+                  const fact = numberFactsAsWords[numberFact - 1];
+                  const subtractionValue = savedAnswers.subtraction?.[fact];
+
+                  // Debugging console logs for Subtraction category
+                  // console.log('numberFact:', numberFact);
+                  // console.log('fact:', fact);
+                  // console.log('subtractionValue:', subtractionValue);
+
+                  const backgroundColor = subtractionValue
+                    ? subtractionValue.join(" ").split(" ").includes("incorrect") ? "red"
+                    : subtractionValue.join(" ").split(" ").includes("correct") ? "green"
+                    : "grey"
+                    : "grey";
+
+                  return (
+                    <button
+                      style={{ backgroundColor }}
+                      className={style.categoryButton}
+                      key={index + 1}
+                    >
+                      {numberFact}
+                    </button>
+                  );
+                })}
+              </div>
+              </div>
+              {/* Multiplication category with background color calculation */}
+              <div className={style.singleCategoryAndButtons}>
+              <p className={style.categoryTitle}>Multiplication</p>
+              <div>
+                {numberFacts.map((numberFact, index) => {
+                  const fact = numberFactsAsWords[numberFact - 1];
+                  const multiplicationValue = savedAnswers.multiplication?.[fact];
+
+                  // Debugging console logs for Multiplication category
+                  // console.log('numberFact:', numberFact);
+                  // console.log('fact:', fact);
+                  // console.log('multiplicationValue:', multiplicationValue);
+
+                  const backgroundColor = multiplicationValue
+                    ? multiplicationValue.join(" ").split(" ").includes("incorrect") ? "red"
+                    : multiplicationValue.join(" ").split(" ").includes("correct") ? "green"
+                    : "grey"
+                    : "grey";
+
+                  return (
+                    <button
+                      style={{ backgroundColor }}
+                      className={style.categoryButton}
+                      key={index + 1}
+                    >
+                      {numberFact}
+                    </button>
+                  );
+                })}
+              </div>
+              </div>
+              {/* Division category with background color calculation */}
+              <div className={style.singleCategoryAndButtons}>
+              <p className={style.categoryTitle}>Division</p>
+              <div>
+                {numberFacts.map((numberFact, index) => {
+                  const fact = numberFactsAsWords[numberFact - 1];
+                  const divisionValue = savedAnswers.division?.[fact];
+
+                  // Debugging console logs for Division category
+                  // console.log('numberFact:', numberFact);
+                  // console.log('fact:', fact);
+                  // console.log('divisionValue:', divisionValue);
+
+                  const backgroundColor = divisionValue
+                    ? divisionValue.join(" ").split(" ").includes("incorrect") ? "red"
+                    : divisionValue.join(" ").split(" ").includes("correct") ? "green"
+                    : "grey"
+                    : "grey";
+
+                  return (
+                    <button
+                      style={{ backgroundColor }}
+                      className={style.categoryButton}
+                      key={index + 1}
+                    >
+                      {numberFact}
+                    </button>
+                  );
+                })}
+              </div>
+              </div>
+              </div>
+              </div>
+              )}  
+              </div>
+              </div>
+              <QuizSet 
+              targetQuiz={targetQuiz} 
+              setTargetQuiz={setTargetQuiz} 
+              shuffledCardsArr={shuffledCardsArr} 
+              setShuffledCardsArr={setShuffledCardsArr} 
+              numberFactsAsWords={numberFactsAsWords} 
+              setSavedAnswers={setSavedAnswers} 
+              savedAnswers={savedAnswers}
+              />
+              </div>
+              );
+              }
+
+export default Quiz; 
