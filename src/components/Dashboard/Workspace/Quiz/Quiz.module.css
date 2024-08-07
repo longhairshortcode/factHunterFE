@@ -8,12 +8,12 @@
     background-image: url("./numbers.jpg");
     width: 100%;
     height: 100%;
-    border: 4px solid yellow;
+    /* border: 4px solid yellow; */
     
 }
 
 .titleAndQuizzesCategoryContainer{
-    height: 260px;
+    height: 291px;
     background-color:  rgb(108, 144, 65);
 }
 
@@ -30,7 +30,7 @@
 }
 
 .allAndPassedContainer{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     gap: 40px;
@@ -38,21 +38,26 @@
 
 
 .allContainer, .passedContainer{
-    border: 3px solid brown;
+    /* border: 3px solid brown; */
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 .allTitle, .passedTitle{
-    color: white;
+    color: red;
     font-size: 22px;
-    text-shadow: 
+    font-weight: bold;
+    /* text-shadow: 
         -1px -1px 0 #000,  
          1px -1px 0 #000,
         -1px  1px 0 #000,
-         1px  1px 0 #000;
+         1px  1px 0 #000; */
 }
 
 .allSingleCategoryContainer{
     border: 3px lime solid;
+    /* width: 600px; */
    }
    
 .singleCategoryAndButtons{
@@ -62,10 +67,12 @@
 }
 
 .categoryTitle{
-    font-size: 14px;
-    color: blue;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
     width: 90px;
-    border: 2px solid hotpink;
+    /* border: 2px solid hotpink; */
+    width: 115px;
 }
 
 .categoryButton{
@@ -73,4 +80,7 @@
 }
 
 
-
+.mathQuizButton, .readingQuizButton{
+    padding: 20px;
+    border-radius: 5px;  
+}

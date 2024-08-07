@@ -242,7 +242,7 @@ function handleSubmit(e){
           <div className={style.componentContainer}>
             {showResultsCard &&
             <div className={style.resultCard}>
-              <p>{numOfCorrectAnswersState} out of 13 correct</p>
+              <p className={style.correct}>{numOfCorrectAnswersState} out of 13 correct</p>
               <div className={style.resultsContainer}>
               {userAnswersResultsState.map((result, index) => (
                
@@ -256,13 +256,16 @@ function handleSubmit(e){
             }
             {!showResultsCard &&
             <div className={style.singleCard}>
+               { shuffledCardsArr.length > 0 &&
+                <p className={style.left}>{shuffledCardsArr.length - currentQuestionIndex} left</p>
+              }
               <div className={style.question}>
               {shuffledCardsArr &&
             shuffledCardsArr[currentQuestionIndex]?.question} 
               </div>
-              { shuffledCardsArr.length > 0 &&
-                <p>{shuffledCardsArr.length - currentQuestionIndex} left</p>
-              }
+              {/* { shuffledCardsArr.length > 0 &&
+                <p className={style.left}>{shuffledCardsArr.length - currentQuestionIndex} left</p>
+              } */}
               
               <div className={style.answerFillInContainer}>
                 <input 

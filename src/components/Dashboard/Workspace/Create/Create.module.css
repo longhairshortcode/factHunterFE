@@ -13,7 +13,7 @@ border-radius: 5px; */
 .titleFormContainer{
     display: flex;
     /* border: 2px solid red; */
-    height: 200px;
+    height: 250px;
     background-color:  rgb(238, 183, 2);
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@ border-radius: 5px; */
 }
 
 .additionFactsCategory, .subtractionFactsCategory, .multiplicationFactsCategory, .divisionFactsCategory{
-    font-size: 18px;
+    font-size: 22px;
     letter-spacing: 2px;
     /* background-color: goldenrod; */
     color: red;
@@ -90,6 +90,7 @@ border-radius: 5px; */
     border: 2px solid black;
     background-color: white;
     width: 400px;
+    height: 100px;
     
 }
 
@@ -107,6 +108,8 @@ border-radius: 5px; */
 .flashcardsButton{
    font-weight: bold; 
    margin: 2.5px;
+   padding: 7px;
+   border-radius: 4px;
 }
 
 
