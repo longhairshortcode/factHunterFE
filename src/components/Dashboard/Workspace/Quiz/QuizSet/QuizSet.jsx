@@ -151,6 +151,29 @@ useEffect(()=>{
 console.log("This is saved answers: ", savedAnswers)
 }, [savedAnswers])
 
+async function saveToDB() {
+     
+  const userID = user.id;
+  try {
+      console.log("Here is the NEW savedAnswers data: ", {savedAnswers, userID})
+      const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
+   
+      if (response.data && response.data.data) {
+        const resultsID = response.data.data._id;
+        window.localStorage.setItem("resultsID", resultsID);
+        console.log("Document updated: ", response.data.data);
+      }   
+      console.log("this is comming from here ")
+      if (response.data && response.data.data) {
+        const resultsID = response.data.data._id;
+        window.localStorage.setItem("resultsID", resultsID);
+        console.log("Document created: ", response.data.data);
+    }
+  } catch (err) {
+    console.log(err);
+    console.log("here ", err.message)
+  }
+}
 //CHATGPT
 async function saveResults(){
   setCurrentQuestionIndex(0)
@@ -172,42 +195,7 @@ async function saveResults(){
 
   setShowResultsCard(false);
 
-    async function saveToDB() {
-     
-      const userID = user.id;
-      console.log("User ID issssss: ", userID);
-      try {
-        console.log("reached here")
-        const savedExists = await axios.get(`http://localhost:4000/answers-results/displayAnswersResults/${userID}`);
-        console.log("GET response: ", savedExists.data);
-        
-        if (savedExists.data && savedExists.data.displayedAnswersResults) {
-          // Document exists, update it
-          console.log("Document exists: ", savedExists.data.displayedAnswersResults);
-          console.log("Here is the savedAnswers data: ", {savedAnswers, userID})
-          const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
-       
-          if (response.data && response.data.data) {
-            const resultsID = response.data.data._id;
-            window.localStorage.setItem("resultsID", resultsID);
-            console.log("Document updated: ", response.data.data);
-          }
-        } else {
-          // Document does not exist, create it
-          const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
-          
-          console.log("this is comming from here ")
-          if (response.data && response.data.data) {
-            const resultsID = response.data.data._id;
-            window.localStorage.setItem("resultsID", resultsID);
-            console.log("Document created: ", response.data.data);
-          }
-        }
-      } catch (err) {
-        console.log(err);
-        console.log("here ", err.message)
-      }
-    }
+   
   
     if (savedAnswers && Object.keys(savedAnswers).length > 0) {
       saveToDB();
