@@ -114,41 +114,92 @@ function handleChange(e){
 
 // }
 
+
+const [loading, setLoading] = useState(true);
+
 useEffect(() => {
+  // Check if user is defined. If not, do nothing.
+  if (!user) return;
+
+  // console.log("useEffect ran", user);
   async function fetchResults() {
-    const userID = user.id
-    console.log("USER ID: ", userID)
+    // console.log("fetchResults ran");
+    const userID = user.id;
+    // console.log("USER ID: ", userID);
     try {
-      const results = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}}/answers-results/displayAnswersResults/${userID}`)
-      console.log("Results from server: ", results);
+      // Make a GET request to fetch results for the user
+      const results = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/displayAnswersResults/${userID}`);
+      // console.log("Results from server: ", results);
       if (results.data.displayedAnswersResults) {
-        setSavedAnswers(results.data.displayedAnswersResults)
-        const resultsID = results.data.displayedAnswersResults._id
-        window.localStorage.setItem("resultsID", resultsID )
-        // console.log("This is results: ", results)
-        console.log("Results found: ", results)
+        // If results are found, update the savedAnswers state and store results ID in localStorage
+        setSavedAnswers(results.data.displayedAnswersResults);
+        const resultsID = results.data.displayedAnswersResults._id;
+        window.localStorage.setItem("resultsID", resultsID);
+        console.log("Results found: ", results);
       } else {
-        console.log("Results not found")
+        // If no results are found, set savedAnswers to an empty object
+        console.log("User hasn't passed or failed any quizzes yet, so Results not found");
         setSavedAnswers({});
       }
     } catch (err) {
+      // Handle errors appropriately
       if (err.response && err.response.status === 404) {
-        // setError('No results found.');
         console.log("No results found.");
         setSavedAnswers({});
-    } else {
-      console.error("An error occurred while fetching results: ", err);
+      } else {
+        console.error("An error occurred while fetching results: ", err);
         setSavedAnswers({});
-        // setError('An error occurred while fetching results.');
+      }
+    } finally {
+      // Set loading to false once data fetching is done
+      setLoading(false);
     }
   }
-  fetchResults()
- }
-}, [user])
+
+  // Call the fetchResults function
+  fetchResults();
+}, [user]);
+
+
+
+//MINE that wasn't waiting for user state to be defined and was running fetch first prematurely , but trying CHAT ABOVE: 
+// useEffect(() => {
+//   console.log("useEffect ran", user)
+//   async function fetchResults() {
+//     console.log("fetchResults ran")
+//     const userID = user.id
+//     console.log("USER ID: ", userID)
+//     try {
+//       const results = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}}/answers-results/displayAnswersResults/${userID}`)
+//       console.log("Results from server: ", results);
+//       if (results.data.displayedAnswersResults) {
+//         setSavedAnswers(results.data.displayedAnswersResults)
+//         const resultsID = results.data.displayedAnswersResults._id
+//         window.localStorage.setItem("resultsID", resultsID )
+//         // console.log("This is results: ", results)
+//         console.log("Results found: ", results)
+//       } else {
+//         console.log("Results not found")
+//         setSavedAnswers({});
+//       }
+//     } catch (err) {
+//       if (err.response && err.response.status === 404) {
+//         // setError('No results found.');
+//         console.log("No results found.");
+//         setSavedAnswers({});
+//     } else {
+//       console.error("An error occurred while fetching results: ", err);
+//         setSavedAnswers({});
+//         // setError('An error occurred while fetching results.');
+//     }
+//   }
+//   fetchResults()
+//  }
+// }, [user])
 
 
 useEffect(()=>{
-console.log("This is saved answers: ", savedAnswers)
+// console.log("This is saved answers: ", savedAnswers)
 }, [savedAnswers])
 
 async function saveToDB() {
@@ -185,18 +236,13 @@ async function saveResults(){
     : operation === "x" ? operationsAsWords[2] 
     : operation === "/" ? operationsAsWords[3] 
     : "";
-
   await setSavedAnswers((prev) => ({
     ...prev,
     [operationWord]: {
       [numberFactWord]: userAnswersResultsState
     } 
   }))
-
   setShowResultsCard(false);
-
-   
-  
     if (savedAnswers && Object.keys(savedAnswers).length > 0) {
       saveToDB();
     }
