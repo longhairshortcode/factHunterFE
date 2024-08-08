@@ -1,5 +1,4 @@
 import style from "./QuizSet.module.css"
-// import { mathQuizzes } from "./data"
 import { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import { AuthContext } from "../../../../../App"
@@ -27,7 +26,7 @@ function nextQuestion() {
     return [...prev, answer]
   })
   setCurrentQuestionIndex(currentQuestionIndex + 1)
-  setAnswer([""])
+  setAnswer("")
   
 }
 
@@ -63,8 +62,7 @@ useEffect(()=>{
 
 //if grabbing more than 1, [] destructure, if 1, {} destructure
 function handleChange(e){
-  const {value} = e.target
-  setAnswer(value)
+  setAnswer(e.target.value);
 }
 
 // function handleChange(e){
@@ -121,7 +119,7 @@ useEffect(() => {
   // Check if user is defined. If not, do nothing.
   if (!user) return;
 
-  console.log("useEffect ran and fetch Should run", user);
+  // console.log("useEffect ran and fetch Should run", user);
   async function fetchResults() {
     // console.log("fetchResults ran");
     const userID = user.id;
@@ -135,7 +133,7 @@ useEffect(() => {
         setSavedAnswers(results.data.displayedAnswersResults);
         const resultsID = results.data.displayedAnswersResults._id;
         window.localStorage.setItem("resultsID", resultsID);
-        console.log("Results found: ", results);
+        // console.log("Results found: ", results);
       } else {
         // If no results are found, set savedAnswers to an empty object
         console.log("User hasn't passed or failed any quizzes yet, so Results not found");
@@ -198,15 +196,15 @@ useEffect(() => {
 // }, [user])
 
 
-useEffect(()=>{
+// useEffect(()=>{
 // console.log("This is saved answers: ", savedAnswers)
-}, [savedAnswers])
+// }, [savedAnswers])
 
 async function saveToDB() {
      
   const userID = user.id;
   try {
-      console.log("Here is the NEW savedAnswers data: ", {savedAnswers, userID})
+      // console.log("Here is the NEW savedAnswers data: ", {savedAnswers, userID})
       const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
    
       if (response.data && response.data.data) {
@@ -214,12 +212,12 @@ async function saveToDB() {
         window.localStorage.setItem("resultsID", resultsID);
         console.log("Document updated: ", response.data.data);
       }   
-      console.log("this is comming from here ")
-      if (response.data && response.data.data) {
-        const resultsID = response.data.data._id;
-        window.localStorage.setItem("resultsID", resultsID);
-        console.log("Document created: ", response.data.data);
-    }
+    //   console.log("this is comming from here ")
+    //   if (response.data && response.data.data) {
+    //     const resultsID = response.data.data._id;
+    //     window.localStorage.setItem("resultsID", resultsID);
+    //     console.log("Document created: ", response.data.data);
+    // }
   } catch (err) {
     console.log(err);
     console.log("here ", err.message)
@@ -236,21 +234,22 @@ async function saveResults(){
     : operation === "x" ? operationsAsWords[2] 
     : operation === "/" ? operationsAsWords[3] 
     : "";
-  await setSavedAnswers((prev) => ({
+  setSavedAnswers((prev) => ({
     ...prev,
     [operationWord]: {
       [numberFactWord]: userAnswersResultsState
     } 
   }))
   setShowResultsCard(false);
-    if (savedAnswers && Object.keys(savedAnswers).length > 0) {
-      saveToDB();
-    }
 }
-
+useEffect(() => {
+  if (Object.keys(savedAnswers).length > 0) {
+    saveToDB();
+  }
+}, [savedAnswers]);  
 
 function handleSubmit(e){
-
+  e.preventDefault(); 
   let userAnswersResults = []
   let numOfCorrectAnswers = 0
   for (let i = 0; i < shuffledCardsArr.length; i++)
@@ -269,6 +268,8 @@ function handleSubmit(e){
  setNumOfCorrectAnswersState(numOfCorrectAnswers)
  setShowResultsCard(true)
  setUserAnswers([])
+
+ saveResults();
 }
 
 
