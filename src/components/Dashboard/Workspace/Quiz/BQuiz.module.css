@@ -116,6 +116,7 @@ color: black;
 
 .bottomDiv{
     background-color: rgba(247, 194, 97, 0.785);
+    background-image: url("./numbers.jpg");
     flex: 7;
     display: flex;
     justify-content: center;
