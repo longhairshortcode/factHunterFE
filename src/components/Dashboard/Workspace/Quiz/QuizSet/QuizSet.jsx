@@ -4,7 +4,7 @@ import axios from "axios"
 import { AuthContext } from "../../../../../App"
 
 
-function QuizSet({targetQuiz, setTargetQuiz, shuffledCardsArr, setShuffledCardsArr, numberFactsAsWords, setSavedAnswers, savedAnswers}) {
+function QuizSet({targetQuiz, setTargetQuiz, shuffledCardsArr, setShuffledCardsArr, numberFactsAsWords, setSavedAnswers, savedAnswers, saveToDB, fetchResults }) {
  
 const {numberFact, operation} = targetQuiz
 const {user} = useContext(AuthContext)
@@ -26,7 +26,7 @@ function nextQuestion() {
     return [...prev, answer]
   })
   setCurrentQuestionIndex(currentQuestionIndex + 1)
-  setAnswer("")
+  setAnswer([""])
   
 }
 
@@ -62,7 +62,8 @@ useEffect(()=>{
 
 //if grabbing more than 1, [] destructure, if 1, {} destructure
 function handleChange(e){
-  setAnswer(e.target.value);
+  const {value} = e.target
+  setAnswer(value)
 }
 
 // function handleChange(e){
@@ -113,50 +114,8 @@ function handleChange(e){
 // }
 
 
-const [loading, setLoading] = useState(true);
+// const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  // Check if user is defined. If not, do nothing.
-  if (!user) return;
-
-  // console.log("useEffect ran and fetch Should run", user);
-  async function fetchResults() {
-    // console.log("fetchResults ran");
-    const userID = user.id;
-    // console.log("USER ID: ", userID);
-    try {
-      // Make a GET request to fetch results for the user
-      const results = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/displayAnswersResults/${userID}`);
-      // console.log("Results from server: ", results);
-      if (results.data.displayedAnswersResults) {
-        // If results are found, update the savedAnswers state and store results ID in localStorage
-        setSavedAnswers(results.data.displayedAnswersResults);
-        const resultsID = results.data.displayedAnswersResults._id;
-        window.localStorage.setItem("resultsID", resultsID);
-        // console.log("Results found: ", results);
-      } else {
-        // If no results are found, set savedAnswers to an empty object
-        console.log("User hasn't passed or failed any quizzes yet, so Results not found");
-        setSavedAnswers({});
-      }
-    } catch (err) {
-      // Handle errors appropriately
-      if (err.response && err.response.status === 404) {
-        console.log("No results found.");
-        setSavedAnswers({});
-      } else {
-        console.error("An error occurred while fetching results: ", err);
-        setSavedAnswers({});
-      }
-    } finally {
-      // Set loading to false once data fetching is done
-      setLoading(false);
-    }
-  }
-
-  // Call the fetchResults function
-  fetchResults();
-}, [user]);
 
 
 
@@ -196,33 +155,11 @@ useEffect(() => {
 // }, [user])
 
 
-// useEffect(()=>{
+useEffect(()=>{
 // console.log("This is saved answers: ", savedAnswers)
-// }, [savedAnswers])
+}, [savedAnswers])
 
-async function saveToDB() {
-     
-  const userID = user.id;
-  try {
-      // console.log("Here is the NEW savedAnswers data: ", {savedAnswers, userID})
-      const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
-   
-      if (response.data && response.data.data) {
-        const resultsID = response.data.data._id;
-        window.localStorage.setItem("resultsID", resultsID);
-        console.log("Document updated: ", response.data.data);
-      }   
-    //   console.log("this is comming from here ")
-    //   if (response.data && response.data.data) {
-    //     const resultsID = response.data.data._id;
-    //     window.localStorage.setItem("resultsID", resultsID);
-    //     console.log("Document created: ", response.data.data);
-    // }
-  } catch (err) {
-    console.log(err);
-    console.log("here ", err.message)
-  }
-}
+
 //CHATGPT
 async function saveResults(){
   setCurrentQuestionIndex(0)

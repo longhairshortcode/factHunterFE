@@ -13,6 +13,7 @@ import Quiz from './components/Dashboard/Workspace/Quiz/Quiz.jsx';
 import Set from './components/Dashboard/Workspace/Practice/Set/Set.jsx';
 // import CreatedSet from "./components/Dashboard/Workspace/Create/CreatedSet/CreatedSet.jsx"
 import Make from "./components/Dashboard/Workspace/Create/Make.jsx"
+import BQuiz from './components/Dashboard/Workspace/Quiz/BQuiz.jsx';
 
 export const AuthContext = createContext();
 export const ToastContext = createContext();
@@ -76,6 +77,7 @@ function App() {
                   <Route path='flashcards/:topic/:subtopic' element={<CreatedSet />} />
                 </Route> */}
                 <Route path='quiz' element={<Quiz />} />
+                <Route path='bquiz' element={<BQuiz />} />
               </Route>
             </Routes>
         </AuthContext.Provider>

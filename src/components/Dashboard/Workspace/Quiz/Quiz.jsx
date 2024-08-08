@@ -8,8 +8,8 @@ function Quiz() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [shuffledCardsArr, setShuffledCardsArr] = useState([]);
   const [targetQuiz, setTargetQuiz] = useState({
-    numberFact: "1",
-    operation: "addition"
+    numberFact: "",
+    operation: ""
   })
   const [savedAnswers, setSavedAnswers] = useState({
     addition: {
@@ -101,6 +101,64 @@ function Quiz() {
     console.log(numberFactWord, operation)  
   }
 
+ 
+  
+     async function fetchResults() {
+      // console.log("fetchResults ran");
+      const userID = user.id;
+      // console.log("USER ID: ", userID);
+      try {
+        // Make a GET request to fetch results for the user
+        const results = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/displayAnswersResults/${userID}`);
+        // console.log("Results from server: ", results);
+        if (results.data.displayedAnswersResults) {
+          // If results are found, update the savedAnswers state and store results ID in localStorage
+          setSavedAnswers(results.data.displayedAnswersResults);
+          const resultsID = results.data.displayedAnswersResults._id;
+          window.localStorage.setItem("resultsID", resultsID);
+          console.log("Results found: ", results);
+        } else {
+          // If no results are found, set savedAnswers to an empty object
+          console.log("User hasn't passed or failed any quizzes yet, so Results not found");
+          setSavedAnswers({});
+        }
+      } catch (err) {
+        // Handle errors appropriately
+        if (err.response && err.response.status === 404) {
+          console.log("No results found.");
+          setSavedAnswers({});
+        } else {
+          console.error("An error occurred while fetching results: ", err);
+          setSavedAnswers({});
+        } 
+      }
+    }
+  
+    async function saveToDB() {
+     
+      const userID = user.id;
+      try {
+          console.log("Here is the NEW savedAnswers data: ", {savedAnswers, userID})
+          const response = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/answers-results/saveAnswersResults`, { savedAnswers, userID });
+       
+          if (response.data && response.data.data) {
+            const resultsID = response.data.data._id;
+            window.localStorage.setItem("resultsID", resultsID);
+            console.log("Document updated: ", response.data.data);
+          }   
+          console.log("this is comming from here ")
+          if (response.data && response.data.data) {
+            const resultsID = response.data.data._id;
+            window.localStorage.setItem("resultsID", resultsID);
+            console.log("Document created: ", response.data.data);
+        }
+      } catch (err) {
+        console.log(err);
+        console.log("here ", err.message)
+      }
+    }
+  
+
 
   return (
     <div className={style.componentContainer}>
@@ -109,8 +167,10 @@ function Quiz() {
         <div className={style.mathAndReadingQuizButtonContainer}>
           <button
             className={style.mathQuizButton}
-            onClick={() => handleCategoryClick("math")}
-          >
+            onClick={() => {
+              handleCategoryClick("math");
+            fetchResults();
+          }}>
             Math Quizzes
           </button>
           <button
@@ -317,6 +377,8 @@ function Quiz() {
               numberFactsAsWords={numberFactsAsWords} 
               setSavedAnswers={setSavedAnswers} 
               savedAnswers={savedAnswers}
+              fetchResults={fetchResults} 
+              saveToDB={saveToDB}
               />
               </div>
               );
