@@ -193,7 +193,7 @@ function Quiz() {
 
                   const backgroundColor = additionValue
                     ? additionValue.join(" ").split(" ").includes("incorrect") ? "red"
-                    : additionValue.join(" ").split(" ").includes("correct") ? "lime"
+                    : additionValue.join(" ").split(" ").includes("correct") ? "green"
                     : "grey"
                     : "grey";
 
@@ -221,6 +221,8 @@ function Quiz() {
                   // console.log('numberFact:', numberFact);
                   // console.log('fact:', fact);
                   // console.log('subtractionValue:', subtractionValue);
+
+                  
 
                   const backgroundColor = subtractionValue
                     ? subtractionValue.join(" ").split(" ").includes("incorrect") ? "red"
