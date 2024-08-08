@@ -22,50 +22,79 @@ function getQuestions(operation, factNumber) {
 }
 return (
     <div className={style.container}>
-    <div className={style.topDiv}>
-        <h1 className={style.title}>Quiz</h1>
-        <div className={style.buttonsContainer}>
-            <button className={style.button} onClick={()=>setMathQuizzesClicked(true)}>
-                Math Quizzes
-            </button>
-        </div>
-        { mathQuizzesClicked && 
-        <div className={style.tables}>
-            <div className={style.theTable}>
-                <h2>ALL QUIZZES</h2>
-                <div className={style.operationsAndButtonsContainer}>
-                      {operations.map((operation, index) => (
-                    <div className={style.singleOperationAndButtons} key={index}>
-                        <div className={style.operation}>
-                            {operation}
-                        </div>
-                        <div className={style.buttonsDiv}>
-                            {buttonNumbers.map((item, itemIndex) => (
-                              <button className={style.button} key={itemIndex} onClick={()=>getQuestions(index, itemIndex)}>
-                                {item}
-                              </button>  
-                            ))}
-                        </div>
-                    </div>     
-                      ))
+        <div className={style.topDiv}>
+            <h1 className={style.title}>Quiz</h1>
+            <div className={style.buttonsContainer}>
+                <button className={style.mathButton} onClick={()=>setMathQuizzesClicked(true)}>
+                    Math Quizzes
+                </button>
+            </div>
+            { mathQuizzesClicked && 
+            <div className={style.tables}>
+                <div className={style.theTable}>
+                    <h2 className={style.allQuizzesButton}>ALL QUIZZES</h2>
+                    <div className={style.operationsAndButtonsContainer}>
+                        {operations.map((operation, index) => (
+                        <div className={style.singleOperationAndButtons} key={index}>
+                            <div className={style.operationContainer}>
+                                {operation}
+                            </div>
+                            <div className={style.buttonsDiv}>
+                                {buttonNumbers.map((item, itemIndex) => (
+                                <button className={style.factButton} key={itemIndex} onClick={()=>getQuestions(index, itemIndex)}>
+                                    {item}
+                                </button>  
+                                ))}
+                            </div>
+                        </div>     
+                        ))
 
-                      }
+                        }
+                    </div>
+                </div>
+                <div className={style.theTable}>
+                    <h2 className={style.allQuizzesButton}>RESULTS OF QUIZZES</h2>
+                        <div className={style.operationsAndButtonsContainer}>
+                            {operations.map((operation, index) => (
+                            <div className={style.singleOperationAndButtons} key={index}>
+                                <div className={style.operationContainer}>
+                                    {operation}
+                                </div>
+                                <div className={style.buttonsDiv}>
+                                    {buttonNumbers.map((item, itemIndex) => (
+                                    <button className={style.changeColorFactButton} key={itemIndex}>
+                                        {item}
+                                    </button>  
+                                    ))}
+                                </div>
+                            </div>     
+                            ))
+                            }
+                        </div>    
                 </div>
             </div>
-            <div className={style.theTable}>
-            
-            </div>
+            }
         </div>
-        }
-    </div>
-    <div className={style.bottomDiv}>
-        {fact.factNumber &&
-             <div className={style.quizCard}>
-        
-             </div>
-        }
-       
-    </div>
+        <div className={style.bottomDiv}>
+            {fact.factNumber &&
+                <div className={style.quizCard}>
+                    <div className={style.top}>
+                        <p className={style.left}>12 left</p>
+                        <p className={style.question}>Question</p>
+                    </div>
+                    <div className={style.bottomAnswerAndButtonContainer}>
+                        <div className={style.answerContainer}v>
+                            <p className={style.answer}>Answer</p>
+                        </div>
+                        <div className={style.nextAndSubmitContainer}>
+                            <button className={style.next}>Next</button>
+                            <button className={style.submit}>Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            }   
+        </div>
     </div>
   )
 }
