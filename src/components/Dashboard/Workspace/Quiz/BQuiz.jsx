@@ -1,25 +1,88 @@
 import style from "../Quiz/BQuiz.module.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { mathQuizzes } from "./QuizSet/data.js"
+
 
 function BQuiz() {
 const [mathQuizzesClicked, setMathQuizzesClicked] = useState(false)
+const [questionsDisplayed, setQuestionsDisplayed] = useState([])
+const [currentItem, setCurrentItem] = useState(null)
 const operations = ["Addition", "Subtraction", "Multiplication", "Division"]
-const buttonNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-const [fact, setFact] = useState({
+const buttonNumbersInWords = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+const [wholeFact, setWholeFact] = useState({
     operationName: null,
-    factNumber: null
+    factNumber: null,
+    factName: null
 })
+useEffect(() => {
+    // Function to shuffle the array using Fisher-Yates algorithm
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
 
-function getQuestions(operation, factNumber) {
-    console.log(operation, factNumber)
-    factNumber++
-    setFact(prevFact => ({
-        ...prevFact, // Spread the previous state
-        operationName: operation, // Update operationName
-        factNumber: factNumber    // Update factNumber
+    // Shuffling the array
+    if (questionsDisplayed.length > 0){
+        const shuffledArray = shuffleArray(questionsDisplayed);
+        let index = 0;
+        console.log("This is shuffleArray: ", shuffledArray)
+        // Setting an interval to update the state every 3 seconds
+        const intervalId = setInterval(() => {
+            if (index < shuffledArray.length) {
+                setCurrentItem(shuffledArray[index]);
+                index++;
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 3000);
+    
+        // Cleanup function to clear the interval when the component unmounts
+        return () => clearInterval(intervalId);
+    }
+
+
+}, [currentItem]); // Dependency array to watch for changes in `items`
+
+useEffect(()=>{
+    const displayQuestions = (wholeFact, mathQuizzes)=> {
+        const operation = mathQuizzes.filter((item) => item.name === wholeFact.operationName)
+        //questions = [{...}]
+        let result = []
+        const operationQuestions = operation[0] 
+        for (let key in operationQuestions){
+            if (key === wholeFact.factName){
+                 result = operationQuestions[key]
+            }
+        }
+        
+        return result 
+        }
+
+        if (wholeFact.operationName !== null){
+        const questions = displayQuestions(wholeFact, mathQuizzes)   
+    
+
+        setQuestionsDisplayed(questions)
+        console.log(questionsDisplayed)
+        } 
+
+}, [wholeFact])
+
+
+
+function getWholeFact(operation, factName, factNumber) {
+    console.log(factNumber)
+    setWholeFact(prevWholeFact => ({
+        ...prevWholeFact, 
+        operationName: operation, 
+        factNumber: factNumber,    
+        factName:factName
     }));
-    console.log('Here is the fact:', fact)
 }
+
 return (
     <div className={style.container}>
         <div className={style.topDiv}>
@@ -40,9 +103,9 @@ return (
                                 {operation}
                             </div>
                             <div className={style.buttonsDiv}>
-                                {buttonNumbers.map((item, itemIndex) => (
-                                <button className={style.factButton} key={itemIndex} onClick={()=>getQuestions(index, itemIndex)}>
-                                    {item}
+                                {buttonNumbersInWords.map((item, itemIndex) => (
+                                <button className={style.factButton} key={itemIndex} onClick={()=>getWholeFact(operation, item, itemIndex)}>
+                                    {itemIndex + 1}
                                 </button>  
                                 ))}
                             </div>
@@ -61,9 +124,9 @@ return (
                                     {operation}
                                 </div>
                                 <div className={style.buttonsDiv}>
-                                    {buttonNumbers.map((item, itemIndex) => (
+                                    {buttonNumbersInWords.map((item, itemIndex) => (
                                     <button className={style.changeColorFactButton} key={itemIndex}>
-                                        {item}
+                                        {itemIndex + 1}
                                     </button>  
                                     ))}
                                 </div>
@@ -75,8 +138,9 @@ return (
             </div>
             }
         </div>
+
         <div className={style.bottomDiv}>
-            {fact.factNumber &&
+            {wholeFact.factNumber &&
                 <div className={style.quizCard}>
                     <div className={style.top}>
                         <p className={style.left}>12 left</p>

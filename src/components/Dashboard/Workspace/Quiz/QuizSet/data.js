@@ -1,5 +1,6 @@
-export const mathQuizzes = {
-  addition: {
+export const mathQuizzes = [
+   {
+  name: "Addition", 
     one: [
       { question: "1 + 0", answer: "1" },
       { question: "1 + 1", answer: "2" },
@@ -181,7 +182,8 @@ export const mathQuizzes = {
       { question: "12 + 12", answer: "24" }
     ]
   },
-  subtraction: {
+   {
+  name: "Subtraction",
     one: [
       { question: "1 - 1", answer: "0" },
       { question: "2 - 1", answer: "1" },
@@ -361,7 +363,8 @@ export const mathQuizzes = {
       { question: "24 - 12", answer: "12" }
     ]
   },
-  multiplication: {
+  {
+    name: "Multiplication",  
     one: [
       { question: "1 x 0", answer: "0" },
       { question: "1 x 1", answer: "1" },
@@ -543,7 +546,8 @@ export const mathQuizzes = {
       { question: "12 x 12", answer: "144" }
     ]
   },
-  division: {
+  {
+    name: "Division",
     one: [
       { question: "0 / 1", answer: "0" },
       { question: "1 / 1", answer: "1" },
@@ -725,6 +729,6 @@ export const mathQuizzes = {
       { question: "144 / 12", answer: "12" }
     ]
   }
-};
+];
 
 

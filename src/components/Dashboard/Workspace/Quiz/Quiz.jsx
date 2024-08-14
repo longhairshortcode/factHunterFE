@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./Quiz.module.css"
 import QuizSet from "./QuizSet/QuizSet";
-import { mathQuizzes } from "./QuizSet/data";
+import { mathQuizzes } from "./QuizSet/data.js";
 
 
 function Quiz() {
